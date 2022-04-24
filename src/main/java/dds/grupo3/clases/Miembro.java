@@ -16,8 +16,6 @@ public class Miembro {
 		this.nroDoc = nroDoc;
 	}
 
-
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -49,6 +47,5 @@ public class Miembro {
 	public void setNroDoc(int nroDoc) {
 		this.nroDoc = nroDoc;
 	}
-	
 	
 }
