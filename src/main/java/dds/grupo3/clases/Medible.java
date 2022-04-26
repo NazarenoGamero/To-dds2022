@@ -72,7 +72,8 @@ public class Medible {
 
     //Calcula el Dato de Actividad
 	public Float getDA() {
-		// TODO implementar
+		
+		
 		return null;
 	}
 }

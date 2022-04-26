@@ -10,7 +10,7 @@ public class FachadaPosta implements FachadaOrg {
 
 	@Override
 	public void cargarParametros(Map<String, Float> parametrosSistema) {
-
+		
 	}
 
 	@Override
