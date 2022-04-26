@@ -69,4 +69,10 @@ public class Medible {
     public void setAlcance(Alcance alcance) {
         this.alcance = alcance;
     }
+
+    //Calcula el Dato de Actividad
+	public Float getDA() {
+		// TODO implementar
+		return null;
+	}
 }
