@@ -10,7 +10,7 @@ public class FachadaPosta implements FachadaOrg {
 
 	@Override
 	public void cargarParametros(Map<String, Float> parametrosSistema) {
-		
+
 	}
 
 	@Override
@@ -23,10 +23,9 @@ public class FachadaPosta implements FachadaOrg {
 	}
 
 	private FactorDeEmision obtenerFeAsociado(Medible medible) {
-		// TODO: cambiar tipoDeActividad de Medible de String a Enum
-		return this.factoresDeEmision.stream().filter(fe -> fe.getTipoAct().equals(medible.getActividad())).findFirst()
-				.orElse(null);
+		// TODO: cambiar tipoDeConsumo de Medible de String a Enum
+		return this.factoresDeEmision.stream().filter(fe -> fe.getTipoCons().equals(medible.getTipoDeConsumo()))
+				.findFirst().orElse(null);
 	}
 
 }
-
