@@ -1,16 +1,17 @@
 package dds.grupo3.clases;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public class FachadaPosta implements FachadaOrg {
 
-	List<FactorDeEmision> factoresDeEmision;
+	Map<String, Float> factoresDeEmision = new HashMap<>();
+	ParametrosReader reader;
 
 	@Override
 	public void cargarParametros(Map<String, Float> parametrosSistema) {
-
+		this.factoresDeEmision.putAll(parametrosSistema);
 	}
 
 	@Override
@@ -19,13 +20,19 @@ public class FachadaPosta implements FachadaOrg {
 	}
 
 	private Float obteneHuella(Medible medible) {
-		return obtenerFeAsociado(medible).getValor() * medible.getDA();
+		return obtenerFeAsociado(medible) * medible.getValor();
 	}
 
-	private FactorDeEmision obtenerFeAsociado(Medible medible) {
-		// TODO: cambiar tipoDeConsumo de Medible de String a Enum
-		return this.factoresDeEmision.stream().filter(fe -> fe.getTipoCons().equals(medible.getTipoDeConsumo()))
-				.findFirst().orElse(null);
+	private Float obtenerFeAsociado(Medible medible) {
+		return this.factoresDeEmision.get(medible.getTipoDeConsumo());
+
 	}
 
 }
+
+/*
+ * return this.factoresDeEmision.stream().filter(fe ->
+ * fe.getTipoCons().equals(medible.getTipoDeConsumo()))
+ * .findFirst().orElse(null);
+ * 
+ */
