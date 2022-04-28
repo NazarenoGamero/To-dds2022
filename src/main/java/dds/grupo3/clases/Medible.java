@@ -1,73 +1,73 @@
 package dds.grupo3.clases;
 
 public class Medible {
-    private String actividad;
-    private String tipoDeConsumo;
-    private Unidad unidad;
-    private int valor;
-    private int periodicidad;
-    private Alcance alcance;
+	private TipoDeActividad actividad;
+	private TipoDeConsumo tipoDeConsumo;
+	private Unidad unidad;
+	private int valor;
+	private Periodicidad periodicidad;
+	private Alcance alcance;
 
-    // Constructor
+	// Constructor
 
-    public Medible(String actividad, String tipoDeConsumo, Unidad unidad, int valor, int periodicidad, Alcance alcance) {
-        super();
-        this.actividad = actividad;
-        this.tipoDeConsumo = tipoDeConsumo;
-        this.unidad = unidad;
-        this.valor = valor;
-        this.periodicidad = periodicidad;
-        this.alcance = alcance;
-    }
+	public Medible(TipoDeActividad actividad, TipoDeConsumo tipoDeConsumo, Unidad unidad, int valor,
+			Periodicidad periodicidad, Alcance alcance) {
+		this.actividad = actividad;
+		this.tipoDeConsumo = tipoDeConsumo;
+		this.unidad = unidad;
+		this.valor = valor;
+		this.periodicidad = periodicidad;
+		this.alcance = alcance;
+	}
 
-    // Setters y Getters
+	// Setters y Getters
 
-    public String getActividad() {
-        return actividad;
-    }
+	public TipoDeActividad getActividad() {
+		return actividad;
+	}
 
-    public void setActividad(String actividad) {
-        this.actividad = actividad;
-    }
+	public void setActividad(TipoDeActividad actividad) {
+		this.actividad = actividad;
+	}
 
-    public String getTipoDeConsumo() {
-        return tipoDeConsumo;
-    }
+	public TipoDeConsumo getTipoDeConsumo() {
+		return tipoDeConsumo;
+	}
 
-    public void setTipoDeConsumo(String tipoDeConsumo) {
-        this.tipoDeConsumo = tipoDeConsumo;
-    }
+	public void setTipoDeConsumo(TipoDeConsumo tipoDeConsumo) {
+		this.tipoDeConsumo = tipoDeConsumo;
+	}
 
-    public Unidad getUnidad() {
-        return unidad;
-    }
+	public Unidad getUnidad() {
+		return unidad;
+	}
 
-    public void setUnidad(Unidad unidad) {
-        this.unidad = unidad;
-    }
+	public void setUnidad(Unidad unidad) {
+		this.unidad = unidad;
+	}
 
-    public int getValor() {
-        return valor;
-    }
+	public int getValor() {
+		return valor;
+	}
 
-    public void setValor(int valor) {
-        this.valor = valor;
-    }
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
 
-    public int getPeriodicidad() {
-        return periodicidad;
-    }
+	public Periodicidad getPeriodicidad() {
+		return periodicidad;
+	}
 
-    public void setPeriodicidad(int periodicidad) {
-        this.periodicidad = periodicidad;
-    }
+	public void setPeriodicidad(Periodicidad periodicidad) {
+		this.periodicidad = periodicidad;
+	}
 
-    public Alcance getAlcance() {
-        return alcance;
-    }
+	public Alcance getAlcance() {
+		return alcance;
+	}
 
-    public void setAlcance(Alcance alcance) {
-        this.alcance = alcance;
-    }
+	public void setAlcance(Alcance alcance) {
+		this.alcance = alcance;
+	}
 
 }

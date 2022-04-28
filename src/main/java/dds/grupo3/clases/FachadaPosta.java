@@ -15,15 +15,15 @@ public class FachadaPosta implements FachadaOrg {
 
 	@Override
 	public Float obtenerHU(Collection<Medible> mediciones) {
-		return (float) mediciones.stream().mapToDouble(medicion -> obteneHuella(medicion)).sum();
+		return (float) mediciones.stream().mapToDouble(medicion -> obteneHuellaPorMedicion(medicion)).sum();
 	}
 
-	private Float obteneHuella(Medible medible) {
+	private Float obteneHuellaPorMedicion(Medible medible) {
 		return obtenerFeAsociado(medible) * medible.getValor();
 	}
 
 	private Float obtenerFeAsociado(Medible medible) {
-		return this.factoresDeEmision.get(medible.getTipoDeConsumo());
+		return this.factoresDeEmision.get(medible.getTipoDeConsumo().toString());
 
 	}
 	
