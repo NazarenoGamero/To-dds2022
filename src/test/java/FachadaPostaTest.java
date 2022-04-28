@@ -29,6 +29,4 @@ public class FachadaPostaTest {
 		Assertions.assertEquals(valorFe, (float) 0.5);
 	}
 	
-	
-	
 }

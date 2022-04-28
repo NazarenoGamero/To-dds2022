@@ -1,5 +1,7 @@
 package dds.grupo3.clases;
 
+import java.io.IOException;
+
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
@@ -8,7 +10,7 @@ import net.sourceforge.argparse4j.inf.Namespace;
 
 public class CalculadorHU {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 
         ArgumentParser parser = ArgumentParsers.newFor("Checksum").build()
@@ -31,9 +33,9 @@ public class CalculadorHU {
         System.out.println("Archivo de parametros: " + ns.get("params"));
         
         FachadaOrg fachada= new FachadaPosta();
-     
-        //fachada.cargarParametros(ns.get("mediciones"));
-      //  fachada.cargarParametros(ns.get("params"));
+        ParametrosReader reader= new ParametrosReader();
+        
+        fachada.cargarParametros(reader.leerParametros(ns.get("params")));
         // calcular huella de las actividades y el total
         System.out.println("Imprimir datos de las huellas");
     }
