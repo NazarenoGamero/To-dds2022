@@ -3,8 +3,8 @@ package dds.grupo3.clases;
 public class Medible {
 	private TipoDeActividad actividad;
 	private TipoDeConsumo tipoDeConsumo;
-	private Unidad unidad;
 	private int valor;
+	private Unidad unidad;
 	private Periodicidad periodicidad;
 	private Alcance alcance;
 
@@ -14,8 +14,8 @@ public class Medible {
 			Periodicidad periodicidad, Alcance alcance) {
 		this.actividad = actividad;
 		this.tipoDeConsumo = tipoDeConsumo;
-		this.unidad = unidad;
 		this.valor = valor;
+		this.unidad = unidad;
 		this.periodicidad = periodicidad;
 		this.alcance = alcance;
 	}
