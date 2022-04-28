@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ public class ParametrosReaderTest {
 	ParametrosReader reader;
 	
 	@Test
-	public void puedeLeerArchivoDeParametros() throws IOException
+	public void puedeLeerArchivoDeParametros()
 	{
 		String path= System.getProperty("user.dir") + "/src/files/"+"/parametros.txt";
 		reader= new ParametrosReader();
