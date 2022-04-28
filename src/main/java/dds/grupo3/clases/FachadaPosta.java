@@ -7,7 +7,6 @@ import java.util.Map;
 public class FachadaPosta implements FachadaOrg {
 
 	Map<String, Float> factoresDeEmision = new HashMap<>();
-	ParametrosReader reader;
 
 	@Override
 	public void cargarParametros(Map<String, Float> parametrosSistema) {
@@ -27,12 +26,9 @@ public class FachadaPosta implements FachadaOrg {
 		return this.factoresDeEmision.get(medible.getTipoDeConsumo());
 
 	}
+	
+	public Map<String, Float> getFactoresDeEmision() {
+		return factoresDeEmision;
+	}
 
 }
-
-/*
- * return this.factoresDeEmision.stream().filter(fe ->
- * fe.getTipoCons().equals(medible.getTipoDeConsumo()))
- * .findFirst().orElse(null);
- * 
- */

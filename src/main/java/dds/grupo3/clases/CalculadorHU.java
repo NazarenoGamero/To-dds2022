@@ -31,9 +31,9 @@ public class CalculadorHU {
         System.out.println("Archivo de parametros: " + ns.get("params"));
         
         FachadaOrg fachada= new FachadaPosta();
-             
-        fachada.cargarParametros(ns.get("mediciones"));
-        fachada.cargarParametros(ns.get("params"));
+     
+        //fachada.cargarParametros(ns.get("mediciones"));
+      //  fachada.cargarParametros(ns.get("params"));
         // calcular huella de las actividades y el total
         System.out.println("Imprimir datos de las huellas");
     }
