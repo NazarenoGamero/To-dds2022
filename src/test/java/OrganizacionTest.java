@@ -2,6 +2,8 @@ import dds.grupo3.clases.FachadaPosta;
 import dds.grupo3.clases.MedicionCSV;
 import dds.grupo3.clases.Miembro;
 import dds.grupo3.clases.Sector;
+import dds.grupo3.clases.Exception.YaPerteneceOrgException;
+
 import static dds.grupo3.clases.TipoDocEnum.DNI;
 import dds.grupo3.clases.organizacion.Organizacion;
 import org.junit.jupiter.api.Assertions;
@@ -37,13 +39,13 @@ public class OrganizacionTest {
 	}
 
 	@Test
-	public void unSectorNoPuedePertenecerAdosOrg() {
-
+	public void unSectorNoPuedePertenecerAdosOrg(){
+		organizacion1.agregarSector(sector1);
+	    Assertions.assertThrows(YaPerteneceOrgException.class, ()->{organizacion2.agregarSector(sector1);});
 	}
 
 	@Test
 	public void unMiembroPuedePertencerAmasDeUnSector() {
-
 	}
 
 	@Test

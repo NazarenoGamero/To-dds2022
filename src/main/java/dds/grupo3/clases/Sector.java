@@ -6,6 +6,14 @@ import java.util.List;
 
 public class Sector {
 	public Organizacion organizacion;
+	public Organizacion getOrganizacion() {
+		return organizacion;
+	}
+
+	public void setOrganizacion(Organizacion organizacion) {
+		this.organizacion = organizacion;
+	}
+
 	private String nombre;
 	private List<Miembro> miembros;
 

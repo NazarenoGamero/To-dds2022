@@ -1,6 +1,6 @@
 package dds.grupo3.clases.organizacion;
 
-import dds.grupo3.clases.Exception.YaPerteneceOrg;
+import dds.grupo3.clases.Exception.YaPerteneceOrgException;
 import dds.grupo3.clases.FachadaPosta;
 import dds.grupo3.clases.Medible;
 import dds.grupo3.clases.Sector;
@@ -39,11 +39,15 @@ public class Organizacion {
 	/*
 	 * public void getMiembros(){ return unSector.getMiembros() }
 	 */
-	public void agregarSector(Sector sector) throws YaPerteneceOrg {
-		if (sector.organizacion != null) {
-			throw new YaPerteneceOrg();
+	public void agregarSector(Sector sector){
+		
+		if (sector.getOrganizacion() != null) {
+			throw new YaPerteneceOrgException();
 		} else {
 			this.unSector.add(sector);
+			sector.setOrganizacion(this);
+			
 		}
+		
 	}
 }
