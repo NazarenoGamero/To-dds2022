@@ -1,7 +1,10 @@
+import dds.grupo3.clases.FachadaPosta;
+import dds.grupo3.clases.MedicionCSV;
 import dds.grupo3.clases.Miembro;
 import dds.grupo3.clases.Sector;
 import static dds.grupo3.clases.TipoDocEnum.DNI;
 import dds.grupo3.clases.organizacion.Organizacion;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +23,11 @@ public class OrganizacionTest {
     Sector sector2;
     Miembro miembro;
     List<Sector> sectores = new ArrayList<>();
+
+    FachadaPosta fachada;
+    MedicionCSV reader = new MedicionCSV();
+    String path = System.getProperty("user.dir") + "/src/files/" + "/Medicion.CSV";
+
     @BeforeEach
     private void inicializarOrganizacion() throws IOException {
         organizacion1 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
@@ -37,5 +45,9 @@ public class OrganizacionTest {
     @Test
     public void unMiembroPuedePertencerAmasDeUnSector(){
 
+    }
+    @Test
+    public void calculoHuellaTotal() throws IOException {
+        Assertions.assertEquals(10,organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
     }
 }
