@@ -27,7 +27,7 @@ public class MedicionCSV implements MedicionesReader {
 				Medible medicion = new Medible(
 						new TipoDeMedicion(TipoDeActividad.valueOf(fila[0]), TipoDeConsumo.valueOf(fila[1])),
 						Integer.valueOf(fila[2]), Periodicidad.valueOf(fila[3]), null);
-				
+
 				mediciones.add(medicion);
 			}
 		} catch (
@@ -43,6 +43,6 @@ public class MedicionCSV implements MedicionesReader {
 
 		csvReader.close();
 		return mediciones;
-		
+
 	}
 }

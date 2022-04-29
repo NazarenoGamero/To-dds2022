@@ -10,20 +10,18 @@ import java.util.Map;
 public class ParametrosReader {
 	public Map<String, Float> leerParametros(String path) throws IOException {
 		Map<String, Float> parametros = new HashMap<>();
-	    String line;
-	    BufferedReader reader = new BufferedReader(new FileReader(path));
-	    try {
-			while ((line = reader.readLine()) != null)
-			{
-			    String[] parts = line.split("=", 2);
-			    if (parts.length >= 2)
-			    {
-			        String key = parts[0];
-			        Float value = Float.valueOf(parts[1]);
-			        parametros.put(key, value);
-			    } else {
-			        System.out.println("ignoring line: " + line);
-			    }
+		String line;
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		try {
+			while ((line = reader.readLine()) != null) {
+				String[] parts = line.split("=", 2);
+				if (parts.length >= 2) {
+					String key = parts[0];
+					Float value = Float.valueOf(parts[1]);
+					parametros.put(key, value);
+				} else {
+					System.out.println("ignoring line: " + line);
+				}
 			}
 		} catch (FileNotFoundException e) {
 		} catch (NumberFormatException e) {
@@ -34,7 +32,7 @@ public class ParametrosReader {
 			e.printStackTrace();
 		}
 
-	    reader.close();
+		reader.close();
 
 		return parametros;
 	}

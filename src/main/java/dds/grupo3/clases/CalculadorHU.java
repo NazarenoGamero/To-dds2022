@@ -31,9 +31,8 @@ public class CalculadorHU {
 		MedicionCSV readerC = new MedicionCSV();
 
 		fachada.cargarParametros(readerP.leerParametros(ns.get("params")));
-		fachada.obtenerHU(readerC.leerArchivoMediciones(ns.get("mediciones")));
+		System.out.println("\nEl total de la huella de carbono es: ");
+		System.out.println(fachada.obtenerHU(readerC.leerArchivoMediciones(ns.get("mediciones"))));
 
-		System.out.println("Imprimir datos de las huellas");
 	}
-
 }

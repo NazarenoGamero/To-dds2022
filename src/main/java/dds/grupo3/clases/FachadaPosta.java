@@ -26,7 +26,7 @@ public class FachadaPosta implements FachadaOrg {
 		return this.factoresDeEmision.get(medible.getTipoDeMedicion().getTipoDeConsumo().toString());
 
 	}
-	
+
 	public Map<String, Float> getFactoresDeEmision() {
 		return factoresDeEmision;
 	}

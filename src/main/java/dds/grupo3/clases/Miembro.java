@@ -5,9 +5,8 @@ public class Miembro {
 	private String apellido;
 	private TipoDocEnum tipoDoc;
 	private int nroDoc;
-	
-	
-	//Constructor
+
+	// Constructor
 	public Miembro(String nombre, String apellido, TipoDocEnum tipoDoc, int nroDoc) {
 		super();
 		this.nombre = nombre;
@@ -47,5 +46,5 @@ public class Miembro {
 	public void setNroDoc(int nroDoc) {
 		this.nroDoc = nroDoc;
 	}
-	
+
 }

@@ -9,44 +9,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Organizacion {
-    private String razonSocial;
-    private Tipo tipo;
-    private List<Sector> unSector = new ArrayList<Sector>();
-    private Clasificacion unaClasificacion;
-    private List<Medible> unaMedicion = new ArrayList<Medible>();
+	private String razonSocial;
+	private Tipo tipo;
+	private List<Sector> unSector = new ArrayList<Sector>();
+	private Clasificacion unaClasificacion;
+	private List<Medible> unaMedicion = new ArrayList<Medible>();
 
+	public Organizacion(String razonSocial, Tipo tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
+		this.razonSocial = razonSocial;
+		this.tipo = tipo;
+		this.unSector = unSector;
+		this.unaClasificacion = unaClasificacion;
+	}
 
-    public Organizacion(String razonSocial, Tipo tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
-        this.razonSocial = razonSocial;
-        this.tipo = tipo;
-        this.unSector = unSector;
-        this.unaClasificacion = unaClasificacion;
-    }
+	public void setUnaMedicion(List<Medible> unaMedicion) {
+		this.unaMedicion = unaMedicion;
+	}
 
-    public void setUnaMedicion(List<Medible> unaMedicion) {
-        this.unaMedicion = unaMedicion;
-    }
+	/* agregar estas funciones mas tarde */
+	public void aceptarVinculacionConMiembro() {
+		return;
+	}
 
-    /* agregar estas funciones mas tarde */
-    public void aceptarVinculacionConMiembro() {
-        return;
-    }
+	public float calcularHuellaDeCarbonoST(List<Medible> unasMediciones) {
+		FachadaPosta unaFachada = new FachadaPosta();
+		return unaFachada.obtenerHU(unasMediciones);
+	}
 
-    public float calcularHuellaDeCarbonoST(List <Medible> unasMediciones) {
-        FachadaPosta unaFachada = new FachadaPosta();
-        return unaFachada.obtenerHU(unasMediciones);
-    }
-
-    /*
-    public void getMiembros(){
-        return unSector.getMiembros()
-    }
-     */
-    public void agregarSector(Sector sector) throws YaPerteneceOrg {
-        if (sector.organizacion != null) {
-            throw new YaPerteneceOrg();
-        } else {
-            this.unSector.add(sector);
-        }
-    }
+	/*
+	 * public void getMiembros(){ return unSector.getMiembros() }
+	 */
+	public void agregarSector(Sector sector) throws YaPerteneceOrg {
+		if (sector.organizacion != null) {
+			throw new YaPerteneceOrg();
+		} else {
+			this.unSector.add(sector);
+		}
+	}
 }

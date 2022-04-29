@@ -15,39 +15,39 @@ import java.util.List;
 import static dds.grupo3.clases.organizacion.Clasificacion.UNIVERSIDAD;
 import static dds.grupo3.clases.organizacion.Tipo.INSTITUCION;
 
-
 public class OrganizacionTest {
-    Organizacion organizacion1;
-    Organizacion organizacion2;
-    Sector sector1;
-    Sector sector2;
-    Miembro miembro;
-    List<Sector> sectores = new ArrayList<>();
+	Organizacion organizacion1;
+	Organizacion organizacion2;
+	Sector sector1;
+	Sector sector2;
+	Miembro miembro;
+	List<Sector> sectores = new ArrayList<>();
 
-    FachadaPosta fachada;
-    MedicionCSV reader = new MedicionCSV();
-    String path = System.getProperty("user.dir") + "/src/files/" + "/Medicion.CSV";
+	FachadaPosta fachada;
+	MedicionCSV reader = new MedicionCSV();
+	String path = System.getProperty("user.dir") + "/src/files/" + "/Medicion.CSV";
 
-    @BeforeEach
-    private void inicializarOrganizacion() throws IOException {
-        organizacion1 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
-        organizacion2 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
-        sector1 = new Sector("sector1");
-        sector2 = new Sector("sector2");
-        miembro = new Miembro("Juan","Pirulito", DNI,43858878);
-    }
+	@BeforeEach
+	private void inicializarOrganizacion() throws IOException {
+		organizacion1 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
+		organizacion2 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
+		sector1 = new Sector("sector1");
+		sector2 = new Sector("sector2");
+		miembro = new Miembro("Juan", "Pirulito", DNI, 43858878);
+	}
 
-    @Test
-    public void unSectorNoPuedePertenecerAdosOrg(){
+	@Test
+	public void unSectorNoPuedePertenecerAdosOrg() {
 
+	}
 
-    }
-    @Test
-    public void unMiembroPuedePertencerAmasDeUnSector(){
+	@Test
+	public void unMiembroPuedePertencerAmasDeUnSector() {
 
-    }
-    @Test
-    public void calculoHuellaTotal() throws IOException {
-        Assertions.assertEquals(10,organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
-    }
+	}
+
+	@Test
+	public void calculoHuellaTotal() throws IOException {
+		Assertions.assertEquals(10, organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
+	}
 }
