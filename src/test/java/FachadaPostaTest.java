@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import dds.grupo3.clases.Alcance;
+import dds.grupo3.clases.tipoDeMediciones.Alcance;
 import dds.grupo3.clases.FachadaPosta;
 import dds.grupo3.clases.Medible;
 import dds.grupo3.clases.ParametrosReader;
 import dds.grupo3.clases.Periodicidad;
-import dds.grupo3.clases.TipoDeActividad;
-import dds.grupo3.clases.TipoDeConsumo;
-import dds.grupo3.clases.Unidad;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
+import dds.grupo3.clases.tipoDeMediciones.Unidad;
 
 public class FachadaPostaTest {
 
