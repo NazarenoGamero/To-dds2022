@@ -25,7 +25,7 @@ public class OrganizacionTest {
 
 	FachadaPosta fachada;
 	MedicionCSV reader = new MedicionCSV();
-	String path = System.getProperty("user.dir") + "/src/files/" + "/Medicion.CSV";
+	String path = System.getProperty("user.dir") + "/src/files/" + "/mediciones.CSV";
 
 	@BeforeEach
 	private void inicializarOrganizacion() throws IOException {

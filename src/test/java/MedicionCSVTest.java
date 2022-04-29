@@ -16,7 +16,7 @@ public class MedicionCSVTest {
 
 	@Test
 	public void puedeLeerArchivoDeParametros() throws IOException {
-		String path = System.getProperty("user.dir") + "/src/files/" + "/Medicion.CSV";
+		String path = System.getProperty("user.dir") + "/src/files/" + "/mediciones.csv";
 		List<Medible> mediciones = new ArrayList<>();
 		mediciones = reader.leerArchivoMediciones(path);
 

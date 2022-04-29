@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface FachadaOrg {
 
-    void cargarParametros(Map<String, Float> parametrosSistema);
+	void cargarParametros(Map<String, Float> parametrosSistema);
 
-    Float obtenerHU(Collection<Medible> mediciones);
+	Float obtenerHU(Collection<Medible> mediciones);
 }
