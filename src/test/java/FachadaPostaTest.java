@@ -15,6 +15,7 @@ import dds.grupo3.clases.ParametrosReader;
 import dds.grupo3.clases.Periodicidad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 import dds.grupo3.clases.tipoDeMediciones.Unidad;
 
 public class FachadaPostaTest {
@@ -49,17 +50,17 @@ public class FachadaPostaTest {
 		List<Medible> medibles = new ArrayList<>();
 
 		// FeCarbon= 0.45 consumo=600
-		Medible m1 = new Medible(TipoDeActividad.COMBUSTION_FIJA, TipoDeConsumo.CARBON, Unidad.kg, 600,
-				Periodicidad.ANUAL, Alcance.EMISIONES_DIRECTAS);
-
+		Medible m1 = new Medible(new TipoDeMedicion(TipoDeActividad.COMBUSTION_FIJA,
+				TipoDeConsumo.CARBON), 600, Periodicidad.ANUAL, null);
+	
 		// FeElectricidad= 0.5 consumo=500
-		Medible m2 = new Medible(TipoDeActividad.ELECTRICIDAD_ADQUIRIDA_Y_CONSUMIDA, TipoDeConsumo.ELECTRICIDAD,
-				Unidad.Kwh, 500, Periodicidad.ANUAL, Alcance.EMISIONES_INDIRECTAS_ASOCIADAS_A_LA_ELECTRICIDAD);
-
-		// FeElectricidad= 0.5 consumo=700
-		Medible m3 = new Medible(TipoDeActividad.ELECTRICIDAD_ADQUIRIDA_Y_CONSUMIDA, TipoDeConsumo.ELECTRICIDAD,
-				Unidad.Kwh, 700, Periodicidad.ANUAL, Alcance.EMISIONES_INDIRECTAS_ASOCIADAS_A_LA_ELECTRICIDAD);
+		Medible m2 = new Medible(new TipoDeMedicion(TipoDeActividad.ELECTRICIDAD_ADQUIRIDA_Y_CONSUMIDA,
+				TipoDeConsumo.ELECTRICIDAD), 500, Periodicidad.ANUAL, null);
 		
+		// FeElectricidad= 0.5 consumo=700
+		Medible m3 = new Medible(new TipoDeMedicion(TipoDeActividad.COMBUSTION_FIJA,
+				TipoDeConsumo.ELECTRICIDAD), 700, Periodicidad.ANUAL, null);
+				
 		medibles.add(m1);
 		medibles.add(m2);
 		medibles.add(m3);
