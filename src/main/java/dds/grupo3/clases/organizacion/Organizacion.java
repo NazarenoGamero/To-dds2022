@@ -19,7 +19,7 @@ public class Organizacion {
     public Organizacion(String razonSocial, Tipo tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
         this.razonSocial = razonSocial;
         this.tipo = tipo;
-        //this.unSector = unSector;
+        this.unSector = unSector;
         this.unaClasificacion = unaClasificacion;
     }
 
@@ -32,9 +32,9 @@ public class Organizacion {
         return;
     }
 
-    public float calcularHuellaDeCarbonoST(Medible unaMedicion) {
+    public float calcularHuellaDeCarbonoST(List <Medible> unasMediciones) {
         FachadaPosta unaFachada = new FachadaPosta();
-        return unaFachada.obteneHuellaPorMedicion(unaMedicion);
+        return unaFachada.obtenerHU(unasMediciones);
     }
 
     /*
