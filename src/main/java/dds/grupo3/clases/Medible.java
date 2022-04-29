@@ -2,17 +2,21 @@ package dds.grupo3.clases;
 
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 
+import java.util.Date;
+
 public class Medible {
 	private TipoDeMedicion tipoDeMedicion;
 	private int valor;
 	private Periodicidad periodicidad;
+	private Date PeriodoDeImputacion;
 
 	// Constructor
 
-	public Medible(TipoDeMedicion tipoDeMedicion, int valor, Periodicidad periodicidad) {
+	public Medible(TipoDeMedicion tipoDeMedicion, int valor, Periodicidad periodicidad, Date periodoDeImputacion) {
 		this.tipoDeMedicion = tipoDeMedicion;
 		this.valor = valor;
 		this.periodicidad = periodicidad;
+		this.PeriodoDeImputacion = periodoDeImputacion;
 	}
 
 	// Setters y Getters
