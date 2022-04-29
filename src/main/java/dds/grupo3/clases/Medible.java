@@ -1,49 +1,28 @@
 package dds.grupo3.clases;
 
+import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
+
 public class Medible {
-	private TipoDeActividad actividad;
-	private TipoDeConsumo tipoDeConsumo;
+	private TipoDeMedicion tipoDeMedicion;
 	private int valor;
-	private Unidad unidad;
 	private Periodicidad periodicidad;
-	private Alcance alcance;
 
 	// Constructor
 
-	public Medible(TipoDeActividad actividad, TipoDeConsumo tipoDeConsumo, Unidad unidad, int valor,
-			Periodicidad periodicidad, Alcance alcance) {
-		this.actividad = actividad;
-		this.tipoDeConsumo = tipoDeConsumo;
+	public Medible(TipoDeMedicion tipoDeMedicion, int valor, Periodicidad periodicidad) {
+		this.tipoDeMedicion = tipoDeMedicion;
 		this.valor = valor;
-		this.unidad = unidad;
 		this.periodicidad = periodicidad;
-		this.alcance = alcance;
 	}
 
 	// Setters y Getters
 
-	public TipoDeActividad getActividad() {
-		return actividad;
+	public TipoDeMedicion getTipoDeMedicion() {
+		return tipoDeMedicion;
 	}
 
-	public void setActividad(TipoDeActividad actividad) {
-		this.actividad = actividad;
-	}
-
-	public TipoDeConsumo getTipoDeConsumo() {
-		return tipoDeConsumo;
-	}
-
-	public void setTipoDeConsumo(TipoDeConsumo tipoDeConsumo) {
-		this.tipoDeConsumo = tipoDeConsumo;
-	}
-
-	public Unidad getUnidad() {
-		return unidad;
-	}
-
-	public void setUnidad(Unidad unidad) {
-		this.unidad = unidad;
+	public void setTipoDeMedicion(TipoDeMedicion tipoDeMedicion) {
+		this.tipoDeMedicion = tipoDeMedicion;
 	}
 
 	public int getValor() {
@@ -61,13 +40,4 @@ public class Medible {
 	public void setPeriodicidad(Periodicidad periodicidad) {
 		this.periodicidad = periodicidad;
 	}
-
-	public Alcance getAlcance() {
-		return alcance;
-	}
-
-	public void setAlcance(Alcance alcance) {
-		this.alcance = alcance;
-	}
-
 }

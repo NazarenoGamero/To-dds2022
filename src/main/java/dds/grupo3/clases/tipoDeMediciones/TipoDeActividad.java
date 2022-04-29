@@ -1,4 +1,4 @@
-package dds.grupo3.clases;
+package dds.grupo3.clases.tipoDeMediciones;
 
 public enum TipoDeActividad {
 	COMBUSTION_FIJA,
