@@ -1,5 +1,7 @@
 package dds.grupo3.clases;
 
+import dds.grupo3.clases.Exception.NotFoundException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,18 +27,18 @@ public class FE {
 
     public Integer convertirUnidad(String tipoConsumo){
         try {
-            if(diccFE.get(tipoConsumo) != NULL) {
+            if(diccFE.get(tipoConsumo) != null) {
                 return diccFE.get(tipoConsumo);
             }else{
                 throw new NotFoundException();
             }
         }
-        catch(Exception e){
-            System.out.printIn(e);
+        catch(NotFoundException e){
+            System.out.println(e);
         }
         return null;
     }
-
+/*
     public void cambiarFE(tipoConsumo,fe){
 
     }
@@ -44,5 +46,7 @@ public class FE {
     public void agregarFE(tipoConsumo,fe){
 
     }
+
+ */
 }
 

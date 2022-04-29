@@ -1,10 +1,14 @@
 package dds.grupo3.clases;
 
+import dds.grupo3.clases.organizacion.Organizacion;
+
 import java.util.List;
 
 public class Sector {
+    public Organizacion organizacion;
     private String nombre;
     private List<Miembro> miembros;
+
 
     public Sector(String nombre) {
         super();
