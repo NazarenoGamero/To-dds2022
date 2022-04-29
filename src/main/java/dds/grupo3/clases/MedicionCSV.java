@@ -46,19 +46,3 @@ public class MedicionCSV implements MedicionesReader {
 		
 	}
 }
-/*
-	TipoDeMedicion tipodeMedicion = new TipoDeMedicion(null, null);
-Medible medicion = new Medible(parts[2].parseInt(), );
-}else{System.out.println("ignoring line: "+fila);}
-*/
-	
-/*
- * Combustion fija,Gas Natural,50,Mensual,05/2021 Combustion fija,Gas
- * Natural,50,Mensual,05/2021 0 TipoDeMedicion: Actividad = 0 Tipo de consumo =
- * 1 Unidad = Alcance =
- */
-/*
- * TipoDeMedicion Actividad TipoDeConsumo Unidad Alcance
- * 
- * Medicion TipoDeMedicion(Comsution) Valor Periodicidad Periodo
- */

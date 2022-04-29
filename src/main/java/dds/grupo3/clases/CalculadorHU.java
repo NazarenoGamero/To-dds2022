@@ -27,10 +27,12 @@ public class CalculadorHU {
 		System.out.println("Archivo de parametros: " + ns.get("params"));
 
 		FachadaOrg fachada = new FachadaPosta();
-		ParametrosReader reader = new ParametrosReader();
+		ParametrosReader readerP = new ParametrosReader();
+		MedicionCSV readerC = new MedicionCSV();
 
-		fachada.cargarParametros(reader.leerParametros(ns.get("params")));
-		// calcular huella de las actividades y el total
+		fachada.cargarParametros(readerP.leerParametros(ns.get("params")));
+		fachada.obtenerHU(readerC.leerArchivoMediciones(ns.get("mediciones")));
+
 		System.out.println("Imprimir datos de las huellas");
 	}
 
