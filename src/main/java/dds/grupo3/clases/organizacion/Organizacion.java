@@ -1,6 +1,7 @@
 package dds.grupo3.clases.organizacion;
 
 import dds.grupo3.clases.Exception.YaPerteneceOrg;
+import dds.grupo3.clases.FachadaPosta;
 import dds.grupo3.clases.Medible;
 import dds.grupo3.clases.Sector;
 
@@ -31,8 +32,9 @@ public class Organizacion {
         return;
     }
 
-    public float calcularHuellaDeCarbonoST() {
-        return 0;
+    public float calcularHuellaDeCarbonoST(Medible unaMedicion) {
+        FachadaPosta unaFachada = new FachadaPosta();
+        return unaFachada.obteneHuellaPorMedicion(unaMedicion);
     }
 
     /*

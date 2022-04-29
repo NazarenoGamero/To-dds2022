@@ -18,7 +18,7 @@ public class FachadaPosta implements FachadaOrg {
 		return (float) mediciones.stream().mapToDouble(medicion -> obteneHuellaPorMedicion(medicion)).sum();
 	}
 
-	private Float obteneHuellaPorMedicion(Medible medible) {
+	public Float obteneHuellaPorMedicion(Medible medible) {
 		return obtenerFeAsociado(medible) * medible.getValor();
 	}
 
