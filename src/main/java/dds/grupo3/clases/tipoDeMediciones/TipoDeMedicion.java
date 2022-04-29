@@ -1,18 +1,16 @@
 package dds.grupo3.clases.tipoDeMediciones;
 
 public class TipoDeMedicion {
-    private TipoDeActividad actividad;
+    private TipoDeActividad tipoDeactividad;
     private TipoDeConsumo tipoDeConsumo;
     private Unidad unidad;
     private Alcance alcance;
 
     // Constructor
 
-    public TipoDeMedicion(TipoDeActividad actividad, TipoDeConsumo tipoDeConsumo, Unidad unidad, Alcance alcance) {
-        this.actividad = actividad;
+    public TipoDeMedicion(TipoDeActividad tipoDeactividad, TipoDeConsumo tipoDeConsumo) {
+        this.tipoDeactividad = tipoDeactividad;
         this.tipoDeConsumo = tipoDeConsumo;
-        this.unidad = unidad;
-        this.alcance = alcance;
     }
 
     /*
@@ -23,11 +21,11 @@ public class TipoDeMedicion {
     // Setters y Getters
 
     public TipoDeActividad getActividad() {
-        return actividad;
+        return tipoDeactividad;
     }
 
     public void setActividad(TipoDeActividad actividad) {
-        this.actividad = actividad;
+        this.tipoDeactividad = actividad;
     }
 
     public TipoDeConsumo getTipoDeConsumo() {
