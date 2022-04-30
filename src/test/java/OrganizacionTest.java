@@ -45,10 +45,6 @@ public class OrganizacionTest {
 	}
 
 	@Test
-	public void unMiembroPuedePertencerAmasDeUnSector() {
-	}
-
-	@Test
 	public void calculoHuellaTotal() throws IOException {
 		Assertions.assertEquals(35, organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
 	}
