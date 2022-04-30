@@ -17,31 +17,34 @@ import java.util.Locale;
 public class MedicionCSV implements MedicionesReader {
 
 	@Override
-	public List<Medible> leerArchivoMediciones(String path) throws IOException, IOException {
-		CSVReader csvReader = new CSVReader(new FileReader(path));
+	public List<Medible> leerArchivoMediciones(String path) {
 		String[] fila = null;
 		List<Medible> mediciones = new ArrayList<>();
 
 		try {
+			CSVReader csvReader = new CSVReader(new FileReader(path));
 			while ((fila = csvReader.readNext()) != null) {
 				Medible medicion = new Medible(
 						new TipoDeMedicion(TipoDeActividad.valueOf(fila[0]), TipoDeConsumo.valueOf(fila[1])),
 						Integer.valueOf(fila[2]), Periodicidad.valueOf(fila[3]), null);
 
 				mediciones.add(medicion);
+				csvReader.close();
 			}
+
 		} catch (
 
+// TODO el que no commiteo, se encarga de esto.
+				//1- Crear clases de excepciones.
+				
 		FileNotFoundException e) {
-			e.printStackTrace();
+			throw new ArchivoNoEncontradoException();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ArchivoNoEncontradoException();
 		} catch (CsvValidationException e) {
-			e.printStackTrace();
+			throw new ArchivoNoEncontradoException();
 		}
 
-		csvReader.close();
 		return mediciones;
 
 	}

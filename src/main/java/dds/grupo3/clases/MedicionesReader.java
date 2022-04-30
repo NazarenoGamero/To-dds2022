@@ -7,5 +7,5 @@ import java.io.IOException;
 import java.util.List;
 
 public interface MedicionesReader {
-	public List<Medible> leerArchivoMediciones(String path) throws IOException, CsvValidationException;
+	public List<Medible> leerArchivoMediciones(String path);
 }
