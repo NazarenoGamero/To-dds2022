@@ -1,12 +1,7 @@
 package dds.grupo3.clases.organizacion;
 
+import dds.grupo3.clases.*;
 import dds.grupo3.clases.Exception.YaPerteneceOrgException;
-import dds.grupo3.clases.FachadaPosta;
-import dds.grupo3.clases.Medible;
-import dds.grupo3.clases.MedicionCSV;
-import dds.grupo3.clases.MedicionesReader;
-import dds.grupo3.clases.Miembro;
-import dds.grupo3.clases.Sector;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,8 +44,11 @@ public class Organizacion {
 		else throw new MiembroNoPostuladoException("Miembro No Postulado");
 	}
 
-	public float calcularHuellaDeCarbonoST(List<Medible> unasMediciones) {
+	public float calcularHuellaDeCarbonoST(List<Medible> unasMediciones) throws IOException {
 		FachadaPosta unaFachada = new FachadaPosta();
+		ParametrosReader reader = new ParametrosReader();
+		String path = System.getProperty("user.dir") + "/src/files/" + "/parametros.txt";
+		unaFachada.cargarParametros(reader.leerParametros(path));
 		return unaFachada.obtenerHU(unasMediciones);
 	}
 
