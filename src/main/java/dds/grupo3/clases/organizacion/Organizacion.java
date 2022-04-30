@@ -37,7 +37,7 @@ public class Organizacion {
 	}
 
 	/* agregar estas funciones mas tarde */
-	public void aceptarVinculacionConMiembro(Miembro miembro, Sector sector) {
+	public void aceptarVinculacionConMiembro(Miembro miembro) {
 		if(postulados.contains(miembro)) {
 			postulados.remove(miembro);
 			miembrosVinculados.add(miembro);

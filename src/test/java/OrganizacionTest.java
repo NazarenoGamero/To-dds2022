@@ -1,3 +1,4 @@
+import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.FachadaPosta;
 import dds.grupo3.clases.MedicionCSV;
 import dds.grupo3.clases.Miembro;
@@ -47,5 +48,11 @@ public class OrganizacionTest {
 	@Test
 	public void calculoHuellaTotal() throws IOException {
 		Assertions.assertEquals(35, organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
+	}
+
+	@Test
+	public void unaOrganizacionNoPuedeVincularUnSectorNoPostulado(){
+		miembro.postularme(organizacion1);
+		Assertions.assertThrows(MiembroNoPostuladoException.class, ()->{organizacion1.aceptarVinculacionConMiembro(miembro);});
 	}
 }
