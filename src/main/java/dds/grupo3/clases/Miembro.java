@@ -1,5 +1,7 @@
 package dds.grupo3.clases;
 
+import dds.grupo3.clases.organizacion.Organizacion;
+
 public class Miembro {
 	private String nombre;
 	private String apellido;
@@ -46,5 +48,7 @@ public class Miembro {
 	public void setNroDoc(int nroDoc) {
 		this.nroDoc = nroDoc;
 	}
+
+	public void postularme(Organizacion organizacion){organizacion.nuevoPostulado(this);}
 
 }
