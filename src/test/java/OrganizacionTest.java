@@ -40,7 +40,7 @@ public class OrganizacionTest {
 	}
 
 	@Test
-	public void unSectorNoPuedePertenecerAdosOrg(){
+	public void unSectorNoPuedePertenecerAdosOrg() throws YaPerteneceOrgException {
 		organizacion1.agregarSector(sector1);
 	    Assertions.assertThrows(YaPerteneceOrgException.class, ()->{organizacion2.agregarSector(sector1);});
 	}
@@ -52,7 +52,6 @@ public class OrganizacionTest {
 
 	@Test
 	public void unaOrganizacionNoPuedeVincularUnSectorNoPostulado(){
-		miembro.postularme(organizacion1);
 		Assertions.assertThrows(MiembroNoPostuladoException.class, ()->{organizacion1.aceptarVinculacionConMiembro(miembro);});
 	}
 }

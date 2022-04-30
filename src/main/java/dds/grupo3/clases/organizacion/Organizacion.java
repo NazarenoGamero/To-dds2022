@@ -45,7 +45,7 @@ public class Organizacion {
 		else throw new MiembroNoPostuladoException("Miembro No Postulado");
 	}
 
-	public void agregarMiembroSector(Sector sector,Miembro miembro){
+	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
 		if (!sectores.contains(sector)) {
 			throw new SectorNoPerteneceOrgException("El sector no pertenece a la organizacion");
 		}
@@ -67,7 +67,7 @@ public class Organizacion {
 	// añade un postulado a la lista
 	public void nuevoPostulado(Miembro miembro){this.postulados.add(miembro);}
 
-	public void agregarSector(Sector sector){
+	public void agregarSector(Sector sector) throws YaPerteneceOrgException {
 
 		if (sector.getOrganizacion() != null) {
 			throw new YaPerteneceOrgException();
