@@ -44,4 +44,5 @@ public class Medible {
 	public void setPeriodicidad(Periodicidad periodicidad) {
 		this.periodicidad = periodicidad;
 	}
+	
 }

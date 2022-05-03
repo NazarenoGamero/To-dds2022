@@ -51,18 +51,18 @@ public class FachadaPostaTest {
 
 		// FeCarbon= 0.45 consumo=600
 		Medible m1 = new Medible(new TipoDeMedicion(TipoDeActividad.COMBUSTION_FIJA,
-				TipoDeConsumo.CARBON), 600,
+				TipoDeConsumo.CARBON, null, null, null), 600,
 				Periodicidad.ANUAL, null);
 
 		// FeElectricidad= 0.5 consumo=500
 		Medible m2 = new Medible(
 				new TipoDeMedicion(TipoDeActividad.ELECTRICIDAD_ADQUIRIDA_Y_CONSUMIDA,
-						TipoDeConsumo.ELECTRICIDAD), 500,
+						TipoDeConsumo.ELECTRICIDAD, null, null, null), 500,
 				Periodicidad.ANUAL, null);
 
 		// FeElectricidad= 0.5 consumo=700
 		Medible m3 = new Medible(new TipoDeMedicion(TipoDeActividad.COMBUSTION_FIJA, 
-				TipoDeConsumo.ELECTRICIDAD), 700,
+				TipoDeConsumo.ELECTRICIDAD, null, null, null), 700,
 				Periodicidad.ANUAL, null);
 
 		medibles.add(m1);

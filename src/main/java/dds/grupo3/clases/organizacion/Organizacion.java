@@ -5,6 +5,7 @@ import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.Exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.Exception.YaPerteneceOrgException;
 import dds.grupo3.clases.Exception.MiembroNoVinculadoException;
+import dds.grupo3.clases.Exception.OrganizacionNoValidaException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,45 +26,54 @@ public class Organizacion {
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
 		this.clasificacion = clasificacion;
-		this.postulados= new ArrayList<>();
-		this.miembrosVinculados= new ArrayList<>();
-		this.reader= new MedicionCSV();
+		this.postulados = new ArrayList<>();
+		this.miembrosVinculados = new ArrayList<>();
+		this.reader = new MedicionCSV();
 	}
-	
-	
-	
-	public void cargarMediciones(String path){
+
+	public void cargarMediciones(String path) {
 		mediciones.addAll(reader.leerArchivoMediciones(path));
 	}
 
 	/* agregar estas funciones mas tarde */
 	public void aceptarVinculacionConMiembro(Miembro miembro) {
-		if(postulados.contains(miembro)) {
+		if (postulados.contains(miembro)) {
 			postulados.remove(miembro);
 			miembrosVinculados.add(miembro);
-		}
-		else throw new MiembroNoPostuladoException("Miembro No Postulado");
+		} else
+			throw new MiembroNoPostuladoException("Miembro No Postulado");
 	}
 
-	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
+	public void agregarMiembroSector(Sector sector, Miembro miembro) throws SectorNoPerteneceOrgException {
 		if (!sectores.contains(sector)) {
 			throw new SectorNoPerteneceOrgException("El sector no pertenece a la organizacion");
 		}
-		if(!miembrosVinculados.contains(miembro)){
+		if (!miembrosVinculados.contains(miembro)) {
 			throw new MiembroNoVinculadoException("El miembro no esta vinculado.");
-		}
-		else{
+		} else {
 			sector.agregarMiembro(miembro);
 		}
 	}
 
 	public float calcularHuellaDeCarbonoST(String path) throws IOException {
 		FachadaPosta unaFachada = FachadaPosta.getInstance();
-		MedicionesReader reader= new MedicionCSV();
+		MedicionesReader reader = new MedicionCSV();
 		return unaFachada.obtenerHU(reader.leerArchivoMediciones(path));
 	}
+
+	
+	public void cargarMedicion(Medible medible) {
+		if(medible.getTipoDeMedicion().tipoDeActividadValido(this.clasificacion))
+			this.mediciones.add(medible);
+		else
+			throw new OrganizacionNoValidaException("Esta clasificacion no puede utilizar"
+					+ " este tipo de medicion");
+	}
+
 	// añade un postulado a la lista
-	public void nuevoPostulado(Miembro miembro){this.postulados.add(miembro);}
+	public void nuevoPostulado(Miembro miembro) {
+		this.postulados.add(miembro);
+	}
 
 	public void agregarSector(Sector sector) throws YaPerteneceOrgException {
 
@@ -72,7 +82,7 @@ public class Organizacion {
 		} else {
 			this.sectores.add(sector);
 			sector.setOrganizacion(this);
-			
+
 		}
 
 	}
