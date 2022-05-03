@@ -6,5 +6,6 @@ public enum Unidad {
     kg,
     lts,
     Kwh,
-    km
+    km,
+    ci
 }
