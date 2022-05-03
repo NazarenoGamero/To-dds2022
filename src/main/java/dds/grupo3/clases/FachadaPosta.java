@@ -6,8 +6,17 @@ import java.util.Map;
 
 public class FachadaPosta implements FachadaOrg {
 
-	Map<String, Float> factoresDeEmision = new HashMap<>();
+	private static Map<String, Float> factoresDeEmision = new HashMap<>();
+	private static FachadaPosta fachada;
 
+	private  FachadaPosta () {
+	}
+	
+	public static FachadaPosta getInstance() {
+		return fachada==null? new FachadaPosta():fachada;
+	}
+	
+	
 	@Override
 	public void cargarParametros(Map<String, Float> parametrosSistema) {
 		this.factoresDeEmision.putAll(parametrosSistema);

@@ -26,7 +26,7 @@ public class CalculadorHU {
 		System.out.println("Archivo de mediciones: " + ns.get("mediciones"));
 		System.out.println("Archivo de parametros: " + ns.get("params"));
 
-		FachadaOrg fachada = new FachadaPosta();
+		FachadaOrg fachada = FachadaPosta.getInstance();
 		ParametrosReader readerP = new ParametrosReader();
 		MedicionCSV readerC = new MedicionCSV();
 

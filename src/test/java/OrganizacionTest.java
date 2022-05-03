@@ -2,11 +2,14 @@ import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.FachadaPosta;
 import dds.grupo3.clases.MedicionCSV;
 import dds.grupo3.clases.Miembro;
+import dds.grupo3.clases.ParametrosReader;
 import dds.grupo3.clases.Sector;
 import dds.grupo3.clases.Exception.YaPerteneceOrgException;
 
 import static dds.grupo3.clases.TipoDocEnum.DNI;
 import dds.grupo3.clases.organizacion.Organizacion;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,11 +30,14 @@ public class OrganizacionTest {
 	List<Sector> sectores = new ArrayList<>();
 
 	FachadaPosta fachada;
-	MedicionCSV reader = new MedicionCSV();
-	String path = System.getProperty("user.dir") + "/src/files/" + "/mediciones.CSV";
+	MedicionCSV readercsv = new MedicionCSV();
+	ParametrosReader readerFE = new ParametrosReader();
+	String mediciones = System.getProperty("user.dir") + "/src/files/" + "/mediciones.CSV";
+	String parametros = System.getProperty("user.dir") + "/src/files/" + "/parametros.txt";
 
 	@BeforeEach
 	private void inicializarOrganizacion() throws IOException {
+		fachada= FachadaPosta.getInstance();
 		organizacion1 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
 		organizacion2 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
 		sector1 = new Sector("sector1");
@@ -47,11 +53,14 @@ public class OrganizacionTest {
 
 	@Test
 	public void calculoHuellaTotal() throws IOException {
-		Assertions.assertEquals(35, organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
+		fachada = FachadaPosta.getInstance();
+		fachada.cargarParametros(readerFE.leerParametros(parametros));
+		Assertions.assertEquals(35, organizacion1.calcularHuellaDeCarbonoST(mediciones));
 	}
 
 	@Test
 	public void unaOrganizacionNoPuedeVincularUnSectorNoPostulado(){
 		Assertions.assertThrows(MiembroNoPostuladoException.class, ()->{organizacion1.aceptarVinculacionConMiembro(miembro);});
 	}
+	
 }

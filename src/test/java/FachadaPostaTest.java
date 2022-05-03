@@ -26,7 +26,7 @@ public class FachadaPostaTest {
 
 	@BeforeEach
 	private void inicializarFachada() throws IOException {
-		fachada = new FachadaPosta();
+		fachada = FachadaPosta.getInstance();
 	}
 
 	@Test
