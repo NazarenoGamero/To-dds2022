@@ -8,7 +8,9 @@ import dds.grupo3.clases.Exception.MiembroNoVinculadoException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Organizacion {
 	private String razonSocial;
@@ -19,6 +21,8 @@ public class Organizacion {
 	private List<Miembro> postulados;
 	private List<Miembro> miembrosVinculados;
 	private MedicionesReader reader;
+
+	private Map<String,String> tipoConsumoProhibido = new HashMap<String,String>();
 
 	public Organizacion(String razonSocial, Tipo tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
 		this.razonSocial = razonSocial;
@@ -78,4 +82,16 @@ public class Organizacion {
 		}
 
 	}
+	public void agregarConsumoProhibidoParaClasificacionOrganizacion(String unString, String otroString){
+		tipoConsumoProhibido.put(unString,otroString);
+	}
+	/*
+	public void esProhibido(Map<String,String> unTipoConsumo,Clasificacion unaClasificaion,Medible unaMedicion){
+		for(Map.Entry m: tipoConsumoProhibido.entrySet()){
+			if(unaMedicion.getTipoDeMedicion().getTipoDeConsumo())
+		}
+	}
+
+	 */
+
 }
