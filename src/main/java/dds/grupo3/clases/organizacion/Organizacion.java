@@ -31,10 +31,6 @@ public class Organizacion {
 		this.reader = new MedicionCSV();
 	}
 
-	public void cargarMediciones(String path) {
-		mediciones.addAll(reader.leerArchivoMediciones(path));
-	}
-
 	/* agregar estas funciones mas tarde */
 	public void aceptarVinculacionConMiembro(Miembro miembro) {
 		if (postulados.contains(miembro)) {
@@ -61,6 +57,12 @@ public class Organizacion {
 		return unaFachada.obtenerHU(reader.leerArchivoMediciones(path));
 	}
 
+	
+	public void cargarMediciones(String path) {
+		MedicionesReader reader = new MedicionCSV();
+		 reader.leerArchivoMediciones(path).stream().forEach(medicion -> cargarMedicion(medicion));
+	}
+	
 	
 	public void cargarMedicion(Medible medible) {
 		if(medible.getTipoDeMedicion().tipoDeActividadValido(this.clasificacion))
