@@ -57,12 +57,10 @@ public class Organizacion {
 		}
 	}
 
-	public float calcularHuellaDeCarbonoST(List<Medible> unasMediciones) throws IOException {
+	public float calcularHuellaDeCarbonoST(String path) throws IOException {
 		FachadaPosta unaFachada = new FachadaPosta();
-		ParametrosReader reader = new ParametrosReader();
-		String path = System.getProperty("user.dir") + "/src/files/" + "/parametros.txt";
-		unaFachada.cargarParametros(reader.leerParametros(path));
-		return unaFachada.obtenerHU(unasMediciones);
+		MedicionesReader reader= new MedicionCSV();
+		return unaFachada.obtenerHU(reader.leerArchivoMediciones(path));
 	}
 	// añade un postulado a la lista
 	public void nuevoPostulado(Miembro miembro){this.postulados.add(miembro);}
