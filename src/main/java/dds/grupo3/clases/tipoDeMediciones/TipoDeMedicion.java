@@ -5,16 +5,16 @@ import java.util.List;
 import dds.grupo3.clases.organizacion.Clasificacion;
 
 public class TipoDeMedicion {
-	private TipoDeActividad tipoDeactividad;
-	private TipoDeConsumo tipoDeConsumo;
+	private String tipoDeactividad;
+	private String tipoDeConsumo;
 	private Unidad unidad;
-	private Alcance alcance;
+	private String alcance;
 	private List<Clasificacion> clasificaciones;
 
 	// Constructor
 
-	public TipoDeMedicion(TipoDeActividad tipoDeactividad, TipoDeConsumo tipoDeConsumo, Unidad unidad,
-			Alcance alcance, List<Clasificacion> clasificaciones) {
+	public TipoDeMedicion(String tipoDeactividad, String tipoDeConsumo, Unidad unidad,
+			String alcance, List<Clasificacion> clasificaciones) {
 		this.tipoDeactividad = tipoDeactividad;
 		this.tipoDeConsumo = tipoDeConsumo;
 		this.unidad = unidad;
@@ -30,19 +30,19 @@ public class TipoDeMedicion {
 
 	// Setters y Getters
 
-	public TipoDeActividad getActividad() {
+	public String getActividad() {
 		return tipoDeactividad;
 	}
 
-	public void setActividad(TipoDeActividad actividad) {
+	public void setActividad(String actividad) {
 		this.tipoDeactividad = actividad;
 	}
 
-	public TipoDeConsumo getTipoDeConsumo() {
+	public String getTipoDeConsumo() {
 		return tipoDeConsumo;
 	}
 
-	public void setTipoDeConsumo(TipoDeConsumo tipoDeConsumo) {
+	public void setTipoDeConsumo(String tipoDeConsumo) {
 		this.tipoDeConsumo = tipoDeConsumo;
 	}
 
@@ -54,11 +54,11 @@ public class TipoDeMedicion {
 		this.unidad = unidad;
 	}
 
-	public Alcance getAlcance() {
+	public String getAlcance() {
 		return alcance;
 	}
 
-	public void setAlcance(Alcance alcance) {
+	public void setAlcance(String alcance) {
 		this.alcance = alcance;
 	}
 
