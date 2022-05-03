@@ -51,4 +51,15 @@ public class Miembro {
 
 	public void postularme(Organizacion organizacion){organizacion.nuevoPostulado(this);}
 
+	public boolean pertenescoEmpresa() {
+		//TODO
+	}
+
+	public boolean pertenescoONGorGubernamental() {
+		//TODO
+	}
+
+	public int cantidadEmpresasPertenesco() {
+		//TODO
+	}
 }

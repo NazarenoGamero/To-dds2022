@@ -1,3 +1,4 @@
+import com.sun.org.apache.xpath.internal.operations.Or;
 import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.FachadaPosta;
 import dds.grupo3.clases.MedicionCSV;
@@ -16,11 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static dds.grupo3.clases.organizacion.Clasificacion.UNIVERSIDAD;
-import static dds.grupo3.clases.organizacion.Tipo.INSTITUCION;
+import static dds.grupo3.clases.organizacion.Tipo.*;
 
 public class OrganizacionTest {
 	Organizacion organizacion1;
 	Organizacion organizacion2;
+	Organizacion empresa;
+	Organizacion ong;
+	Organizacion gubernamental;
 	Sector sector1;
 	Sector sector2;
 	Miembro miembro;
@@ -32,11 +36,14 @@ public class OrganizacionTest {
 
 	@BeforeEach
 	private void inicializarOrganizacion() throws IOException {
-		organizacion1 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
-		organizacion2 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
+		organizacion1 = new Organizacion("LaUni", EMPRESA, sectores, UNIVERSIDAD);
+		organizacion2 = new Organizacion("LaUni", EMPRESA, sectores, UNIVERSIDAD);
 		sector1 = new Sector("sector1");
 		sector2 = new Sector("sector2");
 		miembro = new Miembro("Juan", "Pirulito", DNI, 43858878);
+		empresa = new Organizacion("Empresa",EMPRESA,sectores,UNIVERSIDAD);
+		ong = new Organizacion("ong",ONG,sectores,UNIVERSIDAD);
+		gubernamental = new Organizacion("Gubernamental",GUBERNAMENTAL,sectores,UNIVERSIDAD);
 	}
 
 	@Test
@@ -52,6 +59,18 @@ public class OrganizacionTest {
 
 	@Test
 	public void unaOrganizacionNoPuedeVincularUnSectorNoPostulado(){
-		Assertions.assertThrows(MiembroNoPostuladoException.class, ()->{organizacion1.aceptarVinculacionConMiembro(miembro);});
+		Assertions.assertThrows(MiembroNoPostuladoException.class, ()->{organizacion1.aceptarVinculacionMiembro(miembro);});
+	}
+
+	@Test
+	public void unaOrganizacionONGGubernametalNoPuedeAceptarMiembroPertenescaEmpresa(){
+		empresa.aceptarVinculacionMiembro(miembro);
+		Assertions.assertThrows(RuntimeException.class, ()->{ong.aceptarVinculacionMiembro(miembro);});
+	}
+	@Test
+	public void unaOrganizacionONGGubernametalPuedeAceptarMiembroNoPertenescaEmpresa(){
+		gubernamental.aceptarVinculacionMiembro(miembro);
+		ong.aceptarVinculacionMiembro(miembro);
+		Assertions.assertEquals(true,ong.getMiembros().contains(miembro));
 	}
 }

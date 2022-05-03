@@ -17,6 +17,11 @@ public class Organizacion {
 	private Clasificacion clasificacion;
 	private List<Medible> mediciones = new ArrayList<Medible>();
 	private List<Miembro> postulados;
+
+	public List<Miembro> getMiembrosVinculados() {
+		return miembrosVinculados;
+	}
+
 	private List<Miembro> miembrosVinculados;
 	private MedicionesReader reader;
 
@@ -37,14 +42,44 @@ public class Organizacion {
 	}
 
 	/* agregar estas funciones mas tarde */
-	public void aceptarVinculacionConMiembro(Miembro miembro) {
+	public void aceptarVinculacionMiembro(Miembro miembro){
+		if(this.validarVinculacionConMiembro(miembro)){
+			this.vincularMiembro(miembro);
+		}
+	}
+	public boolean validarVinculacionConMiembro(Miembro miembro) {
 		if(postulados.contains(miembro)) {
+			switch (this.tipo){
+				case 0:
+					if(miembro.pertenescoEmpresa()){
+						throw new RuntimeException("Pertenece a una empresa");
+					}else{
+						return true;
+					}
+				case 2:
+					if(miembro.pertenescoONGorGubernamental()){
+						throw new RuntimeException("Pertenece a una ORG o Gubernamental");
+					}if(miembro.cantidadEmpresasPertenesco()>=6){
+						throw new RuntimeException("Pertenece a demasiadas empresas")
+				}
+					else{
+						return true;
+					}
+
+				case 3:
+					//TODO;
+				default:
+					throw new RuntimeException("No es un tipo valido");
+			}
 			postulados.remove(miembro);
 			miembrosVinculados.add(miembro);
 		}
 		else throw new MiembroNoPostuladoException("Miembro No Postulado");
 	}
-
+	public void vincularMiembro(Miembro miembro){
+		postulados.remove(miembro);
+		miembrosVinculados.add(miembro);
+	}
 	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
 		if (!sectores.contains(sector)) {
 			throw new SectorNoPerteneceOrgException("El sector no pertenece a la organizacion");
@@ -77,5 +112,9 @@ public class Organizacion {
 			
 		}
 
+	}
+
+	public List<Miembro> getMiembros() {
+		return miembrosVinculados;
 	}
 }
