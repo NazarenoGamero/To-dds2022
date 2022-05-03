@@ -6,10 +6,10 @@ import java.util.Map;
 
 public class FachadaPosta implements FachadaOrg {
 
-	Map<String, Float> factoresDeEmision = new HashMap<>();
+	private static Map<String, Float> factoresDeEmision = new HashMap<>();
 	private static FachadaPosta fachada;
 
-	private FachadaPosta () {
+	private  FachadaPosta () {
 	}
 	
 	public static FachadaPosta getInstance() {

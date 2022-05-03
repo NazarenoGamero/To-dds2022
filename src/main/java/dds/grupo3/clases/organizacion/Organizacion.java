@@ -58,7 +58,7 @@ public class Organizacion {
 	}
 
 	public float calcularHuellaDeCarbonoST(String path) throws IOException {
-		FachadaPosta unaFachada = new FachadaPosta();
+		FachadaPosta unaFachada = FachadaPosta.getInstance();
 		MedicionesReader reader= new MedicionCSV();
 		return unaFachada.obtenerHU(reader.leerArchivoMediciones(path));
 	}
