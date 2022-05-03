@@ -6,6 +6,9 @@ import dds.grupo3.clases.Sector;
 import dds.grupo3.clases.Exception.YaPerteneceOrgException;
 
 import static dds.grupo3.clases.TipoDocEnum.DNI;
+
+import dds.grupo3.clases.organizacion.Clasificacion;
+import dds.grupo3.clases.organizacion.ClasificacionConSectores;
 import dds.grupo3.clases.organizacion.Organizacion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +26,8 @@ public class OrganizacionTest {
 	Organizacion organizacion2;
 	Sector sector1;
 	Sector sector2;
+
+	ClasificacionConSectores clasificacion;
 	Miembro miembro;
 	List<Sector> sectores = new ArrayList<>();
 
@@ -35,7 +40,8 @@ public class OrganizacionTest {
 		organizacion1 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
 		organizacion2 = new Organizacion("LaUni", INSTITUCION, sectores, UNIVERSIDAD);
 		sector1 = new Sector("sector1");
-		sector2 = new Sector("sector2");
+		sectorOblig = new Sector("Presidencia");
+		clasificacion = new ClasificacionConSectores(MINISTERIO, sectorOblig);
 		miembro = new Miembro("Juan", "Pirulito", DNI, 43858878);
 	}
 

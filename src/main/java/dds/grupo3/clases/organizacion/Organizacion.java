@@ -1,10 +1,7 @@
 package dds.grupo3.clases.organizacion;
 
 import dds.grupo3.clases.*;
-import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
-import dds.grupo3.clases.Exception.SectorNoPerteneceOrgException;
-import dds.grupo3.clases.Exception.YaPerteneceOrgException;
-import dds.grupo3.clases.Exception.MiembroNoVinculadoException;
+import dds.grupo3.clases.Exception.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,23 +11,29 @@ public class Organizacion {
 	private String razonSocial;
 	private Tipo tipo;
 	private List<Sector> sectores;
-	private Clasificacion clasificacion;
+	private ClasificacionConSectores clasificacion;
 	private List<Medible> mediciones = new ArrayList<Medible>();
 	private List<Miembro> postulados;
 	private List<Miembro> miembrosVinculados;
 	private MedicionesReader reader;
 
-	public Organizacion(String razonSocial, Tipo tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
-		this.razonSocial = razonSocial;
-		this.tipo = tipo;
-		this.sectores = new ArrayList<Sector>();
-		this.clasificacion = clasificacion;
-		this.postulados= new ArrayList<>();
-		this.miembrosVinculados= new ArrayList<>();
-		this.reader= new MedicionCSV();
+	public Organizacion(String razonSocial, Tipo tipo, List<Sector> unSector, List<Sector> sectoresObligatorios, Clasificacion unaClasificaion) throws OrganizacionInvalida {
+
+			this.razonSocial = razonSocial;
+			this.tipo = tipo;
+			this.clasificacion = clasificacion;
+			if(this.organizacionEsValida()){
+				this.sectores = new ArrayList<Sector>();
+			}
+			else throw new OrganizacionInvalida();
+			this.postulados= new ArrayList<>();
+			this.miembrosVinculados= new ArrayList<>();
+			this.reader= new MedicionCSV();
 	}
-	
-	
+
+	public boolean organizacionEsValida(){
+		return this.clasificacion.sectoresObligatorios.contains(sectores);
+	}
 	
 	public void cargarMediciones(String path){
 		mediciones.addAll(reader.leerArchivoMediciones(path));
