@@ -5,6 +5,8 @@ import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.Exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.Exception.YaPerteneceOrgException;
 import dds.grupo3.clases.Exception.MiembroNoVinculadoException;
+import dds.grupo3.clases.organizacion.Tipo.Tipo;
+import dds.grupo3.clases.organizacion.Tipo.TipoOrg;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,10 +14,15 @@ import java.util.List;
 
 public class Organizacion {
 	private String razonSocial;
-	private Tipo tipo;
+	private TipoOrg tipo;
 	private List<Sector> sectores;
 	private Clasificacion clasificacion;
 	private List<Medible> mediciones = new ArrayList<Medible>();
+
+	public List<Miembro> getPostulados() {
+		return postulados;
+	}
+
 	private List<Miembro> postulados;
 
 	public List<Miembro> getMiembrosVinculados() {
@@ -25,9 +32,8 @@ public class Organizacion {
 	private List<Miembro> miembrosVinculados;
 	private MedicionesReader reader;
 
-	public Organizacion(String razonSocial, Tipo tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
+	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
 		this.razonSocial = razonSocial;
-		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
 		this.clasificacion = clasificacion;
 		this.postulados= new ArrayList<>();
@@ -47,35 +53,11 @@ public class Organizacion {
 			this.vincularMiembro(miembro);
 		}
 	}
-	public boolean validarVinculacionConMiembro(Miembro miembro) {
-		if(postulados.contains(miembro)) {
-			switch (this.tipo){
-				case 0:
-					if(miembro.pertenescoEmpresa()){
-						throw new RuntimeException("Pertenece a una empresa");
-					}else{
-						return true;
-					}
-				case 2:
-					if(miembro.pertenescoONGorGubernamental()){
-						throw new RuntimeException("Pertenece a una ORG o Gubernamental");
-					}if(miembro.cantidadEmpresasPertenesco()>=6){
-						throw new RuntimeException("Pertenece a demasiadas empresas")
-				}
-					else{
-						return true;
-					}
 
-				case 3:
-					//TODO;
-				default:
-					throw new RuntimeException("No es un tipo valido");
-			}
-			postulados.remove(miembro);
-			miembrosVinculados.add(miembro);
-		}
-		else throw new MiembroNoPostuladoException("Miembro No Postulado");
+	private boolean validarVinculacionConMiembro(Miembro miembro) {
+		return tipo.validar(miembro,this);
 	}
+
 	public void vincularMiembro(Miembro miembro){
 		postulados.remove(miembro);
 		miembrosVinculados.add(miembro);

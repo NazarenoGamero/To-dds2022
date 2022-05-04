@@ -1,4 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Or;
 import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.FachadaPosta;
 import dds.grupo3.clases.MedicionCSV;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static dds.grupo3.clases.organizacion.Clasificacion.UNIVERSIDAD;
-import static dds.grupo3.clases.organizacion.Tipo.*;
+import static dds.grupo3.clases.organizacion.Tipo.Tipo.*;
 
 public class OrganizacionTest {
 	Organizacion organizacion1;
