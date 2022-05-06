@@ -7,7 +7,6 @@ import dds.grupo3.clases.Exception.MiembroNoVinculadoException;
 import dds.grupo3.clases.Fachada.FachadaPosta;
 import dds.grupo3.clases.Medible.Medible;
 import dds.grupo3.clases.Miembro.Miembro;
-import dds.grupo3.clases.Organizacion.Sector;
 import dds.grupo3.clases.Readers.MedicionCSV;
 import dds.grupo3.clases.Readers.MedicionesReader;
 import dds.grupo3.clases.Readers.ParametrosReader;
@@ -30,7 +29,7 @@ public class Organizacion {
 		this.razonSocial = razonSocial;
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
-		this.clasificacion = clasificacion;
+		this.clasificacion = unaClasificaion;
 		this.postulados= new ArrayList<>();
 		this.miembrosVinculados= new ArrayList<>();
 		this.reader= new MedicionCSV();
