@@ -1,4 +1,4 @@
-package dds.grupo3.clases.organizacion;
+package dds.grupo3.clases.Organizacion;
 
 import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.Exception.SectorNoPerteneceOrgException;
