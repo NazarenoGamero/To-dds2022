@@ -1,6 +1,4 @@
-package dds.grupo3.clases;
-
-import dds.grupo3.clases.Exception.NotFoundException;
+package dds.grupo3.clases.ClasesAlternativas;
 
 import java.util.HashMap;
 import java.util.Map;

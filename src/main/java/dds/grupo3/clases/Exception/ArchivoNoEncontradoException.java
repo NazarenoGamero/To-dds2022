@@ -1,4 +1,4 @@
-package dds.grupo3.clases;
+package dds.grupo3.clases.Exception;
 
 public class ArchivoNoEncontradoException extends RuntimeException {
     public ArchivoNoEncontradoException(){

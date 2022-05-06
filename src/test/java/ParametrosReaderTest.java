@@ -5,7 +5,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import dds.grupo3.clases.ParametrosReader;
+import dds.grupo3.clases.Readers.ParametrosReader;
 
 public class ParametrosReaderTest {
 	ParametrosReader reader;

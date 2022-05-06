@@ -1,4 +1,4 @@
-package dds.grupo3.clases.tipoDeMediciones;
+package dds.grupo3.clases.TipoDeMediciones;
 
 public enum Alcance {
 	EMISIONES_DIRECTAS, EMISIONES_INDIRECTAS_ASOCIADAS_A_LA_ELECTRICIDAD, 

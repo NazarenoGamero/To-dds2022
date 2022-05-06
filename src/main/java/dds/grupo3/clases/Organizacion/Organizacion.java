@@ -1,10 +1,16 @@
 package dds.grupo3.clases.organizacion;
 
-import dds.grupo3.clases.*;
 import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.Exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.Exception.YaPerteneceOrgException;
 import dds.grupo3.clases.Exception.MiembroNoVinculadoException;
+import dds.grupo3.clases.Fachada.FachadaPosta;
+import dds.grupo3.clases.Medible.Medible;
+import dds.grupo3.clases.Miembro.Miembro;
+import dds.grupo3.clases.Organizacion.Sector;
+import dds.grupo3.clases.Readers.MedicionCSV;
+import dds.grupo3.clases.Readers.MedicionesReader;
+import dds.grupo3.clases.Readers.ParametrosReader;
 
 import java.io.IOException;
 import java.util.ArrayList;

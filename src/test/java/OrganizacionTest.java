@@ -1,12 +1,12 @@
 import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
-import dds.grupo3.clases.FachadaPosta;
-import dds.grupo3.clases.MedicionCSV;
-import dds.grupo3.clases.Miembro;
-import dds.grupo3.clases.Sector;
+import dds.grupo3.clases.Fachada.FachadaPosta;
+import dds.grupo3.clases.Readers.MedicionCSV;
+import dds.grupo3.clases.Miembro.Miembro;
+import dds.grupo3.clases.Organizacion.Sector;
 import dds.grupo3.clases.Exception.YaPerteneceOrgException;
 
-import static dds.grupo3.clases.TipoDocEnum.DNI;
-import dds.grupo3.clases.organizacion.Organizacion;
+import static dds.grupo3.clases.Miembro.TipoDocEnum.DNI;
+import dds.grupo3.clases.Organizacion.Organizacion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static dds.grupo3.clases.organizacion.Clasificacion.UNIVERSIDAD;
-import static dds.grupo3.clases.organizacion.Tipo.INSTITUCION;
+import static dds.grupo3.clases.Organizacion.Clasificacion.UNIVERSIDAD;
+import static dds.grupo3.clases.Organizacion.Tipo.INSTITUCION;
 
 public class OrganizacionTest {
 	Organizacion organizacion1;

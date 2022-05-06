@@ -1,4 +1,4 @@
-package dds.grupo3.clases;
+package dds.grupo3.clases.Miembro;
 
 public enum TipoDocEnum {
 	DNI, LC, LE
