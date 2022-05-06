@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Organizacion {
 	private String razonSocial;
-	private Tipo tipo;
+	private TipoOrg tipo;
 	private List<Sector> sectores;
 	private Clasificacion clasificacion;
 	private List<Medible> mediciones = new ArrayList<Medible>();
@@ -20,7 +20,7 @@ public class Organizacion {
 	private List<Miembro> miembrosVinculados;
 	private MedicionesReader reader;
 
-	public Organizacion(String razonSocial, Tipo tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
+	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
 		this.razonSocial = razonSocial;
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
