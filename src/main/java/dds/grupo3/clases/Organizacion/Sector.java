@@ -1,7 +1,6 @@
 package dds.grupo3.clases.Organizacion;
 
 import dds.grupo3.clases.Miembro.Miembro;
-import dds.grupo3.clases.Organizacion.Organizacion;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package dds.grupo3.clases.Exception;
 
-public class YaPerteneceOrgException extends Throwable{
+public class YaPerteneceOrgException extends RuntimeException {
     public YaPerteneceOrgException(){
         super("Ya pertenece a una Organizacion");
     }

@@ -34,12 +34,7 @@ public class MedicionCSV implements MedicionesReader {
 				csvReader.close();
 			}
 
-		} catch (
-
-// TODO el que no commiteo, se encarga de esto.
-				//1- Crear clases de excepciones.
-				
-		FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			throw new ArchivoNoEncontradoException();
 		} catch (IOException e) {
 			throw new ArchivoNoEncontradoException();

@@ -48,15 +48,15 @@ public class Organizacion {
 			postulados.remove(miembro);
 			miembrosVinculados.add(miembro);
 		}
-		else throw new MiembroNoPostuladoException("Miembro No Postulado");
+		else throw new MiembroNoPostuladoException();
 	}
 
 	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
 		if (!sectores.contains(sector)) {
-			throw new SectorNoPerteneceOrgException("El sector no pertenece a la organizacion");
+			throw new SectorNoPerteneceOrgException();
 		}
 		if(!miembrosVinculados.contains(miembro)){
-			throw new MiembroNoVinculadoException("El miembro no esta vinculado.");
+			throw new MiembroNoVinculadoException();
 		}
 		else{
 			sector.agregarMiembro(miembro);
