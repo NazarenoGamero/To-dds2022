@@ -2,6 +2,10 @@ package dds.grupo3.clases;
 
 import java.io.IOException;
 
+import dds.grupo3.clases.Fachada.FachadaOrg;
+import dds.grupo3.clases.Fachada.FachadaPosta;
+import dds.grupo3.clases.Readers.MedicionCSV;
+import dds.grupo3.clases.Readers.ParametrosReader;
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;

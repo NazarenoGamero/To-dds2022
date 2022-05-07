@@ -1,18 +1,20 @@
-package dds.grupo3.clases;
+package dds.grupo3.clases.Readers;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
+import dds.grupo3.clases.Exception.ArchivoNoEncontradoException;
+import dds.grupo3.clases.Medible.Medible;
+import dds.grupo3.clases.Medible.Periodicidad;
+import dds.grupo3.clases.TipoDeMediciones.TipoDeActividad;
+import dds.grupo3.clases.TipoDeMediciones.TipoDeConsumo;
+import dds.grupo3.clases.TipoDeMediciones.TipoDeMedicion;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MedicionCSV implements MedicionesReader {
 
@@ -32,12 +34,7 @@ public class MedicionCSV implements MedicionesReader {
 				csvReader.close();
 			}
 
-		} catch (
-
-// TODO el que no commiteo, se encarga de esto.
-				//1- Crear clases de excepciones.
-				
-		FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			throw new ArchivoNoEncontradoException();
 		} catch (IOException e) {
 			throw new ArchivoNoEncontradoException();

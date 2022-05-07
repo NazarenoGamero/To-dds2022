@@ -1,4 +1,4 @@
-package dds.grupo3.clases.tipoDeMediciones;
+package dds.grupo3.clases.TipoDeMediciones;
 
 public class Alcance {
 	private String nombre;

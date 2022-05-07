@@ -1,10 +1,15 @@
-package dds.grupo3.clases.organizacion;
+package dds.grupo3.clases.Organizacion;
 
-import dds.grupo3.clases.*;
 import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.Exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.Exception.YaPerteneceOrgException;
 import dds.grupo3.clases.Exception.MiembroNoVinculadoException;
+import dds.grupo3.clases.Fachada.FachadaPosta;
+import dds.grupo3.clases.Medible.Medible;
+import dds.grupo3.clases.Miembro.Miembro;
+import dds.grupo3.clases.Readers.MedicionCSV;
+import dds.grupo3.clases.Readers.MedicionesReader;
+import dds.grupo3.clases.Readers.ParametrosReader;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +29,7 @@ public class Organizacion {
 		this.razonSocial = razonSocial;
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
-		this.clasificacion = clasificacion;
+		this.clasificacion = unaClasificaion;
 		this.postulados= new ArrayList<>();
 		this.miembrosVinculados= new ArrayList<>();
 		this.reader= new MedicionCSV();
@@ -42,15 +47,15 @@ public class Organizacion {
 			postulados.remove(miembro);
 			miembrosVinculados.add(miembro);
 		}
-		else throw new MiembroNoPostuladoException("Miembro No Postulado");
+		else throw new MiembroNoPostuladoException();
 	}
 
 	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
 		if (!sectores.contains(sector)) {
-			throw new SectorNoPerteneceOrgException("El sector no pertenece a la organizacion");
+			throw new SectorNoPerteneceOrgException();
 		}
 		if(!miembrosVinculados.contains(miembro)){
-			throw new MiembroNoVinculadoException("El miembro no esta vinculado.");
+			throw new MiembroNoVinculadoException();
 		}
 		else{
 			sector.agregarMiembro(miembro);

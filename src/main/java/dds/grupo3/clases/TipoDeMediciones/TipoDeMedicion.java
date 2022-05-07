@@ -1,4 +1,4 @@
-package dds.grupo3.clases.tipoDeMediciones;
+package dds.grupo3.clases.TipoDeMediciones;
 
 public class TipoDeMedicion {
     private TipoDeActividad tipoDeactividad;

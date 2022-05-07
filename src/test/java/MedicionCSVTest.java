@@ -1,15 +1,12 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import dds.grupo3.clases.Medible;
-import dds.grupo3.clases.MedicionCSV;
-import dds.grupo3.clases.ParametrosReader;
+import dds.grupo3.clases.Medible.Medible;
+import dds.grupo3.clases.Readers.MedicionCSV;
 
 public class MedicionCSVTest {
 	MedicionCSV reader = new MedicionCSV();

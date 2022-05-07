@@ -1,4 +1,6 @@
-package dds.grupo3.clases;
+package dds.grupo3.clases.Fachada;
+
+import dds.grupo3.clases.Medible.Medible;
 
 import java.util.Collection;
 import java.util.Map;
