@@ -30,13 +30,22 @@ public class CalculadorHU {
 		System.out.println("Archivo de mediciones: " + ns.get("mediciones"));
 		System.out.println("Archivo de parametros: " + ns.get("params"));
 
-		FachadaOrg fachada = new FachadaPosta();
-		ParametrosReader readerP = new ParametrosReader();
-		MedicionCSV readerC = new MedicionCSV();
+		FachadaPosta fachada = new FachadaPosta();
+		fachada.inicializar(ns.get("params"),ns.get("mediciones"));
+		String mensaje = fachada.obtenerHU();
 
-		fachada.cargarParametros(readerP.leerParametros(ns.get("params")));
+		/*
+		 * Mensaje seria un string largo del estilo
+		 * ----Organizacion : Edesur
+		 * -Mes de abril
+		 * 10
+		 * -Mes de Mayo
+		 * 15
+		 * 
+		 */
+		fachada.cargarParametros();
 		System.out.println("El total de la huella de carbono es: ");
-		System.out.println(fachada.obtenerHU(readerC.leerArchivoMediciones(ns.get("mediciones"))));
+		System.out.println(mensaje);
 
 	}
 }

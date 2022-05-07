@@ -2,6 +2,7 @@ package dds.grupo3.clases.tipoDeMediciones;
 
 public class TipoDeConsumo {	
 	private String nombre;
+	private int valor;
 	
 	public TipoDeConsumo(String nombre) {
 		this.nombre = nombre;

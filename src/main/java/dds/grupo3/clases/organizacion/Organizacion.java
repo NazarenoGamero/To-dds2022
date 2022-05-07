@@ -18,7 +18,13 @@ import java.util.List;
 public class Organizacion {
 	private String razonSocial;
 	private TipoOrg tipo;
-	private List<Sector> sectores;
+
+
+
+	public void setMediciones(List<Medible> mediciones) {
+		this.mediciones = mediciones;
+	}
+
 	private Clasificacion clasificacion;
 	private List<Medible> mediciones = new ArrayList<Medible>();
 	private List<Miembro> postulados;
@@ -82,5 +88,10 @@ public class Organizacion {
 			
 		}
 
+	}
+	
+	private List<Sector> sectores;
+	public List<Medible> getMediciones() {
+		return mediciones;
 	}
 }
