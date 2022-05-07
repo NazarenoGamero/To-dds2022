@@ -48,12 +48,12 @@ public class OrganizacionTest {
 			organizacion2.agregarSector(sector1);
 		});
 	}
-
+/*
 	@Test
 	public void calculoHuellaTotal() throws IOException{
 		Assertions.assertEquals(35, organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
 	}
-
+*/
 	@Test
 	public void unaOrganizacionNoPuedeVincularUnSectorNoPostulado() {
 		Assertions.assertThrows(MiembroNoPostuladoException.class, () -> {
