@@ -69,7 +69,9 @@ public class Organizacion {
 	}
 
 	public float calcularHuellaDeCarbonoST()  {
-		List<Medible> unasMediciones = this.getMediciones();
+		FachadaPosta unaFachada = new FachadaPosta();
+		List<Medible> unasMediciones = this.getMediciones(); // test: 1ro hacer el addAll mediciones
+		return unaFachada.obtenerHU(unasMediciones);
 		/*
         FachadaPosta unaFachada = new FachadaPosta();
         ParametrosReader reader = new ParametrosReader();
@@ -78,7 +80,6 @@ public class Organizacion {
         return unaFachada.obtenerHU(unasMediciones);
 
 		 */
-		return 0;
     }
 	// añade un postulado a la lista
 	public void nuevoPostulado(Miembro miembro){this.postulados.add(miembro);}

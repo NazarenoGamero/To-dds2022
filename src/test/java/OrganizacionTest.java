@@ -54,6 +54,15 @@ public class OrganizacionTest {
 		Assertions.assertEquals(35, organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
 	}
 */
+// intentoTest lo dejo comentado para que no rompa por las dudas
+/*
+	@Test
+	public void calculoHuellaTotal(){
+		organizacion1.cargarMediciones(path);
+		float valorTotalHuella = organizacion1.calcularHuellaDeCarbonoST();
+		Assertions.assertEquals(35,valorTotalHuella);
+	}
+*/
 	@Test
 	public void unaOrganizacionNoPuedeVincularUnSectorNoPostulado() {
 		Assertions.assertThrows(MiembroNoPostuladoException.class, () -> {
