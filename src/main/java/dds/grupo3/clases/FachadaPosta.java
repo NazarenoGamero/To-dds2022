@@ -23,7 +23,7 @@ public class FachadaPosta implements FachadaOrg {
 	}
 
 	private Float obtenerFeAsociado(Medible medible) {
-		return this.factoresDeEmision.get(medible.getTipoDeMedicion().getTipoDeConsumo().toString());
+		return this.factoresDeEmision.get(medible.getTipoDeMedicion().getTipoDeConsumo().getNombre());
 
 	}
 

@@ -1,5 +1,9 @@
 package dds.grupo3.clases.organizacion;
 
-public enum Clasificacion {
-	MINISTERIO, UNIVERSIDAD, ESCUELA, EMPRESASECTORPRIMARIO, EMPRESASECTORSECUNDARIO
+public class Clasificacion {
+	String nombre;
+
+	public Clasificacion(String nombre) {
+		this.nombre=nombre;
+	}
 }

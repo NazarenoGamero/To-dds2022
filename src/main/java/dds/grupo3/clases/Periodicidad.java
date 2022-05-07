@@ -1,5 +1,9 @@
 package dds.grupo3.clases;
 
-public enum Periodicidad {
-	MENSUAL, ANUAL
+public class Periodicidad {
+	private String nombre;
+	
+	public Periodicidad (String nombre) {
+		this.nombre= nombre;
+	}
 }

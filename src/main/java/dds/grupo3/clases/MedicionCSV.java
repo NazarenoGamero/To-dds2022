@@ -25,8 +25,8 @@ public class MedicionCSV implements MedicionesReader {
 			CSVReader csvReader = new CSVReader(new FileReader(path));
 			while ((fila = csvReader.readNext()) != null) {
 				Medible medicion = new Medible(
-						new TipoDeMedicion(TipoDeActividad.valueOf(fila[0]), TipoDeConsumo.valueOf(fila[1])),
-						Integer.valueOf(fila[2]), Periodicidad.valueOf(fila[3]), null);
+						new TipoDeMedicion(new TipoDeActividad((fila[0])), new TipoDeConsumo(fila[1])),
+						Integer.valueOf(fila[2]),new Periodicidad(fila[3]), null);
 
 				mediciones.add(medicion);
 				csvReader.close();

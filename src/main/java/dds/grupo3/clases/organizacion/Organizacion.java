@@ -20,7 +20,7 @@ public class Organizacion {
 	private List<Miembro> miembrosVinculados;
 	private MedicionesReader reader;
 
-	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> unSector, Clasificacion unaClasificaion) {
+	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> unSector, Clasificacion clasificacion) {
 		this.razonSocial = razonSocial;
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
