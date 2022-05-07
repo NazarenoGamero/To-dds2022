@@ -1,4 +1,4 @@
-package dds.grupo3.clases.Medible;
+package dds.grupo3.clases.medible;
 
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 

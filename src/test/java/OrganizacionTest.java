@@ -10,12 +10,12 @@ import org.junit.jupiter.api.Test;
 
 import dds.grupo3.clases.organizacion.Clasificacion;
 import dds.grupo3.clases.organizacion.TipoOrg;
-import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
-import dds.grupo3.clases.Exception.YaPerteneceOrgException;
-import dds.grupo3.clases.Fachada.FachadaPosta;
-import dds.grupo3.clases.Miembro.Miembro;
-import dds.grupo3.clases.Miembro.TipoDocEnum;
-import dds.grupo3.clases.Readers.MedicionCSV;
+import dds.grupo3.clases.readers.MedicionCSV;
+import dds.grupo3.clases.exception.MiembroNoPostuladoException;
+import dds.grupo3.clases.exception.YaPerteneceOrgException;
+import dds.grupo3.clases.fachada.FachadaPosta;
+import dds.grupo3.clases.miembro.Miembro;
+import dds.grupo3.clases.miembro.TipoDocEnum;
 import dds.grupo3.clases.organizacion.Organizacion;
 
 public class OrganizacionTest {

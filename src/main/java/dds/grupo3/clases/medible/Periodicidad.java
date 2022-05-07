@@ -1,4 +1,4 @@
-package dds.grupo3.clases.Medible;
+package dds.grupo3.clases.medible;
 
 public class Periodicidad {
 	private String nombre;

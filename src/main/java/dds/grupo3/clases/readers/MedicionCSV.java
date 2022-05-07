@@ -1,11 +1,11 @@
-package dds.grupo3.clases.Readers;
+package dds.grupo3.clases.readers;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-import dds.grupo3.clases.Exception.ArchivoNoEncontradoException;
-import dds.grupo3.clases.Medible.Medible;
-import dds.grupo3.clases.Medible.Periodicidad;
+import dds.grupo3.clases.exception.ArchivoNoEncontradoException;
+import dds.grupo3.clases.medible.Medible;
+import dds.grupo3.clases.medible.Periodicidad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;

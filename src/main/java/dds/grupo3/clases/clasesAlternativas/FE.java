@@ -1,4 +1,4 @@
-package dds.grupo3.clases.ClasesAlternativas;
+package dds.grupo3.clases.clasesAlternativas;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import dds.grupo3.clases.Fachada.FachadaPosta;
-import dds.grupo3.clases.Medible.Medible;
-import dds.grupo3.clases.Readers.ParametrosReader;
-import dds.grupo3.clases.Medible.Periodicidad;
+import dds.grupo3.clases.fachada.FachadaPosta;
+import dds.grupo3.clases.medible.Medible;
+import dds.grupo3.clases.medible.Periodicidad;
+import dds.grupo3.clases.readers.ParametrosReader;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;

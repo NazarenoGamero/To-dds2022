@@ -1,9 +1,9 @@
-package dds.grupo3.clases.Fachada;
-
-import dds.grupo3.clases.Medible.Medible;
+package dds.grupo3.clases.fachada;
 
 import java.util.Collection;
 import java.util.Map;
+
+import dds.grupo3.clases.medible.Medible;
 
 public interface FachadaOrg {
 

@@ -5,8 +5,8 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import dds.grupo3.clases.Medible.Medible;
-import dds.grupo3.clases.Readers.MedicionCSV;
+import dds.grupo3.clases.medible.Medible;
+import dds.grupo3.clases.readers.MedicionCSV;
 
 public class MedicionCSVTest {
 	MedicionCSV reader = new MedicionCSV();
