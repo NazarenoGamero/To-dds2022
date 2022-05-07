@@ -1,6 +1,6 @@
 package dds.grupo3.clases.Medible;
 
-import dds.grupo3.clases.TipoDeMediciones.TipoDeMedicion;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 
 import java.util.Date;
 

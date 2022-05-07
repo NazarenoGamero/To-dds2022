@@ -1,6 +1,6 @@
 package dds.grupo3.clases.Miembro;
 
-import dds.grupo3.clases.Organizacion.Organizacion;
+import dds.grupo3.clases.organizacion.Organizacion;
 
 public class Miembro {
 	private String nombre;

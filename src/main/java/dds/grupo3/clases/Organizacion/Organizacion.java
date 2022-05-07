@@ -1,4 +1,4 @@
-package dds.grupo3.clases.Organizacion;
+package dds.grupo3.clases.organizacion;
 
 import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.Exception.SectorNoPerteneceOrgException;
@@ -29,7 +29,7 @@ public class Organizacion {
 		this.razonSocial = razonSocial;
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
-		this.clasificacion = unaClasificaion;
+		this.clasificacion = clasificacion;
 		this.postulados= new ArrayList<>();
 		this.miembrosVinculados= new ArrayList<>();
 		this.reader= new MedicionCSV();

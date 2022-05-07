@@ -1,22 +1,23 @@
-import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
-import dds.grupo3.clases.Fachada.FachadaPosta;
-import dds.grupo3.clases.Readers.MedicionCSV;
-import dds.grupo3.clases.Miembro.Miembro;
-import dds.grupo3.clases.Organizacion.Sector;
-import dds.grupo3.clases.Exception.YaPerteneceOrgException;
-import static dds.grupo3.clases.TipoDocEnum.DNI;
-import dds.grupo3.clases.organizacion.Clasificacion;
-import dds.grupo3.clases.organizacion.Organizacion;
-import dds.grupo3.clases.organizacion.TipoOrg;
+import dds.grupo3.clases.organizacion.Sector;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import static dds.grupo3.clases.Organizacion.Clasificacion.UNIVERSIDAD;
-import static dds.grupo3.clases.Organizacion.Tipo.INSTITUCION;
+
+import dds.grupo3.clases.organizacion.Clasificacion;
+import dds.grupo3.clases.organizacion.TipoOrg;
+import dds.grupo3.clases.Exception.MiembroNoPostuladoException;
+import dds.grupo3.clases.Exception.YaPerteneceOrgException;
+import dds.grupo3.clases.Fachada.FachadaPosta;
+import dds.grupo3.clases.Miembro.Miembro;
+import dds.grupo3.clases.Miembro.TipoDocEnum;
+import dds.grupo3.clases.Readers.MedicionCSV;
+import dds.grupo3.clases.organizacion.Organizacion;
+
 public class OrganizacionTest {
 	Organizacion organizacion1;
 	Organizacion organizacion2;
@@ -30,18 +31,18 @@ public class OrganizacionTest {
 	String path = System.getProperty("user.dir") + "/src/files/" + "/mediciones.CSV";
 
 	@BeforeEach
-	private void inicializarOrganizacion() throws IOException {
+	private void inicializarOrganizacion() {
 		organizacion1 = new Organizacion("LaUni", new TipoOrg("INSTITUCION"), sectores,
 				new Clasificacion("UNIVERSIDAD"));
 		organizacion2 = new Organizacion("LaUni", new TipoOrg("INSTITUCION"), sectores,
 				new Clasificacion("UNIVERSIDAD"));
 		sector1 = new Sector("sector1");
 		sector2 = new Sector("sector2");
-		miembro = new Miembro("Juan", "Pirulito", DNI, 43858878);
+		miembro = new Miembro("Juan", "Pirulito", TipoDocEnum.DNI, 43858878);
 	}
 
 	@Test
-	public void unSectorNoPuedePertenecerAdosOrg() throws YaPerteneceOrgException {
+	public void unSectorNoPuedePertenecerAdosOrg(){
 		organizacion1.agregarSector(sector1);
 		Assertions.assertThrows(YaPerteneceOrgException.class, () -> {
 			organizacion2.agregarSector(sector1);
@@ -49,7 +50,7 @@ public class OrganizacionTest {
 	}
 
 	@Test
-	public void calculoHuellaTotal() throws IOException {
+	public void calculoHuellaTotal() throws IOException{
 		Assertions.assertEquals(35, organizacion1.calcularHuellaDeCarbonoST(reader.leerArchivoMediciones(path)));
 	}
 

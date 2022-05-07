@@ -12,9 +12,9 @@ import dds.grupo3.clases.Fachada.FachadaPosta;
 import dds.grupo3.clases.Medible.Medible;
 import dds.grupo3.clases.Readers.ParametrosReader;
 import dds.grupo3.clases.Medible.Periodicidad;
-import dds.grupo3.clases.TipoDeMediciones.TipoDeActividad;
-import dds.grupo3.clases.TipoDeMediciones.TipoDeConsumo;
-import dds.grupo3.clases.TipoDeMediciones.TipoDeMedicion;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 
 public class FachadaPostaTest {
 

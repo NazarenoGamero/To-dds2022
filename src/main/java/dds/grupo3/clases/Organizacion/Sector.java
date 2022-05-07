@@ -1,4 +1,4 @@
-package dds.grupo3.clases.Organizacion;
+package dds.grupo3.clases.organizacion;
 
 import dds.grupo3.clases.Miembro.Miembro;
 

@@ -1,4 +1,4 @@
-package dds.grupo3.clases.Organizacion;
+package dds.grupo3.clases.organizacion;
 
 public class Clasificacion {
 	String nombre;

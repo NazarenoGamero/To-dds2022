@@ -1,4 +1,4 @@
-package dds.grupo3.clases.TipoDeMediciones;
+package dds.grupo3.clases.tipoDeMediciones;
 
 public class TipoDeConsumo {	
 	private String nombre;
