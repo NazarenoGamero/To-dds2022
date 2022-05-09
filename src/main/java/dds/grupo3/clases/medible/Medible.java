@@ -53,4 +53,7 @@ public class Medible {
 			this.miFactor = unFactor;
 		}
 	}
+	public float factorCorrespondienteAvalorMedible(){
+		return miFactor.getValor();
+	}
 }
