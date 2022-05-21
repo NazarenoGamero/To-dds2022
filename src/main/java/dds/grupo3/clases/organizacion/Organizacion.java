@@ -18,18 +18,18 @@ import java.util.List;
 public class Organizacion {
 	private String razonSocial;
 	private TipoOrg tipo;
-
+	private Clasificacion clasificacion;
+	private List<Medible> mediciones = new ArrayList<Medible>();
+	private List<Miembro> postulados;
+	private List<Miembro> miembrosVinculados;
+	private MedicionesReader reader;
 
 
 	public void setMediciones(List<Medible> mediciones) {
 		this.mediciones = mediciones;
 	}
 
-	private Clasificacion clasificacion;
-	private List<Medible> mediciones = new ArrayList<Medible>();
-	private List<Miembro> postulados;
-	private List<Miembro> miembrosVinculados;
-	private MedicionesReader reader;
+	
 
 	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> unSector, Clasificacion clasificacion) {
 		this.razonSocial = razonSocial;
