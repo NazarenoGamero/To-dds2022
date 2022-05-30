@@ -7,21 +7,22 @@ import dds.grupo3.clases.exception.YaPerteneceOrgException;
 import dds.grupo3.clases.fachada.FachadaPosta;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.miembro.Miembro;
+import dds.grupo3.clases.miembro.Postulacion;
 import dds.grupo3.clases.readers.MedicionCSV;
 import dds.grupo3.clases.readers.MedicionesReader;
 import dds.grupo3.clases.readers.ParametrosReader;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Organizacion {
 	private String razonSocial;
 	private TipoOrg tipo;
 	private Clasificacion clasificacion;
 	private List<Medible> mediciones = new ArrayList<Medible>();
-	private List<Miembro> postulados;
-	private List<Miembro> miembrosVinculados;
+	private List<Postulacion> postulados;
 	private MedicionesReader reader;
 
 
@@ -47,26 +48,8 @@ public class Organizacion {
 		mediciones.addAll(reader.leerArchivoMediciones(path));
 	}
 
-	/* agregar estas funciones mas tarde */
-	public void aceptarVinculacionConMiembro(Miembro miembro) {
-		if(postulados.contains(miembro)) {
-			postulados.remove(miembro);
-			miembrosVinculados.add(miembro);
-		}
-		else throw new MiembroNoPostuladoException();
-	}
 
-	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
-		if (!sectores.contains(sector)) {
-			throw new SectorNoPerteneceOrgException();
-		}
-		if(!miembrosVinculados.contains(miembro)){
-			throw new MiembroNoVinculadoException();
-		}
-		else{
-			sector.agregarMiembro(miembro);
-		}
-	}
+
 
 	public float calcularHuellaDeCarbonoST()  {
 		List<Medible> unasMediciones = this.getMediciones(); // test: 1ro hacer el addAll mediciones
@@ -84,7 +67,7 @@ public class Organizacion {
 		return unaMedicion.factorCorrespondienteAvalorMedible() * unaMedicion.getValor();
 	}
 	// añade un postulado a la lista
-	public void nuevoPostulado(Miembro miembro){this.postulados.add(miembro);}
+
 
 	public void agregarSector(Sector sector) throws YaPerteneceOrgException {
 
@@ -97,9 +80,35 @@ public class Organizacion {
 		}
 
 	}
-	
 	private List<Sector> sectores;
+
 	public List<Medible> getMediciones() {
 		return mediciones;
+	}
+
+	// Postulaciones y agregar miembros
+
+
+	//Agregar postulacion a la lista de postulados
+	public void nuevoPostulado(Miembro miembro, Sector sector){this.postulados.add(new Postulacion(miembro,sector));}
+
+	//lee una por una las postulaciones y elige si aceptarla o no
+	public void aceptarPostulacionConMiembro(Miembro miembro) {
+		for (Postulacion postulado : postulados) {
+			this.agregarMiembroSector(postulado.getSector(),postulado.getMiembro());
+		}
+	}
+	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
+		if (!sectores.contains(sector)) {
+			throw new SectorNoPerteneceOrgException();
+		}
+		else{
+			sector.agregarMiembro(miembro);
+		}
+	}
+
+	//De vuelve todos los miembros por sector
+	public List<Miembro> miembrosOrg(){
+		return sectores.stream().flatMap(s -> s.getMiembros().stream()).collect(Collectors.toList());
 	}
 }
