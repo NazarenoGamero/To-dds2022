@@ -2,20 +2,15 @@ package dds.grupo3.clases.fachada;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.medible.Medible;
-import dds.grupo3.clases.medible.Periodicidad;
 import dds.grupo3.clases.organizacion.BuilderOrg;
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.readers.MedicionCSV;
 import dds.grupo3.clases.readers.ParametrosReader;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 
 public class FachadaPosta implements FachadaOrg {
 	//Estas listas pueden moverse a otras clases, luego cuando se vean patrones creacionales... creo
@@ -37,14 +32,12 @@ public class FachadaPosta implements FachadaOrg {
 	@Override
 	public Float obtenerHU(Collection<Medible> mediciones) {
 		Organizacion nuevaOrg = creadorOrg.crearOrg();
-		nuevaOrg.setMediciones(mediciones);
-		List<Float> datos = nuevaOrg.calcularHuellaDeCarbonoST();
-		this.armarMensaje(datos); //La idea seria que de una lista de floats, arme un informe de los meses de emision
+		nuevaOrg.setMediciones((List<Medible>) mediciones);
+		Float datos = nuevaOrg.calcularHuellaDeCarbonoST();
+		return datos; 
 	}
-	
-	public String armarMensaje(List<Float> datos) {
-		//TODO Armar informe con la informacion
-	}
+	//La idea seria que de una lista de floats, arme un informe de los meses de emision
+	// Map<Int, Int> // Map<Anio, TotalAnio> o Map<Mes, TotalMes>
 	
 	public List<Medible> leerMediciones(String pathCsv) {
 		MedicionCSV readerC = new MedicionCSV();
@@ -64,6 +57,7 @@ public class FachadaPosta implements FachadaOrg {
 		Map<String, Float> parametros = readerP.leerParametros(pathParametros); //TODO:Atender esta excepcion
 		
 		cargarParametros(parametros);
+		creadorOrg.Inicializar();
 	}
 	
 	

@@ -7,10 +7,14 @@ import java.util.List;
 
 public class Medible {
 	private TipoDeMedicion tipoDeMedicion;
-	private int valor;
-	private Periodicidad periodicidad;
+	private float valor;
+	private Periodicidad periodicidad; //Es un enum para saber durante cuanto tiempo se hizo esa medicion
 	private Date PeriodoDeImputacion;
 	private FactorEmision miFactor;
+	
+	//Periodicidad{
+	// 	int 1 = Anual
+	// int 0 = mensual
 	
 	// Constructor
 
@@ -21,6 +25,10 @@ public class Medible {
 		this.PeriodoDeImputacion = periodoDeImputacion;
 	}
 
+	public float obtenerHuella() {
+		return this.valor * this.getMiFactor().getValor();
+	}
+	
 	// Setters y Getters
 
 	public TipoDeMedicion getTipoDeMedicion() {
@@ -31,7 +39,7 @@ public class Medible {
 		this.tipoDeMedicion = tipoDeMedicion;
 	}
 
-	public int getValor() {
+	public float getValor() {
 		return valor;
 	}
 
@@ -55,5 +63,21 @@ public class Medible {
 	}
 	public float factorCorrespondienteAvalorMedible(){
 		return miFactor.getValor();
+	}
+
+	public Date getPeriodoDeImputacion() {
+		return PeriodoDeImputacion;
+	}
+
+	public void setPeriodoDeImputacion(Date periodoDeImputacion) {
+		PeriodoDeImputacion = periodoDeImputacion;
+	}
+
+	public FactorEmision getMiFactor() {
+		return miFactor;
+	}
+
+	public void setMiFactor(FactorEmision miFactor) {
+		this.miFactor = miFactor;
 	}
 }

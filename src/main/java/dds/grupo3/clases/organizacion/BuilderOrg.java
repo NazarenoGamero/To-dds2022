@@ -3,8 +3,6 @@ package dds.grupo3.clases.organizacion;
 import java.util.ArrayList;
 import java.util.List;
 
-import dds.grupo3.clases.medible.FactorEmision;
-
 public class BuilderOrg {
 	List<TipoOrg> tiposOrg;
 	List<Clasificacion> clasificaciones;

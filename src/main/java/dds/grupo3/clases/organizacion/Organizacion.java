@@ -4,14 +4,9 @@ import dds.grupo3.clases.exception.MiembroNoPostuladoException;
 import dds.grupo3.clases.exception.MiembroNoVinculadoException;
 import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.exception.YaPerteneceOrgException;
-import dds.grupo3.clases.fachada.FachadaPosta;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.miembro.Miembro;
-import dds.grupo3.clases.readers.MedicionCSV;
-import dds.grupo3.clases.readers.MedicionesReader;
-import dds.grupo3.clases.readers.ParametrosReader;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +17,7 @@ public class Organizacion {
 	private List<Medible> mediciones = new ArrayList<Medible>();
 	private List<Miembro> postulados;
 	private List<Miembro> miembrosVinculados;
-	private MedicionesReader reader;
-
+	private List<Sector> sectores;
 
 	public void setMediciones(List<Medible> mediciones) {
 		this.mediciones = mediciones;
@@ -38,13 +32,6 @@ public class Organizacion {
 		this.clasificacion = clasificacion;
 		this.postulados= new ArrayList<>();
 		this.miembrosVinculados= new ArrayList<>();
-		this.reader= new MedicionCSV();
-	}
-	
-	
-	
-	public void cargarMediciones(String path){
-		mediciones.addAll(reader.leerArchivoMediciones(path));
 	}
 
 	/* agregar estas funciones mas tarde */
@@ -69,17 +56,21 @@ public class Organizacion {
 	}
 
 	public float calcularHuellaDeCarbonoST()  {
-		List<Medible> unasMediciones = this.getMediciones(); // test: 1ro hacer el addAll mediciones
-		return (float) unasMediciones.stream().mapToDouble(unaMedicion -> this.obtenerFactorPorMedicion(unaMedicion)).sum();
 		/*
-        FachadaPosta unaFachada = new FachadaPosta();
-        ParametrosReader reader = new ParametrosReader();
-        String path = System.getProperty("user.dir") + "/src/files/" + "/parametros.txt";
-        unaFachada.cargarParametros(reader.leerParametros(path));
-        return unaFachada.obtenerHU(unasMediciones);
-
-		 */
+		List<Medible> unasMediciones = this.getMediciones();
+		return (float) unasMediciones.stream().mapToDouble(unaMedicion -> this.obtenerFactorPorMedicion(unaMedicion)).sum();
+		*/
+		float total = 0;
+		for(Medible unMedible : this.getMediciones()) {
+			total = total + unMedible.obtenerHuella();
+		}
+		return total;
     }
+	
+	//TODO agregar calculo de medibles + trayectos (Composite porque dice naza)
+	//TODO agregar calculo para las periodicidades (Uno para Mensual y otro Anual)
+	// 		Duda, donde se filtraría esto, pensar...
+	
 	public float obtenerFactorPorMedicion(Medible unaMedicion){
 		return unaMedicion.factorCorrespondienteAvalorMedible() * unaMedicion.getValor();
 	}
@@ -98,7 +89,7 @@ public class Organizacion {
 
 	}
 	
-	private List<Sector> sectores;
+	
 	public List<Medible> getMediciones() {
 		return mediciones;
 	}
