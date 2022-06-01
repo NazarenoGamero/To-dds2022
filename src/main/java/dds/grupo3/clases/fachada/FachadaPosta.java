@@ -1,5 +1,6 @@
 package dds.grupo3.clases.fachada;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -54,9 +55,13 @@ public class FachadaPosta implements FachadaOrg {
 	public void inicializar(String pathParametros) {
 		ParametrosReader readerP = new ParametrosReader();
 		
-		Map<String, Float> parametros = readerP.leerParametros(pathParametros); //TODO:Atender esta excepcion
-		
-		cargarParametros(parametros);
+		try {
+			Map<String, Float> parametros = readerP.leerParametros(pathParametros);
+			cargarParametros(parametros);
+		}catch(IOException ioe){
+			System.out.printf("Error, los parametros ingresados no son validos");
+		}
+		 //TODO:Atender esta excepcion
 		creadorOrg.Inicializar();
 	}
 	

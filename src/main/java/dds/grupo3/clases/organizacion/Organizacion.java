@@ -17,7 +17,7 @@ public class Organizacion {
 	private String razonSocial;
 	private TipoOrg tipo;
 	private Clasificacion clasificacion;
-	private List<Medible> mediciones = new ArrayList<Medible>();
+	private List<Medible> mediciones;
 	private List<Miembro> postulados;
 	private List<Miembro> miembrosVinculados;
 	private List<Sector> sectores;
@@ -26,25 +26,32 @@ public class Organizacion {
 		this.mediciones = mediciones;
 	}
 
-	
+	public Organizacion() {
+		this.razonSocial = "AFIP";
+		this.tipo = new TipoOrg("Gubernamental");
+		this.sectores = new ArrayList<Sector>();
+		this.getSectores().add(new Sector("RRHH",this));
+		this.clasificacion = new Clasificacion("Ministerio");
+		this.postulados= new ArrayList<>();
+		this.miembrosVinculados= new ArrayList<>();
+		this.mediciones =  new ArrayList<Medible>();
+	}
 
 	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> unSector, Clasificacion clasificacion) {
 		this.razonSocial = razonSocial;
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
+		this.getSectores().add(new Sector("RRHH",this));
 		this.clasificacion = clasificacion;
 		this.postulados= new ArrayList<>();
 		this.miembrosVinculados= new ArrayList<>();
+		this.mediciones =  new ArrayList<Medible>();
 	}
 
 
 
 
 	public float calcularHuellaDeCarbonoST()  {
-		/*
-		List<Medible> unasMediciones = this.getMediciones();
-		return (float) unasMediciones.stream().mapToDouble(unaMedicion -> this.obtenerFactorPorMedicion(unaMedicion)).sum();
-		*/
 		float total = 0;
 		for(Medible unMedible : this.getMediciones()) {
 			total = total + unMedible.obtenerHuella();
@@ -73,13 +80,11 @@ public class Organizacion {
 		}
 
 	}
-	public List<Medible> getMediciones() {
-		return mediciones;
-	}
+
 
 	// Postulaciones y agregar miembros
 
-
+/*
 	//Agregar postulacion a la lista de postulados
 	public void nuevoPostulado(Miembro miembro, Sector sector){this.postulados.add(new Postulacion(miembro,sector));}
 
@@ -89,6 +94,7 @@ public class Organizacion {
 			this.agregarMiembroSector(postulado.getSector(),postulado.getMiembro());
 		}
 	}
+*/
 	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
 		if (!sectores.contains(sector)) {
 			throw new SectorNoPerteneceOrgException();
@@ -101,5 +107,57 @@ public class Organizacion {
 	//De vuelve todos los miembros por sector
 	public List<Miembro> miembrosOrg(){
 		return sectores.stream().flatMap(s -> s.getMiembros().stream()).collect(Collectors.toList());
+	}
+	
+	public List<Medible> getMediciones() {
+		return mediciones;
+	}
+
+	public String getRazonSocial() {
+		return razonSocial;
+	}
+
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
+	}
+
+	public TipoOrg getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoOrg tipo) {
+		this.tipo = tipo;
+	}
+
+	public Clasificacion getClasificacion() {
+		return clasificacion;
+	}
+
+	public void setClasificacion(Clasificacion clasificacion) {
+		this.clasificacion = clasificacion;
+	}
+
+	public List<Miembro> getPostulados() {
+		return postulados;
+	}
+
+	public void setPostulados(List<Miembro> postulados) {
+		this.postulados = postulados;
+	}
+
+	public List<Miembro> getMiembrosVinculados() {
+		return miembrosVinculados;
+	}
+
+	public void setMiembrosVinculados(List<Miembro> miembrosVinculados) {
+		this.miembrosVinculados = miembrosVinculados;
+	}
+
+	public List<Sector> getSectores() {
+		return sectores;
+	}
+
+	public void setSectores(List<Sector> sectores) {
+		this.sectores = sectores;
 	}
 }

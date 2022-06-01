@@ -49,7 +49,7 @@ public class Miembro {
 	public void setNroDoc(int nroDoc) {
 		this.nroDoc = nroDoc;
 	}
-
+/*
 	public void postularme(Organizacion organizacion, Sector sector){organizacion.nuevoPostulado(this, sector);}
-
+*/
 }

@@ -17,9 +17,10 @@ public class Sector {
 	private String nombre;
 	private List<Miembro> miembros;
 
-	public Sector(String nombre) {
+	public Sector(String nombre, Organizacion miOrg) {
 		super();
 		this.nombre = nombre;
+		this.organizacion = miOrg;
 	}
 
 	public void agregarMiembro(Miembro miembro) {
