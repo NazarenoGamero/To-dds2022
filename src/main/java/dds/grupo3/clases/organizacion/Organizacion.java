@@ -1,5 +1,6 @@
 package dds.grupo3.clases.organizacion;
 
+import dds.grupo3.clases.exception.MiembroYaPerteneceOrgException;
 import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.exception.YaPerteneceOrgException;
 import dds.grupo3.clases.medible.Medible;
@@ -92,8 +93,11 @@ public class Organizacion {
 		}
 	}
 
-	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException {
-		if (!sectores.contains(sector)) {
+	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException, MiembroYaPerteneceOrgException {
+		if(miembrosOrg().contains(miembro)) {
+			throw new MiembroYaPerteneceOrgException();
+		}
+		else if(!sectores.contains(sector)) {
 			throw new SectorNoPerteneceOrgException();
 		}
 		else{
