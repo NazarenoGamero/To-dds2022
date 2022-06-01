@@ -1,6 +1,7 @@
 package dds.grupo3.clases.miembro;
 
 import dds.grupo3.clases.organizacion.Organizacion;
+import dds.grupo3.clases.organizacion.Sector;
 
 public class Miembro {
 	private String nombre;
@@ -49,6 +50,6 @@ public class Miembro {
 		this.nroDoc = nroDoc;
 	}
 
-	public void postularme(Organizacion organizacion){organizacion.nuevoPostulado(this);}
+	public void postularme(Organizacion organizacion, Sector sector){organizacion.nuevoPostulado(this, sector);}
 
 }

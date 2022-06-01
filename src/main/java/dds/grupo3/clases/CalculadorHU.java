@@ -3,10 +3,7 @@ package dds.grupo3.clases;
 import java.io.IOException;
 import java.util.List;
 
-import dds.grupo3.clases.fachada.FachadaOrg;
 import dds.grupo3.clases.fachada.FachadaPosta;
-import dds.grupo3.clases.readers.MedicionCSV;
-import dds.grupo3.clases.readers.ParametrosReader;
 import dds.grupo3.clases.medible.Medible;
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
