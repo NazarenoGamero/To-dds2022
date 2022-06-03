@@ -2,14 +2,14 @@ package dds.grupo3.clases.medible;
 
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 
-import java.util.Date;
+//import java.util.Date;
 import java.util.List;
 
 public class Medible {
 	private TipoDeMedicion tipoDeMedicion;
 	private float valor;
 	private Periodicidad periodicidad; //Es un enum para saber durante cuanto tiempo se hizo esa medicion
-	private Date PeriodoDeImputacion;
+	private String PeriodoDeImputacion;
 	private FactorEmision miFactor;
 	
 	//Periodicidad{
@@ -18,11 +18,12 @@ public class Medible {
 	
 	// Constructor
 
-	public Medible(TipoDeMedicion tipoDeMedicion, int valor, Periodicidad periodicidad, Date periodoDeImputacion) {
+	public Medible(TipoDeMedicion tipoDeMedicion, int valor, Periodicidad periodicidad, String periodoDeImputacion, FactorEmision miFactor) {
 		this.tipoDeMedicion = tipoDeMedicion;
 		this.valor = valor;
 		this.periodicidad = periodicidad;
 		this.PeriodoDeImputacion = periodoDeImputacion;
+		this.miFactor = miFactor;
 	}
 
 	public float obtenerHuella() {
@@ -65,11 +66,11 @@ public class Medible {
 		return miFactor.getValor();
 	}
 
-	public Date getPeriodoDeImputacion() {
+	public String getPeriodoDeImputacion() {
 		return PeriodoDeImputacion;
 	}
 
-	public void setPeriodoDeImputacion(Date periodoDeImputacion) {
+	public void setPeriodoDeImputacion(String periodoDeImputacion) {
 		PeriodoDeImputacion = periodoDeImputacion;
 	}
 

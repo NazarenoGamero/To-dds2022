@@ -29,7 +29,8 @@ public class MedicionCSV implements MedicionesReader {
 			while ((fila = csvReader.readNext()) != null) {
 				Medible medicion = new Medible(
 						new TipoDeMedicion(new TipoDeActividad((fila[0])), new TipoDeConsumo(fila[1])),
-						Integer.valueOf(fila[2]),this.obtenerPeriodicidad(fila[3]), null);
+						Integer.valueOf(fila[2]),this.obtenerPeriodicidad(fila[3]),fila[4], 
+						asignarFactorEmision(factoresEmision, fila[1]));
 
 				mediciones.add(medicion);
 				csvReader.close();
@@ -46,6 +47,19 @@ public class MedicionCSV implements MedicionesReader {
 		return mediciones;
 
 	}
+	
+	private FactorEmision asignarFactorEmision(List<FactorEmision> factoresEmision, String tipo) {
+		for(FactorEmision unFactor : factoresEmision) {
+			if(unFactor.getNombre() == tipo) {
+				return unFactor;
+			//}else {
+				//TODO Que reviente todo flaco
+			}
+			
+		}
+		return null;
+	}
+	
 	
 	private Periodicidad obtenerPeriodicidad(String stringCSV) {
 		if(stringCSV == "ANUAL") {
