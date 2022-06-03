@@ -4,6 +4,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 import dds.grupo3.clases.exception.ArchivoNoEncontradoException;
+import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.medible.Periodicidad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
@@ -19,7 +20,7 @@ import java.util.List;
 public class MedicionCSV implements MedicionesReader {
 
 	@Override
-	public List<Medible> leerArchivoMediciones(String path) {
+	public List<Medible> leerArchivoMediciones(String path, List<FactorEmision> factoresEmision) {
 		String[] fila = null;
 		List<Medible> mediciones = new ArrayList<>();
 
@@ -28,7 +29,7 @@ public class MedicionCSV implements MedicionesReader {
 			while ((fila = csvReader.readNext()) != null) {
 				Medible medicion = new Medible(
 						new TipoDeMedicion(new TipoDeActividad((fila[0])), new TipoDeConsumo(fila[1])),
-						Integer.valueOf(fila[2]),new Periodicidad(fila[3]), null);
+						Integer.valueOf(fila[2]),this.obtenerPeriodicidad(fila[3]), null);
 
 				mediciones.add(medicion);
 				csvReader.close();
@@ -44,5 +45,13 @@ public class MedicionCSV implements MedicionesReader {
 
 		return mediciones;
 
+	}
+	
+	private Periodicidad obtenerPeriodicidad(String stringCSV) {
+		if(stringCSV == "ANUAL") {
+			return Periodicidad.ANUAL;
+		}else {
+			return Periodicidad.MENSUAL;
+		}
 	}
 }

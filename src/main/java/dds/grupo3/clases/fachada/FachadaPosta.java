@@ -42,7 +42,7 @@ public class FachadaPosta implements FachadaOrg {
 	
 	public List<Medible> leerMediciones(String pathCsv) {
 		MedicionCSV readerC = new MedicionCSV();
-		List<Medible> medibles = readerC.leerArchivoMediciones(pathCsv);
+		List<Medible> medibles = readerC.leerArchivoMediciones(pathCsv,this.getFactoresDeEmision());
 		return medibles;
 		//TODO: Agregar como conectar los medibles con sus factores de emision
 	}
@@ -72,5 +72,21 @@ public class FachadaPosta implements FachadaOrg {
 	public FachadaPosta(){
 		this.factoresDeEmision = new ArrayList<FactorEmision>();
 		this.creadorOrg = new BuilderOrg();
+	}
+
+	public List<FactorEmision> getFactoresDeEmision() {
+		return factoresDeEmision;
+	}
+
+	public void setFactoresDeEmision(List<FactorEmision> factoresDeEmision) {
+		this.factoresDeEmision = factoresDeEmision;
+	}
+
+	public BuilderOrg getCreadorOrg() {
+		return creadorOrg;
+	}
+
+	public void setCreadorOrg(BuilderOrg creadorOrg) {
+		this.creadorOrg = creadorOrg;
 	}
 }

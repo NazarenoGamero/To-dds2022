@@ -6,6 +6,9 @@ import dds.grupo3.clases.miembro.Miembro;
 
 public class Sector {
 	public Organizacion organizacion;
+	private String nombre;
+	private List<Miembro> miembros;
+	
 	public Organizacion getOrganizacion() {
 		return organizacion;
 	}
@@ -13,9 +16,6 @@ public class Sector {
 	public void setOrganizacion(Organizacion organizacion) {
 		this.organizacion = organizacion;
 	}
-
-	private String nombre;
-	private List<Miembro> miembros;
 
 	public Sector(String nombre, Organizacion miOrg) {
 		super();
