@@ -146,13 +146,14 @@ public class Organizacion {
 		this.postulados = postulados;
 	}
 
-	public List<Miembro> getMiembrosVinculados() {
+	//GETTER Y SETTER DE miembrosVinculados comentado por ahora
+	/*public List<Miembro> getMiembrosVinculados() {
 		return miembrosVinculados;
-	}
+	}*/
 
-	public void setMiembrosVinculados(List<Miembro> miembrosVinculados) {
+	/*public void setMiembrosVinculados(List<Miembro> miembrosVinculados) {
 		this.miembrosVinculados = miembrosVinculados;
-	}
+	}*/
 
 	public List<Sector> getSectores() {
 		return sectores;
