@@ -16,7 +16,6 @@ public class Organizacion {
 	private Clasificacion clasificacion;
 	private List<Medible> mediciones;
 	private ArrayList<Postulacion> postulados;
-	//private List<Miembro> miembrosVinculados;
 	private List<Sector> sectores;
 
 	public void setMediciones(List<Medible> mediciones) {
@@ -146,14 +145,6 @@ public class Organizacion {
 		this.postulados = postulados;
 	}
 
-	/*
-	public List<Miembro> getMiembrosVinculados() {
-		return miembrosVinculados;
-	}
-
-	public void setMiembrosVinculados(List<Miembro> miembrosVinculados) {
-		this.miembrosVinculados = miembrosVinculados;
-	}*/
 
 	public List<Sector> getSectores() {
 		return sectores;
