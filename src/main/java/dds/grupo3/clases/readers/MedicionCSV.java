@@ -50,12 +50,11 @@ public class MedicionCSV implements MedicionesReader {
 	
 	private FactorEmision asignarFactorEmision(List<FactorEmision> factoresEmision, String tipo) {
 		for(FactorEmision unFactor : factoresEmision) {
-			if(unFactor.getNombre() == tipo) {
+			if(unFactor.getNombre().equals(tipo)) {
 				return unFactor;
 			//}else {
 				//TODO Que reviente todo flaco
 			}
-			
 		}
 		return null;
 	}

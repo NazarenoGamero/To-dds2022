@@ -1,5 +1,6 @@
 package dds.grupo3.clases.organizacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dds.grupo3.clases.miembro.Miembro;
@@ -17,10 +18,11 @@ public class Sector {
 		this.organizacion = organizacion;
 	}
 
-	public Sector(String nombre, Organizacion miOrg) {
+	public Sector(String nombre) {
 		super();
 		this.nombre = nombre;
-		this.organizacion = miOrg;
+		this.organizacion = null;
+		this.miembros = new ArrayList<Miembro>();
 	}
 
 	public void agregarMiembro(Miembro miembro) {

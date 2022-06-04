@@ -15,7 +15,7 @@ public class Organizacion {
 	private TipoOrg tipo;
 	private Clasificacion clasificacion;
 	private List<Medible> mediciones;
-	private ArrayList<Postulacion> postulados;
+	private List<Postulacion> postulados;
 	private List<Sector> sectores;
 
 	public void setMediciones(List<Medible> mediciones) {
@@ -26,7 +26,7 @@ public class Organizacion {
 		this.razonSocial = "AFIP";
 		this.tipo = new TipoOrg("Gubernamental");
 		this.sectores = new ArrayList<Sector>();
-		this.getSectores().add(new Sector("RRHH",this));
+		this.agregarSector(new Sector("RRHH"));
 		this.clasificacion = new Clasificacion("Ministerio");
 		this.postulados = new ArrayList<Postulacion>();
 		//this.miembrosVinculados= new ArrayList<>();
@@ -37,7 +37,6 @@ public class Organizacion {
 		this.razonSocial = razonSocial;
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
-		this.getSectores().add(new Sector("RRHH",this));
 		this.clasificacion = clasificacion;
 		this.postulados = new ArrayList<Postulacion>();
 		//this.miembrosVinculados= new ArrayList<>();
@@ -66,15 +65,12 @@ public class Organizacion {
 
 
 	public void agregarSector(Sector sector) throws YaPerteneceOrgException {
-
 		if (sector.getOrganizacion() != null) {
 			throw new YaPerteneceOrgException();
 		} else {
 			this.sectores.add(sector);
 			sector.setOrganizacion(this);
-			
 		}
-
 	}
 
 
@@ -86,20 +82,20 @@ public class Organizacion {
 	}
 
 	//lee una por una las postulaciones y elige si aceptarla o no
-	public void aceptarPostulacionConMiembro(Miembro miembro) {
-		for (Postulacion postulado : postulados) {
+	public void aceptarPostulacionConMiembro() {
+		for (Postulacion postulado : this.postulados) {
 			this.agregarMiembroSector(postulado.getSector(),postulado.getMiembro());
 		}
 	}
 
 	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException, MiembroYaPerteneceOrgException {
-		if(miembrosOrg().contains(miembro)) {
+		if(miembrosOrg().contains(miembro)) {//Si el miembro ya esta en la org
 			throw new MiembroYaPerteneceOrgException();
 		}
-		else if(!sectores.contains(sector)) {
+		else if(!sectores.contains(sector)) {//Si el sector no esta en la org
 			throw new SectorNoPerteneceOrgException();
 		}
-		else{
+		else{//Si el miembro no esta en la org y el sector está en la misma
 			sector.agregarMiembro(miembro);
 		}
 	}
