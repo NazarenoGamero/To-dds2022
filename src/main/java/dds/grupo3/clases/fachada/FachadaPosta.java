@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import dds.grupo3.clases.exception.ParametrosIngresadosInvalidosException;
 import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.organizacion.BuilderOrg;
@@ -59,9 +60,8 @@ public class FachadaPosta implements FachadaOrg {
 			Map<String, Float> parametros = readerP.leerParametros(pathParametros);
 			cargarParametros(parametros);
 		}catch(IOException ioe){
-			System.out.printf("Error, los parametros ingresados no son validos");
+			throw new ParametrosIngresadosInvalidosException();
 		}
-		 //TODO:Atender esta excepcion
 		creadorOrg.Inicializar();
 	}
 	
