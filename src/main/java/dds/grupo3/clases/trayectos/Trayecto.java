@@ -3,6 +3,7 @@ package dds.grupo3.clases.trayectos;
 import dds.grupo3.clases.miembro.Miembro;
 
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 public class Trayecto {
     private List<Tramo> unosTramos;
@@ -17,8 +18,8 @@ public class Trayecto {
     public void setUnosMiembros(List<Miembro> unosMiembros) {
         this.unosMiembros = unosMiembros;
     }
-    public float distantiaTotal(unosTramos){
-        return unosTramos.stream().mapToDouble(unTramo -> unTramo.distancia(unTramo.transporte()).sum());
+    public float distantiaTotal(List <Tramo> unosTramos){
+        return (float)unosTramos.stream().mapToDouble(unTramo -> unTramo.distanciaTramo(unTramo.getUnTransporte())).sum();
     }
 
 
