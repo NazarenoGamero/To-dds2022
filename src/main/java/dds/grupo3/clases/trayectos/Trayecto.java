@@ -1,5 +1,9 @@
 package dds.grupo3.clases.trayectos;
 
+import dds.grupo3.clases.miembro.Miembro;
+
+import java.util.List;
+
 public class Trayecto {
     private List<Tramo> unosTramos;
     private List<Miembro> unosMiembros;
