@@ -3,12 +3,15 @@ package dds.grupo3.clases.organizacion;
 import java.util.ArrayList;
 import java.util.List;
 
+import dds.grupo3.clases.exception.NoSeEncontroClasifException;
+import dds.grupo3.clases.exception.NoSeEncontroTipoException;
+
 public class BuilderOrg {
 	List<TipoOrg> tiposOrg;
 	List<Clasificacion> clasificaciones;
 	
 	public Organizacion crearOrg() {
-		return new Organizacion();
+		return new Organizacion();//TODO especificar como y que se arma de una organizacion
 	}
 	
 	
@@ -47,5 +50,23 @@ public class BuilderOrg {
 
 	public void setClasificaciones(List<Clasificacion> clasificaciones) {
 		this.clasificaciones = clasificaciones;
+	}
+	
+	public TipoOrg buscarTipo(String tipo) throws NoSeEncontroTipoException{
+		for(TipoOrg unTipo : this.getTiposOrg()) {
+			if(unTipo.getTipo().equals(tipo)) {
+				return unTipo;
+			}
+		}
+		throw new NoSeEncontroTipoException();
+	}
+	
+	public Clasificacion buscarClasificacion(String clasif) throws NoSeEncontroClasifException{
+		for(Clasificacion unaClasi : this.getClasificaciones()) {
+			if(unaClasi.getNombre().equals(clasif)) {
+				return unaClasi;
+			}
+		}
+		throw new NoSeEncontroClasifException();
 	}
 }

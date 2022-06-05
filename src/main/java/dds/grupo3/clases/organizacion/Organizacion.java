@@ -18,10 +18,10 @@ public class Organizacion {
 	private List<Postulacion> postulados;
 	private List<Sector> sectores;
 
-	public void setMediciones(List<Medible> mediciones) {
-		this.mediciones = mediciones;
-	}
-
+	/*------------------------------------------------
+	 * Constructores
+	 * ----------------------------------------------
+	 */
 	public Organizacion() {
 		this.razonSocial = "AFIP";
 		this.tipo = new TipoOrg("Gubernamental");
@@ -29,22 +29,30 @@ public class Organizacion {
 		this.agregarSector(new Sector("RRHH"));
 		this.clasificacion = new Clasificacion("Ministerio");
 		this.postulados = new ArrayList<Postulacion>();
-		//this.miembrosVinculados= new ArrayList<>();
 		this.mediciones =  new ArrayList<Medible>();
 	}
 
+	public Organizacion(String razonSocial) {
+		this.razonSocial = razonSocial;
+		this.sectores = new ArrayList<Sector>();
+		this.postulados = new ArrayList<Postulacion>();
+		this.mediciones =  new ArrayList<Medible>();
+	}
+	
 	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> unSector, Clasificacion clasificacion) {
 		this.razonSocial = razonSocial;
 		this.tipo = tipo;
 		this.sectores = new ArrayList<Sector>();
 		this.clasificacion = clasificacion;
 		this.postulados = new ArrayList<Postulacion>();
-		//this.miembrosVinculados= new ArrayList<>();
 		this.mediciones =  new ArrayList<Medible>();
 	}
 
 
-
+	/*------------------------------------------------
+	 * Calculo de huella
+	 * ----------------------------------------------
+	 */
 
 	public float calcularHuellaDeCarbonoST()  {
 		float total = 0;
@@ -53,17 +61,16 @@ public class Organizacion {
 		}
 		return total;
     }
-	
+	// añade un postulado a la lista
 	//TODO agregar calculo de medibles + trayectos (Composite porque dice naza)
 	//TODO agregar calculo para las periodicidades (Uno para Mensual y otro Anual)
 	// 		Duda, donde se filtraría esto, pensar...
+
+	/*------------------------------------------------
+	 * Agregar sector y postulacion de miembros
+	 * ----------------------------------------------
+	 */
 	
-	public float obtenerFactorPorMedicion(Medible unaMedicion){
-		return unaMedicion.factorCorrespondienteAvalorMedible() * unaMedicion.getValor();
-	}
-	// añade un postulado a la lista
-
-
 	public void agregarSector(Sector sector) throws YaPerteneceOrgException {
 		if (sector.getOrganizacion() != null) {
 			throw new YaPerteneceOrgException();
@@ -72,7 +79,6 @@ public class Organizacion {
 			sector.setOrganizacion(this);
 		}
 	}
-
 
 	// Postulaciones y agregar miembros
 
@@ -148,5 +154,9 @@ public class Organizacion {
 
 	public void setSectores(List<Sector> sectores) {
 		this.sectores = sectores;
+	}
+	
+	public void setMediciones(List<Medible> mediciones) {
+		this.mediciones = mediciones;
 	}
 }
