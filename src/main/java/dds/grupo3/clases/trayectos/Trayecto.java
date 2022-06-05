@@ -21,6 +21,4 @@ public class Trayecto {
     public float distantiaTotal(List <Tramo> unosTramos){
         return (float)unosTramos.stream().mapToDouble(unTramo -> unTramo.distanciaTramo(unTramo.getUnTransporte())).sum();
     }
-
-
 }
