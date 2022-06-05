@@ -2,13 +2,16 @@ package dds.grupo3.clases.miembro;
 
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.organizacion.Sector;
+import dds.grupo3.clases.trayectos.Trayecto;
+
+import java.util.List;
 
 public class Miembro {
 	private String nombre;
 	private String apellido;
 	private TipoDocEnum tipoDoc;
 	private int nroDoc;
-
+	private List<Trayecto> trayecto;
 	// Constructor
 	public Miembro(String nombre, String apellido, TipoDocEnum tipoDoc, int nroDoc) {
 		super();
@@ -18,6 +21,12 @@ public class Miembro {
 		this.nroDoc = nroDoc;
 	}
 
+	public void setUnTrayecto(List<Trayecto> unTrayecto) {
+		this.trayecto = unTrayecto;
+	}
+	public void agregarUnTrayecto (Trayecto unTrayecto){
+		trayecto.add(unTrayecto);
+	}
 	public String getNombre() {
 		return nombre;
 	}
