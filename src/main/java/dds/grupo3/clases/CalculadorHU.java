@@ -12,7 +12,7 @@ import net.sourceforge.argparse4j.inf.Namespace;
 
 public class CalculadorHU {
 
-	public static Float main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
 		ArgumentParser parser = ArgumentParsers.newFor("Checksum").build().defaultHelp(true)
 				.description("Calculate checksum of given files.");
@@ -49,7 +49,6 @@ public class CalculadorHU {
 		 */
 		System.out.println("El total de la huella de carbono es: ");
 		System.out.println(total);
-		return total;
 
 	}
 }

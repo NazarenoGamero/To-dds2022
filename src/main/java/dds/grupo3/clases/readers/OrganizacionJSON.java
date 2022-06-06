@@ -1,12 +1,14 @@
 package dds.grupo3.clases.readers;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import dds.grupo3.clases.exception.NoSeEncontroClasifException;
 import dds.grupo3.clases.exception.NoSeEncontroTipoException;
@@ -18,17 +20,18 @@ import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.organizacion.Sector;
 
 public class OrganizacionJSON {
-	private Object obj;
 
 	public OrganizacionJSON() {
 		super();
 	}
 	
-	public Organizacion leerJSON(String path, BuilderOrg builder) throws NoSePudoCrearOrgException, FileNotFoundException, NoSeEncontroTipoException, NoSeEncontroClasifException {
+	public Organizacion leerJSON(String path, BuilderOrg builder) throws NoSePudoCrearOrgException, NoSeEncontroTipoException, NoSeEncontroClasifException, IOException, ParseException {
 		
+		 JSONParser jsonParser = new JSONParser();
 		//Preparo el parser para leer el JSON
 		//Como el JSONObject tiene ciertos errores que puede dar, les hacemos catch
-            obj = new FileReader(path);
+		 FileReader reader = new FileReader(path);
+            Object obj = jsonParser.parse(reader);
             JSONObject jsonObject =  (JSONObject) obj;
             //Comienzo a leer la organizacion
             String razonSocial = (String) jsonObject.get("razonSocial");
@@ -78,7 +81,7 @@ public class OrganizacionJSON {
 					(String)unMiembroJSON.get("apellido"),
 					TipoDocEnum.valueOf((String) unMiembroJSON.get("tipoDoc")),
 					//this.elegirTipoDoc(unMiembroJSON.get("tipoDoc")),
-					(int)unMiembroJSON.get("nroDoc"));
+					(Long)unMiembroJSON.get("nroDoc"));
 			
 			listaMiembros.add(nuevoMiembro);
 		}

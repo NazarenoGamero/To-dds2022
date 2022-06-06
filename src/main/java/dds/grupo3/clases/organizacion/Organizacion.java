@@ -106,7 +106,7 @@ public class Organizacion {
 		}
 		else{//Si el miembro no esta en la org y el sector está en la misma
 			sector.agregarMiembro(miembro);
-			miembro.nuevoEmpleo(this,sector);
+			//miembro.nuevoEmpleo(this,sector); TODO descomentar
 		}
 	}
 
