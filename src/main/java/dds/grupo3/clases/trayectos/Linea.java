@@ -10,4 +10,20 @@ public class Linea {
         this.nombreLinea = nombreLinea;
         this.paradas = paradas;
     }
+
+	public String getNombreLinea() {
+		return nombreLinea;
+	}
+
+	public void setNombreLinea(String nombreLinea) {
+		this.nombreLinea = nombreLinea;
+	}
+
+	public Set<Parada> getParadas() {
+		return paradas;
+	}
+
+	public void setParadas(Set<Parada> paradas) {
+		this.paradas = paradas;
+	}
 }

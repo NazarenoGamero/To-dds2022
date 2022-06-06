@@ -97,7 +97,7 @@ public class Organizacion {
 		}
 	}
 
-	public void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException, MiembroYaPerteneceOrgException {
+	private void agregarMiembroSector(Sector sector,Miembro miembro) throws SectorNoPerteneceOrgException, MiembroYaPerteneceOrgException {
 		if(miembrosOrg().contains(miembro)) {//Si el miembro ya esta en la org
 			throw new MiembroYaPerteneceOrgException();
 		}

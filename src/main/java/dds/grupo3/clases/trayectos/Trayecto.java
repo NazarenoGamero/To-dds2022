@@ -15,14 +15,15 @@ public class Trayecto {
         this.unosMiembros = unosMiembros;
     }
 
-    public void setUnosMiembros() {
+    public void setUnosMiembros(List<Miembro> unosMiembros) {
         this.unosMiembros = unosMiembros;
     }
+    
     public float distantiaTotal(){
         return (float)unosTramos.stream().mapToDouble(unTramo -> unTramo.distanciaTramo(unTramo.getUnTransporte())).sum();
     }
 
-    public int calcularHU(){
+    public float calcularHU(){
         return 0;
     }
 }

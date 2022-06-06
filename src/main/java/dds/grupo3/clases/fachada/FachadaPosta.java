@@ -32,7 +32,7 @@ public class FachadaPosta implements FachadaOrg {
 	 * 2)Esto es una solucion provisoria ya que no se recibe informacion de la organizacion a medir
 	 */
 	@Override
-	public float obtenerHU(Collection<Medible> mediciones) {
+	public Float obtenerHU(Collection<Medible> mediciones) {
 		Organizacion nuevaOrg = creadorOrg.crearOrg();
 		nuevaOrg.setMediciones((List<Medible>) mediciones);
 		return nuevaOrg.calcularHuellaDeCarbonoST();
@@ -61,6 +61,7 @@ public class FachadaPosta implements FachadaOrg {
 		}catch(IOException ioe){
 			throw new ParametrosIngresadosInvalidosException();
 		}
+		System.out.println("Pase por aca");
 		creadorOrg.Inicializar();
 	}
 	

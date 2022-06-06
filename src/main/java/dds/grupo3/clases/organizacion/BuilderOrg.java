@@ -7,8 +7,8 @@ import dds.grupo3.clases.exception.NoSeEncontroClasifException;
 import dds.grupo3.clases.exception.NoSeEncontroTipoException;
 
 public class BuilderOrg {
-	List<TipoOrg> tiposOrg;
-	List<Clasificacion> clasificaciones;
+	private List<TipoOrg> tiposOrg;
+	private List<Clasificacion> clasificaciones;
 	
 	public Organizacion crearOrg() {
 		return new Organizacion();//TODO especificar como y que se arma de una organizacion

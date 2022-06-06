@@ -40,7 +40,7 @@ public class Miembro {
 	}
 	public void agregarUnTrayecto (Trayecto unTrayecto){ trayectos.add(unTrayecto); }
 
-	public int calcularHU(){
+	public float calcularHU(){
 		return trayectos.stream().mapToInt(t -> t.calcularHU()).sum();
 	}
 /*

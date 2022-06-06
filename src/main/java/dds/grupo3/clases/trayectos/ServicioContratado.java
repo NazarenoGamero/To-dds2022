@@ -1,8 +1,6 @@
 package dds.grupo3.clases.trayectos;
 
-import dds.grupo3.clases.miembro.Miembro;
-
-public class ServicioContratado {
+public class ServicioContratado implements Transporte{
     private String tipoVehiculo;
     private String direccionInicio;
     private String direccionLlegada;

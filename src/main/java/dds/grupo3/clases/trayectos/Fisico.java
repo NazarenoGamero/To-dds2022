@@ -1,8 +1,6 @@
 package dds.grupo3.clases.trayectos;
 
-import dds.grupo3.clases.miembro.Miembro;
-
-public class Fisico {
+public class Fisico implements Transporte{
     private String tipoVehiculo;
     private String direccionInicio;
     private String direccionLlegada;
@@ -13,7 +11,7 @@ public class Fisico {
         this.direccionLlegada  = direccionLlegada;
     }
 
-    public float disntacia(float latitud1, float longitud1, float latitud2, float longitud2){
+    public float distancia(float latitud1, float longitud1, float latitud2, float longitud2){
         return (float) 1;
     }
 

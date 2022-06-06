@@ -1,10 +1,6 @@
 package dds.grupo3.clases.trayectos;
 
-import dds.grupo3.clases.miembro.Miembro;
-
-import java.util.List;
-
-public class VehiculoParticular {
+public class VehiculoParticular implements Transporte{
     private String tipoVehiculo;
     private String tipoCombustible;
     private String direccionInicio;
