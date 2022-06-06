@@ -61,6 +61,9 @@ public class Organizacion {
 		}
 		return total;
     }
+	public float calcularHuellaDeCarbonoT(){
+		return miembrosOrg().stream().mapToInt(m -> m.calcularHU()).sum();
+	}
 	// añade un postulado a la lista
 	//TODO agregar calculo de medibles + trayectos (Composite porque dice naza)
 	//TODO agregar calculo para las periodicidades (Uno para Mensual y otro Anual)
@@ -88,7 +91,7 @@ public class Organizacion {
 	}
 
 	//lee una por una las postulaciones y elige si aceptarla o no
-	public void aceptarPostulacionConMiembro() {
+	public void aceptarPostulacion() {
 		for (Postulacion postulado : this.postulados) {
 			this.agregarMiembroSector(postulado.getSector(),postulado.getMiembro());
 		}

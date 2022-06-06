@@ -49,7 +49,7 @@ public class OrganizacionTest {
 	public void unMiembroSePostula() {
 		organizacion1.agregarSector(sector1);
 		miembro.postularme(organizacion1, sector1);
-		organizacion1.aceptarPostulacionConMiembro();
+		organizacion1.aceptarPostulacion();
 		assertTrue(organizacion1.miembrosOrg().contains(miembro));
 	}
 }

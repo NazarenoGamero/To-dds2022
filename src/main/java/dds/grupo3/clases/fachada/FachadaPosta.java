@@ -32,11 +32,10 @@ public class FachadaPosta implements FachadaOrg {
 	 * 2)Esto es una solucion provisoria ya que no se recibe informacion de la organizacion a medir
 	 */
 	@Override
-	public Float obtenerHU(Collection<Medible> mediciones) {
+	public float obtenerHU(Collection<Medible> mediciones) {
 		Organizacion nuevaOrg = creadorOrg.crearOrg();
 		nuevaOrg.setMediciones((List<Medible>) mediciones);
-		Float datos = nuevaOrg.calcularHuellaDeCarbonoST();
-		return datos; 
+		return nuevaOrg.calcularHuellaDeCarbonoST();
 	}
 	//La idea seria que de una lista de floats, arme un informe de los meses de emision
 	// Map<Int, Int> // Map<Anio, TotalAnio> o Map<Mes, TotalMes>

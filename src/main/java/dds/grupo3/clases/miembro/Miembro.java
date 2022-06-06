@@ -42,6 +42,14 @@ public class Miembro {
 		return null;
 	}
 
+	public void postularme(Organizacion organizacion, Sector sector){
+		organizacion.nuevoPostulado(this, sector);
+	}
+
+	public void nuevoEmpleo(Organizacion organizacion, Sector sector) {
+		empleos.add(new Empleo(organizacion,sector));
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -74,11 +82,5 @@ public class Miembro {
 		this.nroDoc = nroDoc;
 	}
 
-	public void postularme(Organizacion organizacion, Sector sector){
-	organizacion.nuevoPostulado(this, sector);
-	}
 
-	public void nuevoEmpleo(Organizacion organizacion, Sector sector) {
-		empleos.add(new Empleo(organizacion,sector));
-	}
 }
