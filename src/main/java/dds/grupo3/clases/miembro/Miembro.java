@@ -41,7 +41,7 @@ public class Miembro {
 	public void agregarUnTrayecto (Trayecto unTrayecto){ trayectos.add(unTrayecto); }
 
 	public float calcularHU(){
-		return trayectos.stream().mapToInt(t -> t.calcularHU()).sum();
+		return (float) trayectos.stream().mapToDouble(t -> t.calcularHU()).sum();
 	}
 /*
 	public List<int> calcularHUPorcentual(){

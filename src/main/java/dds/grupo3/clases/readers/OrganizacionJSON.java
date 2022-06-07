@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dds.grupo3.clases.miembro.Impresiones;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -60,6 +61,8 @@ public class OrganizacionJSON {
 			String nombre = (String) sectorJSONObject.get("nombre");
 			Sector nuevoSector = new Sector(nombre);
 			nuevoSector.setOrganizacion(unaOrg);
+			JSONArray impresiones = (JSONArray) sectorJSONObject.get("historialImpresiones");
+			nuevoSector.setHistorialImpresiones(this.leerImpresiones(impresiones));
 			
 			//Itero entre los distintos miembros del sector y los agrego al mismo
 			JSONArray miembros = (JSONArray) sectorJSONObject.get("miembros");
@@ -88,6 +91,19 @@ public class OrganizacionJSON {
 		
 		
 		return listaMiembros;
+	}
+
+	private List<Impresiones> leerImpresiones(JSONArray impresiones){
+		List<Impresiones> listaImpresiones = new ArrayList<Impresiones>();
+		for(Object unasImpresiones : impresiones) {
+			JSONObject impresionesJSON = (JSONObject) unasImpresiones;
+			Impresiones conjuntoImpresiones = new Impresiones(
+					(int)impresionesJSON.get("cantidad"),
+					(Long) impresionesJSON.get("fechaImputacion"),
+					(int)impresionesJSON.get("valorDeConversion"));
+			listaImpresiones.add(conjuntoImpresiones);
+		}
+		return listaImpresiones;
 	}
 }	
 	
