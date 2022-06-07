@@ -63,7 +63,7 @@ public class OrganizacionJSON {
 			nuevoSector.setOrganizacion(unaOrg);
 			JSONArray impresiones = (JSONArray) sectorJSONObject.get("historialImpresiones");
 			nuevoSector.setHistorialImpresiones(this.leerImpresiones(impresiones));
-			
+
 			//Itero entre los distintos miembros del sector y los agrego al mismo
 			JSONArray miembros = (JSONArray) sectorJSONObject.get("miembros");
             nuevoSector.setMiembros(this.leerMiembros(miembros));
