@@ -5,16 +5,14 @@ import dds.grupo3.clases.miembro.Miembro;
 import java.util.List;
 import java.util.stream.DoubleStream;
 
-public class Trayecto {
-    private List<Tramo> unosTramos;
-    private List<Miembro> unosMiembros;
+public class Trayecto implements Recorrido {
+    private List<Recorrido> recorrido;
 
 
-    public Trayecto(List<Tramo> unosTramos, List<Miembro> unosMiembros) {
-        this.unosTramos = unosTramos;
-        this.unosMiembros = unosMiembros;
+    public Trayecto(List<Recorrido> recorridos) {
+        this.recorrido = recorridos;
     }
-
+/*
     public void setUnosMiembros(List<Miembro> unosMiembros) {
         this.unosMiembros = unosMiembros;
     }
@@ -26,4 +24,10 @@ public class Trayecto {
     public float calcularHU(){
         return 0;
     }
+*/
+    @Override
+    public float distancia() {
+        return (float)recorrido.stream().mapToDouble(unRecorrido -> unRecorrido.distancia()).sum();
+    }
+
 }

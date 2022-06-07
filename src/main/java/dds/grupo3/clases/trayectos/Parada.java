@@ -7,12 +7,18 @@ public class Parada {
     private Parada anteriorParada;
 
 
-    public Parada(String nombreParada, Punto puntoParada, Parada proximaParada, Parada anteriorParada) {
+    public Parada(String nombreParada, Punto puntoParada, Parada anteriorParada) {
         this.nombreParada = nombreParada;
         this.puntoParada = puntoParada;
-        this.proximaParada = proximaParada;
         this.anteriorParada = anteriorParada;
     }
+
+    public Parada(String nombreParada, Punto puntoParada) {
+        this.nombreParada = nombreParada;
+        this.puntoParada = puntoParada;
+
+    }
+
 
     public String getNombreParada() {
         return nombreParada;
