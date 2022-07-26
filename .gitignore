@@ -218,3 +218,7 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+ejercicio.iml
+.idea/checkstyle-idea.xml
+.idea/encodings.xml
