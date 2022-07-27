@@ -62,7 +62,7 @@ public class Organizacion {
 		return total;
     }
 	public float calcularHuellaDeCarbonoT(){
-		return miembrosOrg().stream().mapToInt(m -> m.calcularHU()).sum();
+		return miembrosOrg().stream().mapToInt(m -> (int) m.calcularHU()).sum(); //quitar casteo
 	}
 	// añade un postulado a la lista
 	//TODO agregar calculo de medibles + trayectos (Composite porque dice naza)
