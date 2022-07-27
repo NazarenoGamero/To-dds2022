@@ -36,7 +36,7 @@ public interface GeoddsService {
                             @Query("alturaOrigen") String alturaOrigen,
                             @Query("localidadDestinoId") int localidadDestinoId,
                             @Query("calleDestino") String calleDestino,
-                            @Query("alturaDestino") int alturaDestino);
+                            @Query("alturaDestino") String alturaDestino);
 
   //TODO: no creo que haga falta agregar POST("user")
 }

@@ -1,11 +1,15 @@
-import dds.grupo3.clases.services.geodds.entities.Pais;
-import dds.grupo3.clases.services.geodds.entities.Provincia;
+import dds.grupo3.clases.services.geodds.entities.*;
 import dds.grupo3.clases.services.geodds.ServicioGeodds;
+import org.apache.commons.lang3.ClassUtils;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.function.BooleanSupplier;
+import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertThat;
 
 public class GeoddsTest {
 
@@ -21,6 +25,31 @@ public class GeoddsTest {
     ServicioGeodds servicioGeodds = ServicioGeodds.instancia();
     List<Provincia> provincias = servicioGeodds.listadoDeProvincias(1, 9);
     Assertions.assertEquals("BUENOS AIRES", provincias.get(0).nombre);
+  }
+
+  @Test
+  public void devuelveMunicipioDeUnaProvicia() throws IOException {
+    ServicioGeodds servicioGeodds = ServicioGeodds.instancia();
+    List<Municipio> municipios = servicioGeodds.listadoDeMunicipio(2, 168);
+    Assertions.assertFalse(municipios.stream().filter(m -> m.nombre.contentEquals("HURLINGHAM"))
+        .collect(Collectors.toList()).isEmpty());
+  }
+
+  @Test
+  public void devuelveLocalidadDeUnMunicipio() throws IOException {
+    ServicioGeodds servicioGeodds = ServicioGeodds.instancia();
+    List<Localidad> localidades = servicioGeodds.listadoDeLocalidades(1, 369); //Florencio Varela
+    Assertions.assertFalse(localidades.stream().filter(m -> m.nombre.contentEquals("ESTANISLAO SEVERO ZEBALLOS"))
+        .collect(Collectors.toList()).isEmpty());
+  }
+
+  @Test
+  public void calcularDistancia() throws IOException {
+    ServicioGeodds servicioGeodds = ServicioGeodds.instancia();
+    Distancia distancia = servicioGeodds.distancia(1,"maipu","100"
+        ,457,"O'Higgins","200");
+    Assertions.assertNotNull(distancia.unidad);  //la distancia que calcula la api cambia cada vez que es calculada con los mismos parametros
+    Assertions.assertEquals(distancia.unidad, "KM");
   }
 
 }

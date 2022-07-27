@@ -18,7 +18,7 @@ import dds.grupo3.clases.exception.YaPerteneceOrgException;
 import dds.grupo3.clases.miembro.Miembro;
 import dds.grupo3.clases.miembro.TipoDocEnum;
 import dds.grupo3.clases.organizacion.Organizacion;
-/*
+
 public class OrganizacionTest {
 	List<Sector> sectores = new ArrayList<>();
 	Organizacion organizacion1 = new Organizacion("LaUni", new TipoOrg("INSTITUCION"), sectores,
@@ -53,4 +53,3 @@ public class OrganizacionTest {
 		assertTrue(organizacion1.miembrosOrg().contains(miembro));
 	}
 }
-*/
