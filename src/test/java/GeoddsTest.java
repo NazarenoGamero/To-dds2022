@@ -1,6 +1,6 @@
 import dds.grupo3.clases.services.geodds.entities.Pais;
 import dds.grupo3.clases.services.geodds.entities.Provincia;
-import dds.grupo3.clases.services.geodds.entities.ServicioGeodds;
+import dds.grupo3.clases.services.geodds.ServicioGeodds;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -19,7 +19,7 @@ public class GeoddsTest {
   @Test
   public void devuelveProvincias() throws IOException {
     ServicioGeodds servicioGeodds = ServicioGeodds.instancia();
-    List<Provincia> provincias = servicioGeodds.listadoDeDeProvincias(1, 9);
+    List<Provincia> provincias = servicioGeodds.listadoDeProvincias(1, 9);
     Assertions.assertEquals("BUENOS AIRES", provincias.get(0).nombre);
   }
 
