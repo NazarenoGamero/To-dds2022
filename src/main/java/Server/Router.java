@@ -3,6 +3,8 @@ package Server;
 import Server.Controllers.AgenteSocialController;
 import Server.Controllers.OrganizacionController;
 import com.google.gson.Gson;
+import dds.grupo3.clases.organizacion.Organizacion;
+import dds.grupo3.clases.repositorios.RepoOrganizaciones;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.BooleanHelper;
@@ -27,21 +29,25 @@ public class Router {
 
     public static void configure() {
         Gson gson = new Gson();
+        RepoOrganizaciones repoOrganizaciones= new RepoOrganizaciones(); //Esto deberia estar dentro del constructor de OrganizacionController
+        OrganizacionController organizacionController= new OrganizacionController(repoOrganizaciones);
 
         Spark.path("/api", () -> {
             //CRUD de Organizaciones
             Spark.path("/organizations", () -> {
-                Spark.get("/",       OrganizacionController::list,gson::toJson);
-                Spark.post("/",       OrganizacionController::add,gson::toJson);
-                Spark.put("/",     OrganizacionController::change,gson::toJson);
-                Spark.delete("/",  OrganizacionController::delete);
+                Spark.get("/",       organizacionController::list,gson::toJson);
+                Spark.post("/",       organizacionController::add,gson::toJson);
+                Spark.put("/",     organizacionController::change,gson::toJson);
+                Spark.delete("/",  organizacionController::delete);
             });
             //CRUD Agente Social
             Spark.path("/social-agents", () -> {
+                /*
                 Spark.get("/",       AgenteSocialController::get,gson::toJson);
                 Spark.post("/",       AgenteSocialController::add,gson::toJson);
                 Spark.put("/",     AgenteSocialController::change,gson::toJson);
-                Spark.delete("/",  AgenteSocialController::delete);
+                Spark.delete("/",  AgenteSocialController::delete)
+                 */
             });
         });
     }

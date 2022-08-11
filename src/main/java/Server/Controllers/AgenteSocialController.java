@@ -5,6 +5,7 @@ import spark.Response;
 
 public class AgenteSocialController {
 
+  /*
   public static Object add(Request request, Response response) {
   }
 
@@ -16,4 +17,6 @@ public class AgenteSocialController {
 
   public static Object change(Request request, Response response) {
   }
+ */
+
 }
