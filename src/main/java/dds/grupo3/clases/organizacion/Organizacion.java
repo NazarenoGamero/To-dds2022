@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Organizacion {
+	private Long id;
 	private String razonSocial;
 	private TipoOrg tipo;
 	private Clasificacion clasificacion;
@@ -122,6 +123,10 @@ public class Organizacion {
 	public String getRazonSocial() {
 		return razonSocial;
 	}
+
+	public Long getId() {return id;}
+
+	public void setId(Long id) {this.id = id;}
 
 	public void setRazonSocial(String razonSocial) {
 		this.razonSocial = razonSocial;

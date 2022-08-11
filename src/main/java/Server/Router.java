@@ -35,10 +35,11 @@ public class Router {
         Spark.path("/api", () -> {
             //CRUD de Organizaciones
             Spark.path("/organizations", () -> {
-                Spark.get("/",       organizacionController::list,gson::toJson);
-                Spark.post("/",       organizacionController::add,gson::toJson);
-                Spark.put("/",     organizacionController::change,gson::toJson);
-                Spark.delete("/",  organizacionController::delete);
+                Spark.get("",       organizacionController::list,gson::toJson);
+                Spark.get("/:id",       organizacionController::get,gson::toJson);
+                Spark.post("",       organizacionController::add,gson::toJson);
+               // Spark.put("/",     organizacionController::change,gson::toJson);   //TODO
+                Spark.delete("/:id",  organizacionController::delete);
             });
             //CRUD Agente Social
             Spark.path("/social-agents", () -> {
