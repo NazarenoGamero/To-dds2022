@@ -6,6 +6,6 @@
 ## Ejemplo de uso API Rest
 - GET http://localhost:9000/api/organizations
 - GET http://localhost:9000/api/organizations/:id
-- POST http://localhost:9000/api/organizations 
+- POST http://localhost:9000/api/organizations  
   requestBody: {"razonSocial":"organizacion_humo","mediciones":[],"postulados":[],"sectores":[]}
 - DELETE http://localhost:9000/api/organizations/:id
