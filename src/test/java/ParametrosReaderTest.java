@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import dds.grupo3.clases.readers.ParametrosReader;
-
+/*
 public class ParametrosReaderTest {
 	ParametrosReader reader;
 
@@ -21,3 +21,4 @@ public class ParametrosReaderTest {
 	}
 
 }
+*/

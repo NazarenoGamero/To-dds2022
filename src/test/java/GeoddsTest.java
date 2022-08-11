@@ -3,12 +3,10 @@ import dds.grupo3.clases.services.geodds.ServicioGeodds;
 import org.apache.commons.lang3.ClassUtils;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
-
 import static org.junit.Assert.assertThat;
 
 public class GeoddsTest {

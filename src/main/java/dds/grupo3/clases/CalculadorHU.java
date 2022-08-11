@@ -11,7 +11,7 @@ import net.sourceforge.argparse4j.inf.ArgumentParserException;
 import net.sourceforge.argparse4j.inf.Namespace;
 
 public class CalculadorHU {
-
+	/*
 	public static void main(String[] args) throws IOException {
 
 		ArgumentParser parser = ArgumentParsers.newFor("Checksum").build().defaultHelp(true)
@@ -38,17 +38,19 @@ public class CalculadorHU {
 		List<Medible> mediciones = fachada.leerMediciones(ns.get("mediciones"));
 		Float total = fachada.obtenerHU(mediciones);
 
-		/*
-		 * Mensaje seria un string largo del estilo
-		 * ----Organizacion : Edesur
-		 * -Mes de abril
-		 * 10
-		 * -Mes de Mayo
-		 * 15
-		 * 
-		 */
+
+		 //Mensaje seria un string largo del estilo
+		 //----Organizacion : Edesur
+		 //-Mes de abril
+		 //10
+		 //-Mes de Mayo
+		 //15
+
+
+
 		System.out.println("El total de la huella de carbono es: ");
 		System.out.println(total);
 
 	}
+*/
 }

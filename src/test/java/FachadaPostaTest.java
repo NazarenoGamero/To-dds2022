@@ -15,7 +15,7 @@ import dds.grupo3.clases.readers.ParametrosReader;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
-
+/*
 public class FachadaPostaTest {
 
 	FachadaPosta fachada;
@@ -70,3 +70,4 @@ public class FachadaPostaTest {
 		return medibles;
 	}
 }
+ */
