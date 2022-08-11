@@ -43,7 +43,7 @@ public class OrganizacionController {
   }
 
   public Organizacion get(Request request, Response response) {
-    Long id = Long.parseLong(request.queryParams("razon-social"));
+    Long id = Long.parseLong(request.params(":id"));
     return repo.encontrarPorId(id);
   }
 }
