@@ -32,6 +32,9 @@ public class Router {
     //Esto deberia estar dentro del constructor de OrganizacionController
     OrganizacionController organizacionController = new OrganizacionController(repoOrganizaciones);
 
+    Spark.get("/", (request, response) -> {
+      return "Hello";
+    });
     Spark.path("/api", () -> {
       //CRUD de Organizaciones
       Spark.path("/organizations", () -> {
