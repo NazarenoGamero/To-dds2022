@@ -5,8 +5,15 @@ import spark.debug.DebugScreen;
 
 public class Server {
     public static void main(String[] args){
-        Spark.port(9000);
+        Spark.port(getHerokuAssignedPort());
         Router.init();
         DebugScreen.enableDebugScreen();
+    }
+    private static int getHerokuAssignedPort() {
+        String herokuPort = System.getenv("PORT");
+        if (herokuPort != null) {
+            return Integer.parseInt(herokuPort);
+        }
+        return 7000;
     }
 }
