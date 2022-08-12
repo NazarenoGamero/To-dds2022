@@ -1,5 +1,5 @@
 package spark.utils;
-
+/*
 import com.github.jknack.handlebars.Helper;
 import com.github.jknack.handlebars.Options;
 import java.io.IOException;
@@ -18,3 +18,5 @@ public enum BooleanHelper implements Helper<Boolean> {
   }
 
 }
+
+ */

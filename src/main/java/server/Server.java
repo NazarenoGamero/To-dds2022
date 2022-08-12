@@ -1,13 +1,13 @@
 package server;
 
 import spark.Spark;
-import spark.debug.DebugScreen;
+//import spark.debug.DebugScreen;
 
 public class Server {
   public static void main(String[] args) {
     Spark.port(getHerokuAssignedPort());
     Router.init();
-    DebugScreen.enableDebugScreen();
+    //DebugScreen.enableDebugScreen();
   }
 
   private static int getHerokuAssignedPort() {
