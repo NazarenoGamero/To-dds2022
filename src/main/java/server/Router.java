@@ -1,9 +1,7 @@
-package Server;
+package server;
 
-import Server.Controllers.AgenteSocialController;
-import Server.Controllers.OrganizacionController;
+import server.Controllers.OrganizacionController;
 import com.google.gson.Gson;
-import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.repositorios.RepoOrganizaciones;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;

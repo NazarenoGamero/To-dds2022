@@ -1,7 +1,4 @@
-package Server.Controllers;
-
-import spark.Request;
-import spark.Response;
+package server.Controllers;
 
 public class AgenteSocialController {
 
