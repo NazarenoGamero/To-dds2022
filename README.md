@@ -7,8 +7,8 @@ mvn compile exec:java -Dexec.mainClass="dds.grupo3.clases.CalculadorHU" -Dexec.a
 
 ## Ejemplo de uso API Rest
 
-- GET http://localhost:9000/api/organizations
-- GET http://localhost:9000/api/organizations/:id
-- POST http://localhost:9000/api/organizations  
+- GET https://dds-ma-no-g03.herokuapp.com/api/organizations
+- GET https://dds-ma-no-g03.herokuapp.com/api/organizations/1
+- POST https://dds-ma-no-g03.herokuapp.com/api/organizations  
   requestBody: {"razonSocial":"organizacion_humo","mediciones":[],"postulados":[],"sectores":[]}
-- DELETE http://localhost:9000/api/organizations/:id
+- DELETE https://dds-ma-no-g03.herokuapp.com/api/organizations/2
