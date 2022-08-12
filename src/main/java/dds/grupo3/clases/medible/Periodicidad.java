@@ -1,5 +1,5 @@
 package dds.grupo3.clases.medible;
 
-public enum Periodicidad{
-	MENSUAL, ANUAL
+public enum Periodicidad {
+  MENSUAL, ANUAL
 }

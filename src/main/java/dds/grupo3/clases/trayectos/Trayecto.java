@@ -6,24 +6,25 @@ import java.util.List;
 import java.util.stream.DoubleStream;
 
 public class Trayecto {
-    private List<Tramo> unosTramos;
-    private List<Miembro> unosMiembros;
+  private List<Tramo> unosTramos;
+  private List<Miembro> unosMiembros;
 
 
-    public Trayecto(List<Tramo> unosTramos, List<Miembro> unosMiembros) {
-        this.unosTramos = unosTramos;
-        this.unosMiembros = unosMiembros;
-    }
+  public Trayecto(List<Tramo> unosTramos, List<Miembro> unosMiembros) {
+    this.unosTramos = unosTramos;
+    this.unosMiembros = unosMiembros;
+  }
 
-    public void setUnosMiembros(List<Miembro> unosMiembros) {
-        this.unosMiembros = unosMiembros;
-    }
-    
-    public float distantiaTotal(){
-        return (float)unosTramos.stream().mapToDouble(unTramo -> unTramo.distanciaTramo(unTramo.getUnTransporte())).sum();
-    }
+  public void setUnosMiembros(List<Miembro> unosMiembros) {
+    this.unosMiembros = unosMiembros;
+  }
 
-    public float calcularHU(){
-        return 0;
-    }
+  public float distantiaTotal() {
+    return (float) unosTramos.stream()
+        .mapToDouble(unTramo -> unTramo.distanciaTramo(unTramo.getUnTransporte())).sum();
+  }
+
+  public float calcularHU() {
+    return 0;
+  }
 }

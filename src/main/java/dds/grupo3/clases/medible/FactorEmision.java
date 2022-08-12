@@ -1,30 +1,30 @@
 package dds.grupo3.clases.medible;
 
 public class FactorEmision {
-	private String nombre;
-	private float valor;
-	
-	public FactorEmision(String nombre, float valor) {
-		super();
-		this.nombre = nombre;
-		this.valor = valor;
-	}
+  private String nombre;
+  private float valor;
 
-	public String getNombre() {
-		return nombre;
-	}
+  public FactorEmision(String nombre, float valor) {
+    super();
+    this.nombre = nombre;
+    this.valor = valor;
+  }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+  public String getNombre() {
+    return nombre;
+  }
 
-	public float getValor() {
-		return valor;
-	}
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-	public void setValor(float valor) {
-		this.valor = valor;
-	}
-	
-	
+  public float getValor() {
+    return valor;
+  }
+
+  public void setValor(float valor) {
+    this.valor = valor;
+  }
+
+
 }

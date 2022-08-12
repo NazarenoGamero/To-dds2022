@@ -6,5 +6,5 @@ import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.medible.Medible;
 
 public interface MedicionesReader {
-	public List<Medible> leerArchivoMediciones(String path, List<FactorEmision> factores);
+  public List<Medible> leerArchivoMediciones(String path, List<FactorEmision> factores);
 }

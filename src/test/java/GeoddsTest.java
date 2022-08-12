@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
+
 import static org.junit.Assert.assertThat;
 
 public class GeoddsTest {
@@ -37,16 +38,18 @@ public class GeoddsTest {
   public void devuelveLocalidadDeUnMunicipio() throws IOException {
     ServicioGeodds servicioGeodds = ServicioGeodds.instancia();
     List<Localidad> localidades = servicioGeodds.listadoDeLocalidades(1, 369); //Florencio Varela
-    Assertions.assertFalse(localidades.stream().filter(m -> m.nombre.contentEquals("ESTANISLAO SEVERO ZEBALLOS"))
-        .collect(Collectors.toList()).isEmpty());
+    Assertions.assertFalse(
+        localidades.stream().filter(m -> m.nombre.contentEquals("ESTANISLAO SEVERO ZEBALLOS"))
+            .collect(Collectors.toList()).isEmpty());
   }
 
   @Test
   public void calcularDistancia() throws IOException {
     ServicioGeodds servicioGeodds = ServicioGeodds.instancia();
-    Distancia distancia = servicioGeodds.distancia(1,"maipu","100"
-        ,457,"O'Higgins","200");
-    Assertions.assertNotNull(distancia.unidad);  //la distancia que calcula la api cambia cada vez que es calculada con los mismos parametros
+    Distancia distancia = servicioGeodds.distancia(1, "maipu", "100"
+        , 457, "O'Higgins", "200");
+    Assertions.assertNotNull(
+        distancia.unidad);  //la distancia que calcula la api cambia cada vez que es calculada con los mismos parametros
     Assertions.assertEquals(distancia.unidad, "KM");
   }
 

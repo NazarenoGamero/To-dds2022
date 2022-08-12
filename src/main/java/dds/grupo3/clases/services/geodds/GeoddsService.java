@@ -22,13 +22,15 @@ public interface GeoddsService {
   Call<List<Municipio>> municipios(@Query("offset") int offset);
 
   @GET("municipios")
-  Call<List<Municipio>> municipios(@Query("offset") int offset, @Query("provinciaId") int provinciaId);
+  Call<List<Municipio>> municipios(@Query("offset") int offset,
+                                   @Query("provinciaId") int provinciaId);
 
   @GET("localidades")
   Call<List<Localidad>> localidades(@Query("offset") int offset);
 
   @GET("localidades")
-  Call<List<Localidad>> localidades(@Query("offset") int offset, @Query("municipioId") int provinciaId);
+  Call<List<Localidad>> localidades(@Query("offset") int offset,
+                                    @Query("municipioId") int provinciaId);
 
   @GET("distancia")
   Call<Distancia> distancia(@Query("localidadOrigenId") int localidadOrigenId,

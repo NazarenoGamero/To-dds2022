@@ -6,42 +6,42 @@ import java.util.List;
 import dds.grupo3.clases.miembro.Miembro;
 
 public class Sector {
-	public Organizacion organizacion;
-	private String nombre;
-	private List<Miembro> miembros;
-	
-	public Organizacion getOrganizacion() {
-		return organizacion;
-	}
+  public Organizacion organizacion;
+  private String nombre;
+  private List<Miembro> miembros;
 
-	public void setOrganizacion(Organizacion organizacion) {
-		this.organizacion = organizacion;
-	}
+  public Organizacion getOrganizacion() {
+    return organizacion;
+  }
 
-	public Sector(String nombre) {
-		super();
-		this.nombre = nombre;
-		this.organizacion = null;
-		this.miembros = new ArrayList<Miembro>();
-	}
+  public void setOrganizacion(Organizacion organizacion) {
+    this.organizacion = organizacion;
+  }
 
-	public void agregarMiembro(Miembro miembro) {
-		miembros.add(miembro);
-	}
+  public Sector(String nombre) {
+    super();
+    this.nombre = nombre;
+    this.organizacion = null;
+    this.miembros = new ArrayList<Miembro>();
+  }
 
-	public String getNombre() {
-		return nombre;
-	}
+  public void agregarMiembro(Miembro miembro) {
+    miembros.add(miembro);
+  }
 
-	public List<Miembro> getMiembros() {
-		return miembros;
-	}
+  public String getNombre() {
+    return nombre;
+  }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+  public List<Miembro> getMiembros() {
+    return miembros;
+  }
 
-	public void setMiembros(List<Miembro> miembros) {
-		this.miembros = miembros;
-	}
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public void setMiembros(List<Miembro> miembros) {
+    this.miembros = miembros;
+  }
 }

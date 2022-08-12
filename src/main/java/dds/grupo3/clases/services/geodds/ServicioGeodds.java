@@ -1,4 +1,5 @@
 package dds.grupo3.clases.services.geodds;
+
 import com.sun.org.apache.xalan.internal.xsltc.dom.MultipleNodeCounter;
 import dds.grupo3.clases.services.geodds.entities.*;
 import jdk.nashorn.internal.ir.LiteralNode;
@@ -54,46 +55,49 @@ public class ServicioGeodds {
 
   public List<Provincia> listadoDeProvincias(int offset, int paisId) throws IOException {
     GeoddsService geoddsService = this.retrofit.create(GeoddsService.class);
-    Call<List<Provincia>> requestListadoDeProvincias = geoddsService.provincias(offset,paisId);
+    Call<List<Provincia>> requestListadoDeProvincias = geoddsService.provincias(offset, paisId);
     Response<List<Provincia>> responseListadoDeMunicipios = requestListadoDeProvincias.execute();
     return responseListadoDeMunicipios.body();
   }
 
   public List<Municipio> listadoDeMunicipio(int offset) throws IOException {
     GeoddsService geoddsService = this.retrofit.create(GeoddsService.class);
-    Call<List<Municipio>> requestListadoDeMunicipios= geoddsService.municipios(offset);
-    Response<List<Municipio>> responseListadoDeMunicipios= requestListadoDeMunicipios.execute();
+    Call<List<Municipio>> requestListadoDeMunicipios = geoddsService.municipios(offset);
+    Response<List<Municipio>> responseListadoDeMunicipios = requestListadoDeMunicipios.execute();
     return responseListadoDeMunicipios.body();
   }
 
   public List<Municipio> listadoDeMunicipio(int offset, int provinciaId) throws IOException {
     GeoddsService geoddsService = this.retrofit.create(GeoddsService.class);
-    Call<List<Municipio>> requestListadoDeMunicipios= geoddsService.municipios(offset,provinciaId);
-    Response<List<Municipio>> responseListadoDeMunicipios= requestListadoDeMunicipios.execute();
+    Call<List<Municipio>> requestListadoDeMunicipios =
+        geoddsService.municipios(offset, provinciaId);
+    Response<List<Municipio>> responseListadoDeMunicipios = requestListadoDeMunicipios.execute();
     return responseListadoDeMunicipios.body();
   }
 
   public List<Localidad> listadoDeLocalidades(int offset) throws IOException {
     GeoddsService geoddsService = this.retrofit.create(GeoddsService.class);
-    Call<List<Localidad>> requestListadoDeLocalidades= geoddsService.localidades(offset);
-    Response<List<Localidad>> responseListadoDeLocalidades= requestListadoDeLocalidades.execute();
+    Call<List<Localidad>> requestListadoDeLocalidades = geoddsService.localidades(offset);
+    Response<List<Localidad>> responseListadoDeLocalidades = requestListadoDeLocalidades.execute();
     return responseListadoDeLocalidades.body();
   }
 
   public List<Localidad> listadoDeLocalidades(int offset, int municipioId) throws IOException {
     GeoddsService geoddsService = this.retrofit.create(GeoddsService.class);
-    Call<List<Localidad>> requestListadoDeLocalidades= geoddsService.localidades(offset,municipioId);
-    Response<List<Localidad>> responseListadoDeLocalidades= requestListadoDeLocalidades.execute();
+    Call<List<Localidad>> requestListadoDeLocalidades =
+        geoddsService.localidades(offset, municipioId);
+    Response<List<Localidad>> responseListadoDeLocalidades = requestListadoDeLocalidades.execute();
     return responseListadoDeLocalidades.body();
   }
 
-  public Distancia distancia(int localidadOrigenId,String calleOrigen,String alturaOrigen
-                            ,int localidadDestinoId, String calleDestino
-                            ,String alturaDestino) throws IOException {
+  public Distancia distancia(int localidadOrigenId, String calleOrigen, String alturaOrigen
+      , int localidadDestinoId, String calleDestino
+      , String alturaDestino) throws IOException {
     GeoddsService geoddsService = this.retrofit.create(GeoddsService.class);
-    Call<Distancia> requestDistancia= geoddsService.distancia(localidadOrigenId,calleOrigen, alturaOrigen
-                                                            ,localidadDestinoId,calleDestino,alturaDestino);
-    Response<Distancia> responseDistancia= requestDistancia.execute();
+    Call<Distancia> requestDistancia =
+        geoddsService.distancia(localidadOrigenId, calleOrigen, alturaOrigen
+            , localidadDestinoId, calleDestino, alturaDestino);
+    Response<Distancia> responseDistancia = requestDistancia.execute();
     return responseDistancia.body();
   }
 }

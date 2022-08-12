@@ -10,14 +10,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Miembro {
-	private String nombre;
-	private String apellido;
-	private TipoDocEnum tipoDoc;
-	private Long nroDoc;
-	private List<Trayecto> trayectos;
-	//private Set<Empleo> empleos; //TODO descomentar
+  private String nombre;
+  private String apellido;
+  private TipoDocEnum tipoDoc;
+  private Long nroDoc;
+  private List<Trayecto> trayectos;
+  //private Set<Empleo> empleos; //TODO descomentar
 
-	// Constructor
+  // Constructor
 	/*public Miembro(String nombre, String apellido, TipoDocEnum tipoDoc, int nroDoc, Set<Empleo> empleos) {
 		super();
 		this.nombre = nombre;
@@ -26,69 +26,74 @@ public class Miembro {
 		this.nroDoc = nroDoc;//TODO descomentar
 		this.empleos = empleos;
 	}*/
-	
-	public Miembro(String nombre, String apellido, TipoDocEnum tipoDoc, Long nroDoc) {
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.tipoDoc = tipoDoc;
-		this.nroDoc = nroDoc;
-	}
 
-	public void setUnTrayecto(List<Trayecto> unTrayecto) {
-		this.trayectos = unTrayecto;
-	}
-	public void agregarUnTrayecto (Trayecto unTrayecto){ trayectos.add(unTrayecto); }
+  public Miembro(String nombre, String apellido, TipoDocEnum tipoDoc, Long nroDoc) {
+    super();
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.tipoDoc = tipoDoc;
+    this.nroDoc = nroDoc;
+  }
 
-	public float calcularHU(){
-		return trayectos.stream().mapToInt(t -> (int) t.calcularHU()).sum();
-	}
-/*
-	public List<int> calcularHUPorcentual(){
-		//empleos
-		//TODO tenemos que definir como hace el miembro para saber el HU de la org
-		return null;
-	}
-*/
-	public void postularme(Organizacion organizacion, Sector sector){
-		organizacion.nuevoPostulado(this, sector);
-	}
-/*
-	public void nuevoEmpleo(Organizacion organizacion, Sector sector) {
-		empleos.add(new Empleo(organizacion,sector));//TODO descomentar
-	}
-*/
-	public String getNombre() {
-		return nombre;
-	}
+  public void setUnTrayecto(List<Trayecto> unTrayecto) {
+    this.trayectos = unTrayecto;
+  }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+  public void agregarUnTrayecto(Trayecto unTrayecto) {
+    trayectos.add(unTrayecto);
+  }
 
-	public String getApellido() {
-		return apellido;
-	}
+  public float calcularHU() {
+    return trayectos.stream().mapToInt(t -> (int) t.calcularHU()).sum();
+  }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+  /*
+    public List<int> calcularHUPorcentual(){
+      //empleos
+      //TODO tenemos que definir como hace el miembro para saber el HU de la org
+      return null;
+    }
+  */
+  public void postularme(Organizacion organizacion, Sector sector) {
+    organizacion.nuevoPostulado(this, sector);
+  }
 
-	public TipoDocEnum getTipoDoc() {
-		return tipoDoc;
-	}
+  /*
+    public void nuevoEmpleo(Organizacion organizacion, Sector sector) {
+      empleos.add(new Empleo(organizacion,sector));//TODO descomentar
+    }
+  */
+  public String getNombre() {
+    return nombre;
+  }
 
-	public void setTipoDoc(TipoDocEnum tipoDoc) {
-		this.tipoDoc = tipoDoc;
-	}
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-	public Long getNroDoc() {
-		return nroDoc;
-	}
+  public String getApellido() {
+    return apellido;
+  }
 
-	public void setNroDoc(Long nroDoc) {
-		this.nroDoc = nroDoc;
-	}
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
+  }
+
+  public TipoDocEnum getTipoDoc() {
+    return tipoDoc;
+  }
+
+  public void setTipoDoc(TipoDocEnum tipoDoc) {
+    this.tipoDoc = tipoDoc;
+  }
+
+  public Long getNroDoc() {
+    return nroDoc;
+  }
+
+  public void setNroDoc(Long nroDoc) {
+    this.nroDoc = nroDoc;
+  }
 
 
 }
