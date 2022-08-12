@@ -1,23 +1,3 @@
-import dds.grupo3.clases.organizacion.Sector;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import dds.grupo3.clases.organizacion.Clasificacion;
-import dds.grupo3.clases.organizacion.TipoOrg;
-import dds.grupo3.clases.CalculadorHU;
-import dds.grupo3.clases.exception.YaPerteneceOrgException;
-import dds.grupo3.clases.miembro.Miembro;
-import dds.grupo3.clases.miembro.TipoDocEnum;
-import dds.grupo3.clases.organizacion.Organizacion;
 /*
 public class OrganizacionTest {
 	List<Sector> sectores = new ArrayList<>();

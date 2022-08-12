@@ -2,12 +2,8 @@ package dds.grupo3.clases.miembro;
 
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.organizacion.Sector;
-import dds.grupo3.clases.trayectos.Tramo;
 import dds.grupo3.clases.trayectos.Trayecto;
-
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Miembro {
   private String nombre;

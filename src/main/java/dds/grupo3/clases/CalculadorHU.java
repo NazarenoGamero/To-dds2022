@@ -1,15 +1,5 @@
 package dds.grupo3.clases;
 
-import java.io.IOException;
-import java.util.List;
-
-import dds.grupo3.clases.fachada.FachadaPosta;
-import dds.grupo3.clases.medible.Medible;
-import net.sourceforge.argparse4j.ArgumentParsers;
-import net.sourceforge.argparse4j.inf.ArgumentParser;
-import net.sourceforge.argparse4j.inf.ArgumentParserException;
-import net.sourceforge.argparse4j.inf.Namespace;
-
 public class CalculadorHU {
 	/*
 	public static void main(String[] args) throws IOException {

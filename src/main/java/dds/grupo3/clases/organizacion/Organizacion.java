@@ -5,7 +5,6 @@ import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.exception.YaPerteneceOrgException;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.miembro.Miembro;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

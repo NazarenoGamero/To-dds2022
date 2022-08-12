@@ -1,6 +1,5 @@
 package dds.grupo3.clases.organizacion;
 
-import dds.grupo3.clases.organizacion.Sector;
 import dds.grupo3.clases.miembro.Miembro;
 
 public class Postulacion {

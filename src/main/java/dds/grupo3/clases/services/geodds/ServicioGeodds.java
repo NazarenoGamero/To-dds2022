@@ -1,17 +1,18 @@
 package dds.grupo3.clases.services.geodds;
 
-import com.sun.org.apache.xalan.internal.xsltc.dom.MultipleNodeCounter;
-import dds.grupo3.clases.services.geodds.entities.*;
-import jdk.nashorn.internal.ir.LiteralNode;
+import dds.grupo3.clases.services.geodds.entities.Distancia;
+import dds.grupo3.clases.services.geodds.entities.HeaderInterceptor;
+import dds.grupo3.clases.services.geodds.entities.Localidad;
+import dds.grupo3.clases.services.geodds.entities.Municipio;
+import dds.grupo3.clases.services.geodds.entities.Pais;
+import dds.grupo3.clases.services.geodds.entities.Provincia;
+import java.io.IOException;
+import java.util.List;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Query;
-
-import java.io.IOException;
-import java.util.List;
 
 
 public class ServicioGeodds {

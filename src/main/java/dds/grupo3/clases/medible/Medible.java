@@ -1,15 +1,13 @@
 package dds.grupo3.clases.medible;
 
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
-
-//import java.util.Date;
 import java.util.List;
 
 public class Medible {
   private TipoDeMedicion tipoDeMedicion;
   private float valor;
   private Periodicidad periodicidad;
-      //Es un enum para saber durante cuanto tiempo se hizo esa medicion
+  //Es un enum para saber durante cuanto tiempo se hizo esa medicion
   private String PeriodoDeImputacion;
   private FactorEmision miFactor;
 

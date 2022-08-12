@@ -1,12 +1,11 @@
-package server.Controllers;
+package server.controllers;
 
 import com.google.gson.Gson;
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.repositorios.RepoOrganizaciones;
+import java.util.List;
 import spark.Request;
 import spark.Response;
-
-import java.util.List;
 
 public class OrganizacionController {
   private RepoOrganizaciones repo;

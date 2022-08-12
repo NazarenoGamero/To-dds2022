@@ -1,9 +1,7 @@
 package dds.grupo3.clases.trayectos;
 
 import dds.grupo3.clases.miembro.Miembro;
-
 import java.util.List;
-import java.util.stream.DoubleStream;
 
 public class Trayecto {
   private List<Tramo> unosTramos;

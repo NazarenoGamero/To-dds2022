@@ -1,14 +1,14 @@
-import dds.grupo3.clases.services.geodds.entities.*;
 import dds.grupo3.clases.services.geodds.ServicioGeodds;
-import org.apache.commons.lang3.ClassUtils;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import dds.grupo3.clases.services.geodds.entities.Distancia;
+import dds.grupo3.clases.services.geodds.entities.Localidad;
+import dds.grupo3.clases.services.geodds.entities.Municipio;
+import dds.grupo3.clases.services.geodds.entities.Pais;
+import dds.grupo3.clases.services.geodds.entities.Provincia;
 import java.io.IOException;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
-
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class GeoddsTest {
 

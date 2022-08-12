@@ -2,7 +2,6 @@ package dds.grupo3.clases.readers;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-
 import dds.grupo3.clases.exception.ArchivoNoEncontradoException;
 import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.medible.Medible;
@@ -10,7 +9,6 @@ import dds.grupo3.clases.medible.Periodicidad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;

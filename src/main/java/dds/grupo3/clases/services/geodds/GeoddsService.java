@@ -1,12 +1,14 @@
 package dds.grupo3.clases.services.geodds;
 
-import dds.grupo3.clases.services.geodds.entities.*;
+import dds.grupo3.clases.services.geodds.entities.Distancia;
+import dds.grupo3.clases.services.geodds.entities.Localidad;
+import dds.grupo3.clases.services.geodds.entities.Municipio;
+import dds.grupo3.clases.services.geodds.entities.Pais;
+import dds.grupo3.clases.services.geodds.entities.Provincia;
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Query;
-
-import java.util.List;
 
 public interface GeoddsService {
   @GET("paises")

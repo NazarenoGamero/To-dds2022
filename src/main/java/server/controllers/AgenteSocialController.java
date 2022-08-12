@@ -1,4 +1,4 @@
-package server.Controllers;
+package server.controllers;
 
 public class AgenteSocialController {
 

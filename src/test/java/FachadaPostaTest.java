@@ -1,20 +1,3 @@
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import dds.grupo3.clases.fachada.FachadaPosta;
-import dds.grupo3.clases.medible.Medible;
-import dds.grupo3.clases.medible.Periodicidad;
-import dds.grupo3.clases.readers.ParametrosReader;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 /*
 public class FachadaPostaTest {
 

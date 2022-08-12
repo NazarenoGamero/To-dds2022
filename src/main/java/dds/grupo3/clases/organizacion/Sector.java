@@ -1,9 +1,8 @@
 package dds.grupo3.clases.organizacion;
 
+import dds.grupo3.clases.miembro.Miembro;
 import java.util.ArrayList;
 import java.util.List;
-
-import dds.grupo3.clases.miembro.Miembro;
 
 public class Sector {
   public Organizacion organizacion;

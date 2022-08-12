@@ -1,10 +1,10 @@
 package dds.grupo3.clases.repositorios;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import dds.grupo3.clases.organizacion.Organizacion;
-
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
 
 public class RepoOrganizaciones {
   //Muy posiblemente todos los repos sean Singleton
