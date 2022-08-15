@@ -5,8 +5,11 @@ import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.exception.YaPerteneceOrgException;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.miembro.Miembro;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Organizacion {
@@ -54,16 +57,47 @@ public class Organizacion {
    * Calculo de huella
    * ----------------------------------------------
    */
-
-  public float calcularHuellaDeCarbonoST() {
+  //Huella Completa : 123123
+  //	Huella de Combustion Fija: 1123
+  // 
+  //
+  //
+  public String calcularHuellaDeCarbonoST() {
     float total = 0;
+    String mensajeCompleto = "";
+    
+    //Obtengo el Total de todas las mediciones de la org
     for (Medible unMedible : this.getMediciones()) {
       total = total + unMedible.obtenerHuella();
     }
-    return total;
+    
+    //Obtengo un map con los tipos de medicion y sus medibles
+    Map<String, List<Medible>> tiposYMedibles=obtenerTotalPorTipo();
+    
+    String detalleDeTipos = serializarString(tiposYMedibles);
+    
+    mensajeCompleto = "El total emitido por la organizacion es: "+String.valueOf(total) +"\n"+detalleDeTipos;
+    return mensajeCompleto;
   }
 
-  public float calcularHuellaDeCarbonoT() {
+  private String serializarString(Map<String, List<Medible>> tiposYMedibles) {
+	  String detalleDeTipos = "";
+	  for(Map.Entry<String,List<Medible>> unMap : tiposYMedibles.entrySet()) {
+		  //Para cada lista de medibles. Mapeo para obtener el valor, los sumo y así obtengo el total del tipo
+	    	float totalDelTipo = (float) unMap.getValue().stream().mapToDouble(unMedible -> unMedible.obtenerHuella()).sum();
+	    	//El total de Combustion Fija es: 12.3
+	    	String detalleDeUnTipo = "El total de " + unMap.getKey() + " es: "+ String.valueOf(totalDelTipo);
+	    	detalleDeTipos = detalleDeTipos + detalleDeUnTipo + "\n";
+	  }
+	return detalleDeTipos;
+}
+
+private Map<String, List<Medible>> obtenerTotalPorTipo() {
+	 return this.getMediciones().stream().collect(Collectors.groupingBy(medicion -> medicion.getTipoDeMedicion().getActividad().getNombre()));
+	
+}
+
+public float calcularHuellaDeCarbonoT() {
     return miembrosOrg().stream().mapToInt(m -> (int) m.calcularHU()).sum(); //quitar casteo
   }
   // añade un postulado a la lista
