@@ -1,40 +1,22 @@
 package dds.grupo3.clases.trayectos;
 
-public class ServicioContratado implements Transporte {
-  private String tipoVehiculo;
-  private String direccionInicio;
-  private String direccionLlegada;
+public class ServicioContratado extends Propio {
+  private String nombre;
 
-  public ServicioContratado(String tipoVehiculo, String direccionInicio, String direccionLlegada) {
-    this.tipoVehiculo = tipoVehiculo;
-    this.direccionInicio = direccionInicio;
-    this.direccionLlegada = direccionLlegada;
+  public ServicioContratado(String direccionInicio, String direccionLlegada, String nombre) {
+    super(direccionInicio, direccionLlegada);
+    this.nombre = nombre;
   }
 
-  public String getTipoVehiculo() {
-    return tipoVehiculo;
+  public String getNombre() {
+    return nombre;
   }
 
-  public void setTipoVehiculo(String tipoVehiculo) {
-    this.tipoVehiculo = tipoVehiculo;
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
   }
 
-  public String getDireccionInicio() {
-    return direccionInicio;
-  }
-
-  public void setDireccionInicio(String direccionInicio) {
-    this.direccionInicio = direccionInicio;
-  }
-
-  public String getDireccionLlegada() {
-    return direccionLlegada;
-  }
-
-  public void setDireccionLlegada(String direccionLlegada) {
-    this.direccionLlegada = direccionLlegada;
-  }
-
+  @Override
   public float distancia(float latitud1, float longitud1, float latitud2, float longitud2) {
     return (float) 10;
   }

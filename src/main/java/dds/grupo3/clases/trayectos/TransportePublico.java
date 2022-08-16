@@ -1,29 +1,23 @@
 package dds.grupo3.clases.trayectos;
 
 public class TransportePublico implements Transporte {
-  private String tipoVehiculo;
+  private TipoVehiculo tipoVehiculo;
   private Parada paradaInicio;
   private Parada paradaLlegada;
   private Linea linea;
 
-  public TransportePublico(String tipoVehiculo, Parada paradaInicio, Parada paradaLlegada,
-                           Linea linea) {
+  public TransportePublico(TipoVehiculo tipoVehiculo, Parada paradaInicio, Parada paradaLlegada, Linea linea) {
     this.tipoVehiculo = tipoVehiculo;
     this.paradaInicio = paradaInicio;
     this.paradaLlegada = paradaLlegada;
     this.linea = linea;
   }
 
-  //TODO preguntar por distancia del transporte publico
-  public float distancia(float a, float b, float c, float d) {
-    return 15;
-  }
-
-  public String getTipoVehiculo() {
+  public TipoVehiculo getTipoVehiculo() {
     return tipoVehiculo;
   }
 
-  public void setTipoVehiculo(String tipoVehiculo) {
+  public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
     this.tipoVehiculo = tipoVehiculo;
   }
 
@@ -49,5 +43,10 @@ public class TransportePublico implements Transporte {
 
   public void setLinea(Linea linea) {
     this.linea = linea;
+  }
+
+  @Override
+  public float distancia(float latitud1, float longitud1, float latitud2, float longitud2){
+    return 30;
   }
 }

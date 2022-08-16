@@ -1,25 +1,11 @@
 package dds.grupo3.clases.trayectos;
 
-public class VehiculoParticular implements Transporte {
-  private String tipoVehiculo;
+public class VehiculoParticular extends Propio {
   private String tipoCombustible;
-  private String direccionInicio;
-  private String direccionLlegada;
 
-  public VehiculoParticular(String tipoVehiculo, String tipoCombustible, String direccionInicio,
-                            String direccionLlegada) {
-    this.tipoVehiculo = tipoVehiculo;
+  public VehiculoParticular(String direccionInicio, String direccionLlegada, String tipoCombustible) {
+    super(direccionInicio, direccionLlegada);
     this.tipoCombustible = tipoCombustible;
-    this.direccionInicio = direccionInicio;
-    this.direccionLlegada = direccionLlegada;
-  }
-
-  public String getTipoVehiculo() {
-    return tipoVehiculo;
-  }
-
-  public void setTipoVehiculo(String tipoVehiculo) {
-    this.tipoVehiculo = tipoVehiculo;
   }
 
   public String getTipoCombustible() {
@@ -30,23 +16,8 @@ public class VehiculoParticular implements Transporte {
     this.tipoCombustible = tipoCombustible;
   }
 
-  public String getDireccionInicio() {
-    return direccionInicio;
-  }
-
-  public void setDireccionInicio(String direccionInicio) {
-    this.direccionInicio = direccionInicio;
-  }
-
-  public String getDireccionLlegada() {
-    return direccionLlegada;
-  }
-
-  public void setDireccionLlegada(String direccionLlegada) {
-    this.direccionLlegada = direccionLlegada;
-  }
-
+  @Override
   public float distancia(float latitud1, float longitud1, float latitud2, float longitud2) {
-    return (float) 5;
+    return (float) 20;
   }
 }

@@ -1,41 +1,40 @@
 package dds.grupo3.clases.trayectos;
 
-public class Parada {
+public class Parada extends Punto{
   private String nombreParada;
-  private Punto puntoParada;
-  private Parada proximaParada;
-  private Parada anteriorParada;
 
+  private Punto paradaAnterior;
 
-  public Parada(String nombreParada, Punto puntoParada, Parada proximaParada,
-                Parada anteriorParada) {
+  private Punto paradaProxima;
+
+  public Parada(float latitud, float longitud, String nombreParada, Punto paradaAnterior, Punto paradaProxima) {
+    super(latitud, longitud);
     this.nombreParada = nombreParada;
-    this.puntoParada = puntoParada;
-    this.proximaParada = proximaParada;
-    this.anteriorParada = anteriorParada;
+    this.paradaAnterior = paradaAnterior;
+    this.paradaProxima = paradaProxima;
   }
 
   public String getNombreParada() {
     return nombreParada;
   }
 
-  public Punto getPuntoParada() {
-    return puntoParada;
+  public void setNombreParada(String nombreParada) {
+    this.nombreParada = nombreParada;
   }
 
-  public Parada getProximaParada() {
-    return proximaParada;
+  public Punto getParadaAnterior() {
+    return paradaAnterior;
   }
 
-  public Parada getAnteriorParada() {
-    return anteriorParada;
+  public void setParadaAnterior(Punto paradaAnterior) {
+    this.paradaAnterior = paradaAnterior;
   }
 
-  public float latitudPunto() {
-    return puntoParada.getLatitud();
+  public Punto getParadaProxima() {
+    return paradaProxima;
   }
 
-  public float longitudPunto() {
-    return puntoParada.getLongitud();
+  public void setParadaProxima(Punto paradaProxima) {
+    this.paradaProxima = paradaProxima;
   }
 }
