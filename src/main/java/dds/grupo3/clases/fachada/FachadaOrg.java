@@ -8,5 +8,5 @@ public interface FachadaOrg {
 
   void cargarParametros(Map<String, Float> parametrosSistema);
 
-  Float obtenerHU(Collection<Medible> mediciones);
+  String obtenerHU(Collection<Medible> mediciones);
 }
