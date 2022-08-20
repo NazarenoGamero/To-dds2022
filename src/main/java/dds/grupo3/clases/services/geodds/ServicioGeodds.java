@@ -93,12 +93,17 @@ public class ServicioGeodds {
 
   public Distancia distancia(int localidadOrigenId, String calleOrigen, String alturaOrigen
       , int localidadDestinoId, String calleDestino
-      , String alturaDestino) throws IOException {
+      , String alturaDestino){
     GeoddsService geoddsService = this.retrofit.create(GeoddsService.class);
     Call<Distancia> requestDistancia =
         geoddsService.distancia(localidadOrigenId, calleOrigen, alturaOrigen
             , localidadDestinoId, calleDestino, alturaDestino);
-    Response<Distancia> responseDistancia = requestDistancia.execute();
+    Response<Distancia> responseDistancia = null;
+    try {
+      responseDistancia = requestDistancia.execute();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     return responseDistancia.body();
   }
 }
