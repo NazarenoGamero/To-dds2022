@@ -97,9 +97,21 @@ private Map<String, List<Medible>> obtenerTotalPorTipo() {
 	
 }
 
-public float calcularHuellaDeCarbonoT() {
-    return miembrosOrg().stream().mapToInt(m -> (int) m.calcularHU()).sum(); //quitar casteo
+public String calcularHuellaDeCarbonoT() {
+    String mensajeOrganizacion = this.calcularHuellaDeCarbonoST();
+    
+    mensajeOrganizacion = mensajeOrganizacion + this.huellaSectores();
+    
+    return mensajeOrganizacion;
   }
+
+public String huellaSectores() {
+	String mensajeSectoresOrganizacion="";
+	for(Sector unSector : this.getSectores()) {
+		mensajeSectoresOrganizacion = mensajeSectoresOrganizacion + unSector.calcularHuellaMiembros();
+	}
+	return mensajeSectoresOrganizacion;
+}
   // añade un postulado a la lista
   //TODO agregar calculo de medibles + trayectos (Composite porque dice naza)
   //TODO agregar calculo para las periodicidades (Uno para Mensual y otro Anual)

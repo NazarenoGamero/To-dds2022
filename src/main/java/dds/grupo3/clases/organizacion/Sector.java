@@ -8,6 +8,14 @@ public class Sector {
   public Organizacion organizacion;
   private String nombre;
   private List<Miembro> miembros;
+  
+  public String calcularHuellaMiembros() {
+	  String mensajeSector = "Sector "+this.getNombre()+": \n";
+	  for(Miembro unMiembro : this.getMiembros()) {
+		  mensajeSector = mensajeSector + unMiembro.calcularHU();
+	  }
+	  return mensajeSector;
+  }
 
   public Organizacion getOrganizacion() {
     return organizacion;

@@ -39,8 +39,9 @@ public class Miembro {
     trayectos.add(unTrayecto);
   }
 
-  public float calcularHU() {
-    return trayectos.stream().mapToInt(t -> (int) t.calcularHU()).sum();
+  public String calcularHU() {
+    float valorHuella = trayectos.stream().mapToInt(t -> (int) t.calcularHU()).sum();
+    return "-"+nombre+" "+apellido+": "+valorHuella+"\n";
   }
 
   /*
