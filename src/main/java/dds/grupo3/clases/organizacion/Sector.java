@@ -12,9 +12,18 @@ public class Sector {
   public String calcularHuellaMiembros() {
 	  String mensajeSector = "Sector "+this.getNombre()+": \n";
 	  for(Miembro unMiembro : this.getMiembros()) {
-		  mensajeSector = mensajeSector + unMiembro.calcularHU();
+		  mensajeSector = mensajeSector + unMiembro.obtenerHU();
 	  }
 	  return mensajeSector;
+  }
+  
+  public String huellaPorMiembro() {
+	  float total=0;
+	  for(Miembro unMiembro : this.getMiembros()) {
+		  total = total + unMiembro.calcularHU();
+	  }
+	  String respuesta = "Huella del sector por miembro: "+(total/this.getMiembros().size());
+	  return respuesta;
   }
 
   public Organizacion getOrganizacion() {
