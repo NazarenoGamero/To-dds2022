@@ -6,6 +6,7 @@ import dds.grupo3.clases.trayectos.Trayecto;
 import java.util.List;
 
 public class Miembro {
+  private Long id;
   private String nombre;
   private String apellido;
   private TipoDocEnum tipoDoc;
@@ -98,4 +99,10 @@ public class Miembro {
   }
 
 
+  public Long getId() {
+    return this.id;
+  }
+  public void setId(Long id) {
+    this.id=id;
+  }
 }
