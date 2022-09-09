@@ -42,6 +42,12 @@ public class Miembro {
   public float calcularHU() {
     return trayectos.stream().mapToInt(t -> (int) t.calcularHU()).sum();
   }
+  
+  //TODO cambiar nombre por algo mas descriptivo
+  public String obtenerHU() {
+	  float valorHuella = this.calcularHU();
+	   return "-"+nombre+" "+apellido+": "+valorHuella+"\n";
+  }
 
   /*
     public List<int> calcularHUPorcentual(){

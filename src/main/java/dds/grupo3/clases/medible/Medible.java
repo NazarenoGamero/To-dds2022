@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Medible {
+  private long id;
   private TipoDeMedicion tipoDeMedicion;
   private float valor;
   private Periodicidad periodicidad;
