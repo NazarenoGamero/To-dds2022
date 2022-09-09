@@ -24,6 +24,7 @@ public class Router {
   public static void init() {
     //Router.initEngine();
     Spark.staticFileLocation("/public");
+
     Router.configure();
   }
 
@@ -43,7 +44,7 @@ public class Router {
         Spark.get("", organizacionController::list, gson::toJson);
         Spark.get("/:id", organizacionController::get, gson::toJson);
         Spark.post("", organizacionController::add, gson::toJson);
-        // Spark.put("/",     organizacionController::change,gson::toJson);   //TODO
+        Spark.put("/:id",     organizacionController::change,gson::toJson);   //TODO
         Spark.delete("/:id", organizacionController::delete);
       });
       //CRUD Agente Social

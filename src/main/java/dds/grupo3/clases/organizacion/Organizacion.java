@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Organizacion {
-  private Long id;
+  private Long id ;
   private String razonSocial;
   private TipoOrg tipo;
   private Clasificacion clasificacion;
@@ -25,6 +25,16 @@ public class Organizacion {
    * Constructores
    * ----------------------------------------------
    */
+  public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> sectores,
+                      Clasificacion clasificacion) {
+    this.razonSocial = razonSocial;
+    this.tipo = tipo;
+    this.sectores = sectores;
+    this.clasificacion = clasificacion;
+    this.postulados = new ArrayList<Postulacion>();
+    this.mediciones = new ArrayList<Medible>();
+  }
+
   public Organizacion() {
     this.razonSocial = "AFIP";
     this.tipo = new TipoOrg("Gubernamental");
@@ -34,24 +44,12 @@ public class Organizacion {
     this.postulados = new ArrayList<Postulacion>();
     this.mediciones = new ArrayList<Medible>();
   }
-
   public Organizacion(String razonSocial) {
     this.razonSocial = razonSocial;
     this.sectores = new ArrayList<Sector>();
     this.postulados = new ArrayList<Postulacion>();
     this.mediciones = new ArrayList<Medible>();
   }
-
-  public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> unSector,
-                      Clasificacion clasificacion) {
-    this.razonSocial = razonSocial;
-    this.tipo = tipo;
-    this.sectores = new ArrayList<Sector>();
-    this.clasificacion = clasificacion;
-    this.postulados = new ArrayList<Postulacion>();
-    this.mediciones = new ArrayList<Medible>();
-  }
-
 
   /*------------------------------------------------
    * Calculo de huella

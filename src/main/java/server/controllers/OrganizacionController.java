@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.repositorios.RepoOrganizaciones;
 import java.util.List;
+import java.util.Objects;
 import spark.Request;
 import spark.Response;
 
@@ -34,13 +35,24 @@ public class OrganizacionController {
   //Esto tiene que cambiar por un id
   public String delete(Request request, Response response) {
     Long id = Long.parseLong(request.params(":id"));
-    Organizacion organizacion = repo.encontrarPorId(id);
-    repo.eliminar(organizacion);
+    repo.eliminarPorId(id);
     return "DELETED";
   }
 
   public Organizacion get(Request request, Response response) {
     Long id = Long.parseLong(request.params(":id"));
     return repo.encontrarPorId(id);
+  }
+
+  public Organizacion change(Request request, Response response) {
+    Gson gson = new Gson();
+    Organizacion orgUpdt = gson.fromJson(request.body(), Organizacion.class);
+    Organizacion organizacion= repo.encontrarPorId(Long.parseLong(request.params(":id")));
+    organizacion.setRazonSocial(orgUpdt.getRazonSocial());
+    organizacion.setTipo(orgUpdt.getTipo());
+    organizacion.setSectores(orgUpdt.getSectores());
+    organizacion.setClasificacion(orgUpdt.getClasificacion());
+    response.status(200); // 200 update
+    return organizacion;
   }
 }

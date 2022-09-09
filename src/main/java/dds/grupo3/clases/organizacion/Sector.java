@@ -18,7 +18,6 @@ public class Sector {
   }
 
   public Sector(String nombre) {
-    super();
     this.nombre = nombre;
     this.organizacion = null;
     this.miembros = new ArrayList<Miembro>();

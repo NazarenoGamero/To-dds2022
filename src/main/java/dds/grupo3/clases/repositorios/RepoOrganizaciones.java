@@ -37,4 +37,8 @@ public class RepoOrganizaciones {
   public void eliminar(Organizacion organizacion) {
     this.organizaciones.removeIf(org -> org.equals(organizacion));
   }
+
+  public void eliminarPorId(Long id) {
+    this.organizaciones.removeIf(x->x.getId().equals(id));
+  }
 }
