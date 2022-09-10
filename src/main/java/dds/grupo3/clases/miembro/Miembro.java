@@ -1,17 +1,36 @@
 package dds.grupo3.clases.miembro;
-
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.organizacion.Sector;
 import dds.grupo3.clases.trayectos.Trayecto;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Miembro {
+  @Id
+  @Column(name = "id", nullable = false)
   private Long id;
+  @Transient
   private String nombre;
+  @Transient
   private String apellido;
+  @Transient
   private TipoDocEnum tipoDoc;
+  @Transient
   private Long nroDoc;
+  @Transient
   private List<Trayecto> trayectos;
+
   //private Set<Empleo> empleos; //TODO descomentar
 
   // Constructor
