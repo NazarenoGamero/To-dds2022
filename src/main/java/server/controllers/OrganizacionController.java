@@ -25,6 +25,7 @@ public class OrganizacionController {
 
   public List<Organizacion> list(Request request, Response response) {
     List<Organizacion> organizaciones = repoOrganizaciones.getOrganizaciones();
+    response.type("application/json");
     return organizaciones;
   }
 
@@ -33,6 +34,7 @@ public class OrganizacionController {
     Organizacion organizacion = gson.fromJson(request.body(), Organizacion.class);
     this.repoOrganizaciones.agregar(organizacion);
     response.status(201); // 201 Created
+    response.type("application/json");
     return organizacion;
   }
 
@@ -49,6 +51,7 @@ public class OrganizacionController {
 
   public Organizacion get(Request request, Response response) {
     Long id = Long.parseLong(request.params(":id"));
+    response.type("application/json");
     return repoOrganizaciones.encontrarPorId(id);
   }
 
@@ -61,6 +64,7 @@ public class OrganizacionController {
     organizacion.setSectores(orgUpdt.getSectores());
     organizacion.setClasificacion(orgUpdt.getClasificacion());
     response.status(200); // 200 update
+    response.type("application/json");
     return organizacion;
   }
 

@@ -9,8 +9,15 @@ import java.util.OptionalLong;
 
 public class RepoMiembros {
   private List<Miembro> miembros;
+  private static RepoMiembros instance=null;
 
-  public RepoMiembros() {
+  public static RepoMiembros getInstance() {
+    if(instance==null)
+      instance = new RepoMiembros();
+    return instance;
+  }
+
+  private RepoMiembros() {
     miembros = new ArrayList<Miembro>();
   }
 

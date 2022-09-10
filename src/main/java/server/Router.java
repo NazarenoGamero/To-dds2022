@@ -1,10 +1,14 @@
 package server;
 
 import com.google.gson.Gson;
+import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.miembro.Miembro;
 import dds.grupo3.clases.miembro.TipoDocEnum;
+import dds.grupo3.clases.repositorios.RepoFactoresDeEmision;
+import dds.grupo3.clases.repositorios.RepoMediciones;
 import dds.grupo3.clases.repositorios.RepoMiembros;
 import dds.grupo3.clases.repositorios.RepoOrganizaciones;
+import server.controllers.FactoresDeEmisionController;
 import server.controllers.OrganizacionController;
 import spark.Spark;
 /*
@@ -31,15 +35,19 @@ public class Router {
 
   public void configure() {
     Gson gson = new Gson();
-    RepoOrganizaciones repoOrganizaciones = new RepoOrganizaciones();
-    RepoMiembros repoMiembros= new RepoMiembros();
+    RepoOrganizaciones repoOrganizaciones = RepoOrganizaciones.getInstance();
+    RepoMiembros repoMiembros= RepoMiembros.getInstance();
+    RepoMediciones repoMediciones= RepoMediciones.getInstance();
+    RepoFactoresDeEmision repoFactoresDeEmision= RepoFactoresDeEmision.getInstance();
     OrganizacionController organizacionController = new OrganizacionController(repoOrganizaciones, repoMiembros);
     cargarMiembros(repoMiembros);
-
+    FactoresDeEmisionController factoresDeEmisionController= new FactoresDeEmisionController(repoFactoresDeEmision);
+    cargarFactoresDeEmision(repoFactoresDeEmision);
     Spark.get("/", (request, response) -> {
       return "Hello";
     });
     Spark.path("/api", () -> {
+      Spark.get("/miembros", (request, response)->{return repoMiembros.getMiembros();},gson::toJson);
       //CRUD de Organizaciones
       Spark.path("/organizations", () -> {
         Spark.get("", organizacionController::list, gson::toJson);
@@ -58,6 +66,12 @@ public class Router {
                 Spark.delete("/",  AgenteSocialController::delete)
                  */
       });
+
+      Spark.path("/factores", () -> {
+        Spark.get("",(request,response)->{response.type("application/json");
+                                                  return repoFactoresDeEmision.getFe();},gson::toJson);
+        Spark.put("/:id", factoresDeEmisionController::modificar);
+      });
     });
   }
 
@@ -75,4 +89,11 @@ public class Router {
     repo.agregar(m5);
     repo.agregar(m6);
   }
+  private void cargarFactoresDeEmision(RepoFactoresDeEmision repo) {
+    FactorEmision f1= new FactorEmision("energia-electrica", 7.5F);
+    FactorEmision f2= new FactorEmision("combustibles-fosiles",1.2F);
+    repo.agregar(f1);
+    repo.agregar(f2);
+  }
+
 }
