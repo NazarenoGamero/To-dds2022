@@ -16,7 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ServicioGeodds {
-  //Aguante el Singleton vieja!
   private static ServicioGeodds instancia = null;
   private static final String URLAPI = "https://ddstpa.com.ar/api/";
   private Retrofit retrofit;

@@ -20,7 +20,6 @@ public class Miembro {
   @Id
   @Column(name = "id", nullable = false)
   private Long id;
-
   @Transient
   private String nombre;
   @Transient
@@ -119,4 +118,10 @@ public class Miembro {
   }
 
 
+  public Long getId() {
+    return this.id;
+  }
+  public void setId(Long id) {
+    this.id=id;
+  }
 }

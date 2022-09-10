@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sector {
+  private Long id;
   public Organizacion organizacion;
   private String nombre;
   private List<Miembro> miembros;
@@ -34,8 +35,11 @@ public class Sector {
     this.organizacion = organizacion;
   }
 
+  public Sector(){
+    this.miembros= new ArrayList<Miembro>();
+  }
+
   public Sector(String nombre) {
-    super();
     this.nombre = nombre;
     this.organizacion = null;
     this.miembros = new ArrayList<Miembro>();
@@ -59,5 +63,9 @@ public class Sector {
 
   public void setMiembros(List<Miembro> miembros) {
     this.miembros = miembros;
+  }
+
+  public Long getId() {
+    return id;
   }
 }
