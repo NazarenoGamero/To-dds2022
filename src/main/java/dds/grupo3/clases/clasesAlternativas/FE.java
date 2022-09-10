@@ -3,6 +3,8 @@ package dds.grupo3.clases.clasesAlternativas;
 import java.util.HashMap;
 import java.util.Map;
 
+import dds.grupo3.clases.exception.NotFoundException;
+
 //quise hacer un switch pero muy largo e innecesario
 //pense en una interface por la cuestion de poder modificarlo pero al no tener logica otra vez es innecesario
 //entonces elegi un hashMap(diccionario) que es mejor q un enum por que se le puede agregar y modificar elementos en tiempo de ejecucion

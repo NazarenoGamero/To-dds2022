@@ -10,10 +10,16 @@ import dds.grupo3.clases.organizacion.Organizacion;
 
 public class RepoMediciones {
 	private List<Medible> mediciones;
-	 
-	public RepoMediciones() {
-	    mediciones = new ArrayList<Medible>();
-	  }
+	private static RepoMediciones instance=null;
+
+		private RepoMediciones() {
+		mediciones = new ArrayList<Medible>();
+	}
+	 	public static RepoMediciones getInstance() {
+		if(instance==null)
+			instance = new RepoMediciones();
+		return instance;
+	 }
 
 	  public List<Medible> getOrganizaciones() {
 	    return this.mediciones;

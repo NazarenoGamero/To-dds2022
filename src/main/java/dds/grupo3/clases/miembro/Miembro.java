@@ -1,16 +1,41 @@
 package dds.grupo3.clases.miembro;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.organizacion.Sector;
 import dds.grupo3.clases.trayectos.Trayecto;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Table
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Miembro {
+  @Id
+  @Column(name = "id", nullable = false)
+  private Long id;
+  @Transient
   private String nombre;
+  @Transient
   private String apellido;
+  @Transient
   private TipoDocEnum tipoDoc;
+  @Transient
   private Long nroDoc;
+  @Transient
   private List<Trayecto> trayectos;
+
   //private Set<Empleo> empleos; //TODO descomentar
 
   // Constructor
@@ -98,4 +123,10 @@ public class Miembro {
   }
 
 
+  public Long getId() {
+    return this.id;
+  }
+  public void setId(Long id) {
+    this.id=id;
+  }
 }

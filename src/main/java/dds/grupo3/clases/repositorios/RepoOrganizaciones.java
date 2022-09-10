@@ -7,11 +7,18 @@ import java.util.Optional;
 import java.util.OptionalLong;
 
 public class RepoOrganizaciones {
-  //Muy posiblemente todos los repos sean Singleton
-  private List<Organizacion> organizaciones;
 
-  public RepoOrganizaciones() {
+  private List<Organizacion> organizaciones;
+  private static RepoOrganizaciones instance=null;
+
+  private RepoOrganizaciones() {
     organizaciones = new ArrayList<Organizacion>();
+  }
+
+  public static RepoOrganizaciones getInstance() {
+    if(instance==null)
+      instance = new RepoOrganizaciones();
+    return instance;
   }
 
   public List<Organizacion> getOrganizaciones() {
@@ -36,5 +43,9 @@ public class RepoOrganizaciones {
 
   public void eliminar(Organizacion organizacion) {
     this.organizaciones.removeIf(org -> org.equals(organizacion));
+  }
+
+  public void eliminarPorId(Long id) {
+    this.organizaciones.removeIf(x->x.getId().equals(id));
   }
 }

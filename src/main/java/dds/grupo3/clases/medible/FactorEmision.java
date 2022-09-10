@@ -3,9 +3,9 @@ package dds.grupo3.clases.medible;
 public class FactorEmision {
   private String nombre;
   private float valor;
+  private Long id;
 
   public FactorEmision(String nombre, float valor) {
-    super();
     this.nombre = nombre;
     this.valor = valor;
   }
@@ -27,4 +27,10 @@ public class FactorEmision {
   }
 
 
+  public Long getId() {
+    return id;
+  }
+  public void setId(Long id) {
+    this.id= id;
+  }
 }
