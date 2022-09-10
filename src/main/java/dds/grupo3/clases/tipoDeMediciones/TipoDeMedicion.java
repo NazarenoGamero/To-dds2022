@@ -1,6 +1,12 @@
 package dds.grupo3.clases.tipoDeMediciones;
 
-import com.sun.xml.bind.v2.TODO;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,11 +16,19 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name="TIPO_MEDICION")
 public class TipoDeMedicion {
-  private TipoDeActividad tipoDeactividad;
-  private TipoDeConsumo tipoDeConsumo;
-  private Unidad unidad;
-  private Alcance alcance;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	@Embedded
+	private TipoDeActividad tipoDeactividad;
+	@Embedded
+	private TipoDeConsumo tipoDeConsumo;
+	@Embedded
+	private Unidad unidad;
+	@Embedded
+	private Alcance alcance;
 
   //TODO Ver forma para que resuelva y sepa asociar que cuando es combustion fija por ejemplo de gas natural, la unidad sea m3 y el alcance de 1: Emisiones directas
 }

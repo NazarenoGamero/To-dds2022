@@ -1,5 +1,8 @@
 package dds.grupo3.clases.tipoDeMediciones;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +12,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Embeddable
 public class TipoDeConsumo {
+	@Column(name="TIPO_CONSUMO")
   private String nombre;
+	@Column(name="VALOR_CONSUMO")
   private int valor;
 }
 

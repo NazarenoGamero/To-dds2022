@@ -36,8 +36,25 @@ public class Miembro {
   @Transient
   private List<Trayecto> trayectos;
 
-  //TODO descomentar
-  //private Set<Empleo> empleos;
+  //private Set<Empleo> empleos; //TODO descomentar
+
+  // Constructor
+	/*public Miembro(String nombre, String apellido, TipoDocEnum tipoDoc, int nroDoc, Set<Empleo> empleos) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipoDoc = tipoDoc;
+		this.nroDoc = nroDoc;//TODO descomentar
+		this.empleos = empleos;
+	}*/
+
+  public Miembro(String nombre, String apellido, TipoDocEnum tipoDoc, Long nroDoc) {
+    super();
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.tipoDoc = tipoDoc;
+    this.nroDoc = nroDoc;
+  }
 
   public void agregarUnTrayecto(Trayecto unTrayecto) {
     trayectos.add(unTrayecto);
