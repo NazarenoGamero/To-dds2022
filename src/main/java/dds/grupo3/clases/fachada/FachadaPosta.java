@@ -18,10 +18,11 @@ public class FachadaPosta implements FachadaOrg {
   List<FactorEmision> factoresDeEmision;
   BuilderOrg creadorOrg;
 
+
   @Override
   public void cargarParametros(Map<String, Float> parametrosSistema) {
     //Creo objetos y los guardo en factoresDeEmision
-    parametrosSistema.forEach((k, v) -> factoresDeEmision.add(new FactorEmision(k, v)));
+    parametrosSistema.forEach((nombre, valor) -> factoresDeEmision.add(new FactorEmision(nombre, valor)));
   }
 
   /*

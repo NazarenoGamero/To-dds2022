@@ -98,5 +98,3 @@ public class OrganizacionJSON {
 //	]
 //	"clasificacion":"Empresa del sector secundario"
 }
-	
-

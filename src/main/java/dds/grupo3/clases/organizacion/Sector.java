@@ -1,9 +1,18 @@
 package dds.grupo3.clases.organizacion;
 
 import dds.grupo3.clases.miembro.Miembro;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Sector {
   private Long id;
   public Organizacion organizacion;
@@ -27,45 +36,7 @@ public class Sector {
 	  return respuesta;
   }
 
-  public Organizacion getOrganizacion() {
-    return organizacion;
-  }
-
-  public void setOrganizacion(Organizacion organizacion) {
-    this.organizacion = organizacion;
-  }
-
-  public Sector(){
-    this.miembros= new ArrayList<Miembro>();
-  }
-
-  public Sector(String nombre) {
-    this.nombre = nombre;
-    this.organizacion = null;
-    this.miembros = new ArrayList<Miembro>();
-  }
-
   public void agregarMiembro(Miembro miembro) {
     miembros.add(miembro);
-  }
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public List<Miembro> getMiembros() {
-    return miembros;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
-
-  public void setMiembros(List<Miembro> miembros) {
-    this.miembros = miembros;
-  }
-
-  public Long getId() {
-    return id;
   }
 }

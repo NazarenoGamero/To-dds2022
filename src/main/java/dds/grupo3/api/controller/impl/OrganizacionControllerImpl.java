@@ -10,10 +10,10 @@ import dds.grupo3.api.service.OrganizacionService;
 import dds.grupo3.clases.organizacion.Organizacion;
 
 public class OrganizacionControllerImpl implements OrganizacionController {
-
 	@Autowired
 	OrganizacionService organizacionService;
-	
+
+
 	@Override
 	public ResponseEntity<?> obtenerListaOrganizaciones() {
 		ListaOrganizacionesDTO response = new ListaOrganizacionesDTO();
@@ -45,5 +45,4 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

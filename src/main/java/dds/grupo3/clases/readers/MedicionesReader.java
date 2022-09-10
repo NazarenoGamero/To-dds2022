@@ -5,5 +5,5 @@ import dds.grupo3.clases.medible.Medible;
 import java.util.List;
 
 public interface MedicionesReader {
-  public List<Medible> leerArchivoMediciones(String path, List<FactorEmision> factores);
+  List<Medible> leerArchivoMediciones(String path, List<FactorEmision> factores);
 }

@@ -11,7 +11,6 @@ import dds.grupo3.clases.organizacion.Organizacion;
 
 @Service
 public class OrganizacionServiceImpl implements OrganizacionService {
-
 	@Autowired
 	RepoOrganizacion repo;
 	
@@ -19,5 +18,4 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	public List<Organizacion> buscarOrganizaciones() {
 		return repo.findAll();
 	}
-
 }

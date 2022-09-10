@@ -1,6 +1,5 @@
 package dds.grupo3.clases.organizacion;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -19,16 +18,22 @@ import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
 import dds.grupo3.clases.exception.YaPerteneceOrgException;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.miembro.Miembro;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name="Organizacion")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Organizacion {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id ;
-	
 	@Column(name="RAZON_SOCIAL")
 	private String razonSocial;
-	
 	@Embedded
 	private TipoOrg tipo;
 	@Embedded
@@ -40,36 +45,6 @@ public class Organizacion {
 	@Transient
 	private List<Sector> sectores;
 
-  /*------------------------------------------------
-   * Constructores
-   * ----------------------------------------------
-   */
-	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> sectores,
-                      Clasificacion clasificacion) {
-		this.razonSocial = razonSocial;
-		this.tipo = tipo;
-		this.sectores = sectores;
-		this.clasificacion = clasificacion;
-		this.postulados = new ArrayList<Postulacion>();
-		this.mediciones = new ArrayList<Medible>();
-	}
-
-	public Organizacion() {
-		this.razonSocial = "AFIP";
-		this.tipo = new TipoOrg("Gubernamental");
-		this.sectores = new ArrayList<Sector>();
-		this.agregarSector(new Sector("RRHH"));
-		this.clasificacion = new Clasificacion("Ministerio");
-		this.postulados = new ArrayList<Postulacion>();
-		this.mediciones = new ArrayList<Medible>();
-	}
-	
-	public Organizacion(String razonSocial) {
-		this.razonSocial = razonSocial;
-		this.sectores = new ArrayList<Sector>();
-		this.postulados = new ArrayList<Postulacion>();
-		this.mediciones = new ArrayList<Medible>();
-	}
 
   /*------------------------------------------------
    * Calculo de huella
@@ -111,7 +86,7 @@ public class Organizacion {
 }
 
 private Map<String, List<Medible>> obtenerTotalPorTipo() {
-	 return this.getMediciones().stream().collect(Collectors.groupingBy(medicion -> medicion.getTipoDeMedicion().getActividad().getNombre()));
+	 return this.getMediciones().stream().collect(Collectors.groupingBy(medicion -> medicion.getTipoDeMedicion().getTipoDeactividad().getNombre()));
 	
 }
 
@@ -153,7 +128,7 @@ public String huellaSectores() {
 
   //Agregar postulacion a la lista de postulados
   public void nuevoPostulado(Miembro miembro, Sector sector) {
-    this.postulados.add(new Postulacion(miembro, sector));
+    this.postulados.add(new Postulacion(sector, miembro));
   }
 
   //lee una por una las postulaciones y elige si aceptarla o no
@@ -178,62 +153,5 @@ public String huellaSectores() {
   //De vuelve todos los miembros por sector
   public List<Miembro> miembrosOrg() {
     return sectores.stream().flatMap(s -> s.getMiembros().stream()).collect(Collectors.toList());
-  }
-
-  public List<Medible> getMediciones() {
-    return mediciones;
-  }
-
-  public String getRazonSocial() {
-    return razonSocial;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public void setRazonSocial(String razonSocial) {
-    this.razonSocial = razonSocial;
-  }
-
-  public TipoOrg getTipo() {
-    return tipo;
-  }
-
-  public void setTipo(TipoOrg tipo) {
-    this.tipo = tipo;
-  }
-
-  public Clasificacion getClasificacion() {
-    return clasificacion;
-  }
-
-  public void setClasificacion(Clasificacion clasificacion) {
-    this.clasificacion = clasificacion;
-  }
-
-  public List<Postulacion> getPostulados() {
-    return postulados;
-  }
-
-  public void setPostulados(ArrayList<Postulacion> postulados) {
-    this.postulados = postulados;
-  }
-
-
-  public List<Sector> getSectores() {
-    return sectores;
-  }
-
-  public void setSectores(List<Sector> sectores) {
-    this.sectores = sectores;
-  }
-
-  public void setMediciones(List<Medible> mediciones) {
-    this.mediciones = mediciones;
   }
 }

@@ -40,5 +40,4 @@ public class MailSender {
 //      }
 //      return null;
 //    }
-
-  }
+}

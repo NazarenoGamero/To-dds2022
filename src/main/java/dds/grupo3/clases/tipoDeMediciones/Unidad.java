@@ -1,19 +1,16 @@
 package dds.grupo3.clases.tipoDeMediciones;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Unidad {
   private String nombre;
-
-  public Unidad(String nombre) {
-    this.nombre = nombre;
-  }
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
 }
 
 /*

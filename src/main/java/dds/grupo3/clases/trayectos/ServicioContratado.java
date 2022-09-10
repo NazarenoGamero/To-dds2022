@@ -1,20 +1,17 @@
 package dds.grupo3.clases.trayectos;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ServicioContratado extends Propio {
   private String nombre;
 
-  public ServicioContratado(String direccionInicio, String direccionLlegada, String nombre) {
-    super(direccionInicio, direccionLlegada);
-    this.nombre = nombre;
-  }
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
 
   @Override
   public float distancia(float latitud1, float longitud1, float latitud2, float longitud2) {

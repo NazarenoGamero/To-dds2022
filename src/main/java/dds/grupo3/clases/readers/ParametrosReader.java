@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParametrosReader {
+
   public Map<String, Float> leerParametros(String path) throws IOException {
     Map<String, Float> parametros = new HashMap<>();
     String line;

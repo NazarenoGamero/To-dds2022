@@ -1,22 +1,19 @@
 package dds.grupo3.clases.organizacion;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Clasificacion {
-	@Column(name = "CLASIF")
-  String nombre;
-
-  public Clasificacion(String nombre) {
-    this.nombre = nombre;
-  }
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
+  @Column(name = "CLASIF")
+  private String nombre;
 }

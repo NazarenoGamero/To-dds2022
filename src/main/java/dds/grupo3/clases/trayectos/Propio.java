@@ -1,29 +1,18 @@
 package dds.grupo3.clases.trayectos;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class Propio implements Transporte {
     private String direccionInicio;
     private String direccionLlegada;
 
-    public Propio(String direccionInicio, String direccionLlegada) {
-        this.direccionInicio = direccionInicio;
-        this.direccionLlegada = direccionLlegada;
-    }
-
-    public String getDireccionInicio() {
-        return direccionInicio;
-    }
-
-    public void setDireccionInicio(String direccionInicio) {
-        this.direccionInicio = direccionInicio;
-    }
-
-    public String getDireccionLlegada() {
-        return direccionLlegada;
-    }
-
-    public void setDireccionLlegada(String direccionLlegada) {
-        this.direccionLlegada = direccionLlegada;
-    }
 
     @Override
     public float distancia(float latitud1, float longitud1, float latitud2, float longitud2){

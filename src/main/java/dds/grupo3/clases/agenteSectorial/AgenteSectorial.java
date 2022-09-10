@@ -13,7 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AgenteSectorial {
-
 	private String nombre;
 	private List<Organizacion> miTerritorio;
 	private String nombreTerritorio;

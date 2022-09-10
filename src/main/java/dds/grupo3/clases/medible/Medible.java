@@ -1,15 +1,16 @@
 package dds.grupo3.clases.medible;
 
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Medible {
   private long id;
@@ -22,38 +23,19 @@ public class Medible {
   private Date fecha;
 
   //Periodicidad{
-  // 	int 1 = Anual
+  // int 1 = Anual
   // int 0 = mensual
 
-  // Constructor
-
-  public Medible(TipoDeMedicion tipoDeMedicion, int valor, Periodicidad periodicidad,
-                 String periodoDeImputacion, FactorEmision miFactor) {
-    this.tipoDeMedicion = tipoDeMedicion;
-    this.valor = valor;
-    this.periodicidad = periodicidad;
-    this.PeriodoDeImputacion = periodoDeImputacion;
-    this.miFactor = miFactor;
-    this.fecha = new Date();
-  }
 
   public float obtenerHuella() {
     return this.valor * this.getMiFactor().getValor();
   }
 
-  public void setFactor(FactorEmision factorEmision) {
-	  this.miFactor= factorEmision;
-  }
-  
   public void setFactorEmision(List<FactorEmision> factores) {
     for (FactorEmision unFactor : factores) {
-      if (unFactor.getNombre() == this.tipoDeMedicion.getActividad().getNombre()) {
+      if (unFactor.getNombre() == this.tipoDeMedicion.getTipoDeactividad().getNombre()) {
         this.miFactor = unFactor;
       }
     }
-  }
-
-  public float factorCorrespondienteAvalorMedible() {
-    return miFactor.getValor();
   }
 }

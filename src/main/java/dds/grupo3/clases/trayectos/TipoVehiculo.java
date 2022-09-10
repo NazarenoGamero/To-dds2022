@@ -1,17 +1,14 @@
 package dds.grupo3.clases.trayectos;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TipoVehiculo {
     private String nombreVehiculo;
-
-    public TipoVehiculo(String nombreVehicul) {
-        this.nombreVehiculo = nombreVehicul;
-    }
-
-    public String getNombreVehiculo() {
-        return nombreVehiculo;
-    }
-
-    public void setNombreVehiculo(String nombreVehiculo) {
-        this.nombreVehiculo = nombreVehiculo;
-    }
 }
