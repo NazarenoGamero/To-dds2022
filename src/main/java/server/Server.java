@@ -1,10 +1,7 @@
 package server;
 
 import dds.grupo3.clases.notificaciones.MailSender;
-import javax.mail.MessagingException;
 import spark.Spark;
-import java.util.HashMap;
-import java.util.Map;
 //import spark.debug.DebugScreen;
 
 public class Server {
