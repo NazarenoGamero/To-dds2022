@@ -1,55 +1,75 @@
 package dds.grupo3.clases.organizacion;
 
-import dds.grupo3.clases.exception.MiembroYaPerteneceOrgException;
-import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
-import dds.grupo3.clases.exception.YaPerteneceOrgException;
-import dds.grupo3.clases.medible.Medible;
-import dds.grupo3.clases.miembro.Miembro;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import dds.grupo3.clases.exception.MiembroYaPerteneceOrgException;
+import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
+import dds.grupo3.clases.exception.YaPerteneceOrgException;
+import dds.grupo3.clases.medible.Medible;
+import dds.grupo3.clases.miembro.Miembro;
+
+@Entity
+@Table(name="Organizacion")
 public class Organizacion {
-  private Long id ;
-  private String razonSocial;
-  private TipoOrg tipo;
-  private Clasificacion clasificacion;
-  private List<Medible> mediciones;
-  private List<Postulacion> postulados;
-  private List<Sector> sectores;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id ;
+	
+	@Column(name="RAZON_SOCIAL")
+	private String razonSocial;
+	
+	@Embedded
+	private TipoOrg tipo;
+	@Embedded
+	private Clasificacion clasificacion;
+	@Transient
+	private List<Medible> mediciones;
+	@Transient
+	private List<Postulacion> postulados;
+	@Transient
+	private List<Sector> sectores;
 
   /*------------------------------------------------
    * Constructores
    * ----------------------------------------------
    */
-  public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> sectores,
+	public Organizacion(String razonSocial, TipoOrg tipo, List<Sector> sectores,
                       Clasificacion clasificacion) {
-    this.razonSocial = razonSocial;
-    this.tipo = tipo;
-    this.sectores = sectores;
-    this.clasificacion = clasificacion;
-    this.postulados = new ArrayList<Postulacion>();
-    this.mediciones = new ArrayList<Medible>();
-  }
+		this.razonSocial = razonSocial;
+		this.tipo = tipo;
+		this.sectores = sectores;
+		this.clasificacion = clasificacion;
+		this.postulados = new ArrayList<Postulacion>();
+		this.mediciones = new ArrayList<Medible>();
+	}
 
-  public Organizacion() {
-    this.razonSocial = "AFIP";
-    this.tipo = new TipoOrg("Gubernamental");
-    this.sectores = new ArrayList<Sector>();
-    this.agregarSector(new Sector("RRHH"));
-    this.clasificacion = new Clasificacion("Ministerio");
-    this.postulados = new ArrayList<Postulacion>();
-    this.mediciones = new ArrayList<Medible>();
-  }
-  public Organizacion(String razonSocial) {
-    this.razonSocial = razonSocial;
-    this.sectores = new ArrayList<Sector>();
-    this.postulados = new ArrayList<Postulacion>();
-    this.mediciones = new ArrayList<Medible>();
-  }
+	public Organizacion() {
+		this.razonSocial = "AFIP";
+		this.tipo = new TipoOrg("Gubernamental");
+		this.sectores = new ArrayList<Sector>();
+		this.agregarSector(new Sector("RRHH"));
+		this.clasificacion = new Clasificacion("Ministerio");
+		this.postulados = new ArrayList<Postulacion>();
+		this.mediciones = new ArrayList<Medible>();
+	}
+	
+	public Organizacion(String razonSocial) {
+		this.razonSocial = razonSocial;
+		this.sectores = new ArrayList<Sector>();
+		this.postulados = new ArrayList<Postulacion>();
+		this.mediciones = new ArrayList<Medible>();
+	}
 
   /*------------------------------------------------
    * Calculo de huella

@@ -1,7 +1,12 @@
 package dds.grupo3.clases.organizacion;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class TipoOrg {
-  private String tipo;
+	@Column(name = "TIPO")
+	private String tipo;
 
   public TipoOrg(String nombre) {
     this.tipo = nombre;
