@@ -7,9 +7,10 @@ import spark.Spark;
 
 public class Server {
   public static void main(String[] args) {
+    Router router= new Router();
     Spark.port(getHerokuAssignedPort());
     MailSender.sendMail("mopup2017@gmail.com", "¡Su huella de carbono es mas de 9000!");
-    Router.init();
+    router.init();
     //DebugScreen.enableDebugScreen();
   }
 
