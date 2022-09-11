@@ -3,14 +3,14 @@ package dds.grupo3.api.controller.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 
 import dds.grupo3.api.controller.MiembroController;
 import dds.grupo3.api.dto.response.ListaMiembrosDTO;
 import dds.grupo3.api.service.MiembroService;
 import dds.grupo3.clases.miembro.Miembro;
-import dds.grupo3.clases.organizacion.Organizacion;
 
-
+@RestController
 public class MiembroControllerImpl implements MiembroController {
 
 	@Autowired

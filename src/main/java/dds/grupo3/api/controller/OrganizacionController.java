@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import dds.grupo3.clases.organizacion.Organizacion;
 
-@RestController
 @RequestMapping("/organizaciones")
 public interface OrganizacionController {
 

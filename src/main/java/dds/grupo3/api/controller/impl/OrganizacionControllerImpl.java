@@ -3,12 +3,14 @@ package dds.grupo3.api.controller.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 
 import dds.grupo3.api.controller.OrganizacionController;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.service.OrganizacionService;
 import dds.grupo3.clases.organizacion.Organizacion;
 
+@RestController
 public class OrganizacionControllerImpl implements OrganizacionController {
 	@Autowired
 	OrganizacionService organizacionService;
