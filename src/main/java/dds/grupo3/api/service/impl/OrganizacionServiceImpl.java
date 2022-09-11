@@ -1,10 +1,12 @@
 package dds.grupo3.api.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.repository.RepoOrganizacion;
 import dds.grupo3.api.service.OrganizacionService;
 import dds.grupo3.clases.organizacion.Organizacion;
@@ -18,4 +20,32 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	public List<Organizacion> buscarOrganizaciones() {
 		return repo.findAll();
 	}
+
+	@Override
+	public void crearOrganizacion(OrganizacionDTO org) {
+		Organizacion nuevaOrg = new Organizacion(org);
+		repo.save(nuevaOrg);
+	}
+
+	@Override
+	public void borrarOrg(Long id) {
+		repo.deleteById(id);
+		
+	}
+
+	@Override
+	public void editarOrg(Long id, OrganizacionDTO org) {
+		//Busco la Organizacion
+		Optional<Organizacion> laOrg = repo.findById(id);
+		//Si la DB pudo conseguir algo, la modifico
+		if(laOrg.isPresent()) {
+			laOrg.get().setClasificacion(org.getClasificacion());
+			laOrg.get().setRazonSocial(org.getRazonSocial());
+			laOrg.get().setSectores(org.getSectores());
+			laOrg.get().setTipo(org.getTipo());
+		}
+		repo.save(laOrg.get());
+	}
+	
+	
 }

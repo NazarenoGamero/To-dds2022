@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dds.grupo3.clases.organizacion.Organizacion;
+import dds.grupo3.api.dto.request.OrganizacionDTO;
 
 @RequestMapping("/organizaciones")
 public interface OrganizacionController {
@@ -18,12 +18,12 @@ public interface OrganizacionController {
 	public ResponseEntity<?> obtenerListaOrganizaciones();
 	
 	@PostMapping("")
-	public ResponseEntity<?> crearOrganizacion(@RequestBody Organizacion org);
+	public ResponseEntity<?> crearOrganizacion(@RequestBody OrganizacionDTO org);
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> borrarOrganizacion(@PathVariable("id")Integer id);
+	public ResponseEntity<?> borrarOrganizacion(@PathVariable("id")Long id);
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> editarOrganizacion(@PathVariable("id")Integer id);
+	public ResponseEntity<?> editarOrganizacion(@PathVariable("id")Long id, @RequestBody OrganizacionDTO org);
 	
 }
