@@ -66,12 +66,15 @@ public class Router {
                 Spark.delete("/",  AgenteSocialController::delete)
                  */
       });
-
+      //Modificacion Mediciones
       Spark.path("/factores", () -> {
         Spark.get("",(request,response)->{response.type("application/json");
                                                   return repoFactoresDeEmision.getFe();},gson::toJson);
         Spark.put("/:id", factoresDeEmisionController::modificar);
       });
+
+      //Listado y Filtros de Mediciones
+      Spark.get("/mediciones",medicionesController::list,gson.toJson());
     });
   }
 
