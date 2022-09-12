@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import dds.grupo3.api.controller.OrganizacionController;
+import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.service.OrganizacionService;
@@ -46,5 +47,16 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	public ResponseEntity<?> editarOrganizacion(Long id, OrganizacionDTO org) {
 		organizacionService.editarOrg(id,org);
 		return new ResponseEntity<>("Se modifico la organizacion exitosamente", HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> agregarMiembro(Long id, MiembroDTO miembro) {
+		try {
+			organizacionService.agregarMiembro(id,miembro);
+		} catch(Exception e) {
+			new ResponseEntity<>("No se pudo agregar el miembro", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<>("Se agrego el miembro correctamente", HttpStatus.OK);
 	}
 }

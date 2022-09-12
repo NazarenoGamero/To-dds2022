@@ -6,15 +6,22 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.repository.RepoOrganizacion;
+import dds.grupo3.api.repository.RepoSector;
 import dds.grupo3.api.service.OrganizacionService;
+import dds.grupo3.clases.miembro.Miembro;
 import dds.grupo3.clases.organizacion.Organizacion;
+import dds.grupo3.clases.organizacion.Sector;
 
 @Service
 public class OrganizacionServiceImpl implements OrganizacionService {
 	@Autowired
 	RepoOrganizacion repo;
+	
+	@Autowired
+	RepoSector repoSector;
 	
 	@Override
 	public List<Organizacion> buscarOrganizaciones() {
@@ -45,6 +52,17 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 			laOrg.get().setTipo(org.getTipo());
 		}
 		repo.save(laOrg.get());
+	}
+
+	@Override
+	public void agregarMiembro(Long id, MiembroDTO miembro){
+		Optional<Organizacion> org = repo.findById(id);
+		if(org.isPresent()) {
+			Optional<Sector> sector = repoSector.findByNombreAndOrganizacionId(miembro.getSector(), org.get().getId());
+			Miembro nuevoMiembro = new Miembro(miembro);
+			org.get().agregarMiembroSector(sector.get(), nuevoMiembro);
+		}
+		
 	}
 	
 	

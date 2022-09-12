@@ -144,7 +144,7 @@ public String huellaSectores() {
     }
   }
 
-  private void agregarMiembroSector(Sector sector, Miembro miembro)
+  public void agregarMiembroSector(Sector sector, Miembro miembro)
       throws SectorNoPerteneceOrgException, MiembroYaPerteneceOrgException {
     if (miembrosOrg().contains(miembro)) {//Si el miembro ya esta en la org
       throw new MiembroYaPerteneceOrgException();
