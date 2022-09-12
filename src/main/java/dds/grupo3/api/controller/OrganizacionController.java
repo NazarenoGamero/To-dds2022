@@ -28,6 +28,6 @@ public interface OrganizacionController {
 	@PutMapping("/{id}")
 	public ResponseEntity<?> editarOrganizacion(@PathVariable("id")Long id, @RequestBody OrganizacionDTO org);
 
-	@PostMapping("")
+	@PostMapping("/{id}")
 	public ResponseEntity<?> agregarMiembro(@RequestBody MiembroDTO miembro);
 }
