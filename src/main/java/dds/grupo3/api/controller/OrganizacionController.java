@@ -1,5 +1,6 @@
 package dds.grupo3.api.controller;
 
+import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.clases.miembro.Miembro;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,6 +28,6 @@ public interface OrganizacionController {
 	@PutMapping("/{id}")
 	public ResponseEntity<?> editarOrganizacion(@PathVariable("id")Long id, @RequestBody OrganizacionDTO org);
 
-	@PostMapping("")
+	@PostMapping("/{id}")
 	public ResponseEntity<?> agregarMiembro(@RequestBody MiembroDTO miembro);
 }

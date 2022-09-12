@@ -1,5 +1,6 @@
 package dds.grupo3.api.controller.impl;
 
+import dds.grupo3.api.dto.request.MiembroDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,5 +47,10 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	public ResponseEntity<?> editarOrganizacion(Long id, OrganizacionDTO org) {
 		organizacionService.editarOrg(id,org);
 		return new ResponseEntity<>("Se modifico la organizacion exitosamente", HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> agregarMiembro(MiembroDTO miembro) {
+		return null;
 	}
 }
