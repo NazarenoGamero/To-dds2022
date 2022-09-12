@@ -5,6 +5,7 @@ import dds.grupo3.clases.agenteSectorial.AgenteSectorial;
 
 import java.util.List;
 
+
 public interface AgenteSectorialService {
     List<AgenteSectorial> buscarAgentesSctoriales();
 
