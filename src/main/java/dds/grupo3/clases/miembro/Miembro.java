@@ -25,13 +25,13 @@ public class Miembro {
   @Id
   @Column(name = "id", nullable = false)
   private Long id;
-  @Transient
+  @Column(name="NOMBRE")
   private String nombre;
-  @Transient
+  @Column(name="APELLIDO")
   private String apellido;
-  @Transient
+  @Column(name="TIPO_DOC")
   private TipoDocEnum tipoDoc;
-  @Transient
+  @Column(name="DOCUMENTO")
   private Long nroDoc;
   @Transient
   private List<Trayecto> trayectos;
