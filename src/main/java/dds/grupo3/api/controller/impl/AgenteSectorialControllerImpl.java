@@ -7,7 +7,9 @@ import dds.grupo3.api.service.AgenteSectorialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class AgenteSectorialControllerImpl implements AgenteSectorialController {
     @Autowired
     AgenteSectorialService agenteSectorialService;
@@ -15,9 +17,6 @@ public class AgenteSectorialControllerImpl implements AgenteSectorialController 
     @Override
     public ResponseEntity<?> obtenerListaAgentesSectoriales() {
         ListaAgentesSectorialesDTO response = new ListaAgentesSectorialesDTO();
-        //traigo de la DB
-        //Ojo con hacer mucha logica aca
-        //Aca solo llamas services
         try {
             response.setAgentesSectoriales(agenteSectorialService.buscarAgentesSctoriales());
         } catch (Exception e){
@@ -29,18 +28,18 @@ public class AgenteSectorialControllerImpl implements AgenteSectorialController 
     @Override
     public ResponseEntity<?> crearAgenteSectorial(AgenteSectorialDTO ags) {
         agenteSectorialService.crearAgenteSectorial(ags);
-        return new ResponseEntity<>("Se creo la organizacion correctamente", HttpStatus.OK);
+        return new ResponseEntity<>("Se creo el Agente Sectorial correctamente", HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> borrarAgenteSectorial(Long id) {
         agenteSectorialService.borrarAgenteSectorial(id);
-        return new ResponseEntity<>("Se borro la organizacion correctamente", HttpStatus.OK);
+        return new ResponseEntity<>("Se borro el Agente Sectorial correctamente", HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> editarAgenteSectorial(Long id, AgenteSectorialDTO ags) {
         agenteSectorialService.editarAgenteSectorial(id, ags);
-        return new ResponseEntity<>("Se modifico la organizacion exitosamente", HttpStatus.OK);
+        return new ResponseEntity<>("Se modifico el Agente Sectorial exitosamente", HttpStatus.OK);
     }
 }
