@@ -1,5 +1,6 @@
 package dds.grupo3.clases.agenteSectorial;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import dds.grupo3.api.dto.request.AgenteSectorialDTO;
+import dds.grupo3.api.dto.request.OrganizacionDTO;
+import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.organizacion.Organizacion;
+import dds.grupo3.clases.organizacion.Postulacion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,5 +45,12 @@ public class AgenteSectorial {
 			total=total+1;//TODO cambiar a algo con sentido
 		}
 		return total;
+	}
+
+	public AgenteSectorial(AgenteSectorialDTO ags) {
+		nombre = ags.getNombre();
+		miTerritorio = (new ArrayList<Organizacion>());
+		nombreTerritorio = ags.getNombreTerritorio();
+		email = ags.getEmail();
 	}
 }
