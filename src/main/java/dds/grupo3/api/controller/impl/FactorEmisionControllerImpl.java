@@ -5,7 +5,6 @@ import dds.grupo3.api.dto.request.FactorEmisionDTO;
 import dds.grupo3.api.service.FactorEmisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
