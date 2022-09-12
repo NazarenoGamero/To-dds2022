@@ -12,10 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import dds.grupo3.api.dto.request.AgenteSectorialDTO;
-import dds.grupo3.api.dto.request.OrganizacionDTO;
-import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.organizacion.Organizacion;
-import dds.grupo3.clases.organizacion.Postulacion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
