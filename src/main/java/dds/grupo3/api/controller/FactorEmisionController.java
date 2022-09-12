@@ -1,14 +1,13 @@
 package dds.grupo3.api.controller;
 
+import dds.grupo3.api.dto.request.FactorEmisionDTO;
+import dds.grupo3.api.dto.request.OrganizacionDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/factoresDeEmision")
 public interface FactorEmisionController {
     @PutMapping("/{id}")
-    public ResponseEntity<?> editarFactoresDeEmisionController(@PathVariable("id")Integer id);
+    public ResponseEntity<?> editarFactoresDeEmision(@PathVariable("id")Integer id, @RequestBody FactorEmisionDTO fe);
 }
