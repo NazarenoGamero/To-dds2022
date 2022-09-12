@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/factoresDeEmision")
 public interface FactorEmisionController {
     @PutMapping("/{id}")
-    public ResponseEntity<?> editarFactoresDeEmision(@PathVariable("id")Integer id, @RequestBody FactorEmisionDTO fe);
+    public ResponseEntity<?> editarFactoresDeEmision(@PathVariable("id")Long id, @RequestBody FactorEmisionDTO fe);
 }
