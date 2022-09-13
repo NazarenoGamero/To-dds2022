@@ -1,5 +1,6 @@
 package dds.grupo3.clases.medible;
 
+import dds.grupo3.api.dto.request.MedicionDTO;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class Medible {
 	//Es un enum para saber durante cuanto tiempo se hizo esa medicion
 	
 	@Column(name="PERIODO")
-	private String PeriodoDeImputacion;
+	private String periodoDeImputacion;
 	
 	@ManyToOne
 	private FactorEmision miFactor;
@@ -49,6 +50,15 @@ public class Medible {
   //Periodicidad{
   // int 1 = Anual
   // int 0 = mensual
+
+	public Medible(MedicionDTO dto){
+		this.tipoDeMedicion= dto.getTipoDeMedicion();
+		this.valor= dto.getValor();
+		this.periodicidad= dto.getPeriodicidad();
+		this.periodoDeImputacion=dto.getPeriodoDeImputacion();
+		this.miFactor= dto.getMiFactor();
+		this.fecha= dto.getFecha();
+	}
 
   public float obtenerHuella() {
     return this.valor * this.getMiFactor().getValor();
