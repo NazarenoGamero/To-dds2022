@@ -6,7 +6,6 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.3</version>
-		<packaging>jar</packaging>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.ar</groupId>
@@ -14,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dds-grupo3</name>
 	<description>Calculo de huella de Carbono TP DDS2022</description>
+	<packaging>jar</packaging>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -55,7 +55,6 @@
             <artifactId>spring-boot-starter-validation</artifactId>
             <version>2.4.1</version>
 		</dependency>
-		
 		<!-- LOMBOK -->
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
@@ -73,6 +72,10 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
