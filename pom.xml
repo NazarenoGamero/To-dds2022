@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dds-grupo3</name>
 	<description>Calculo de huella de Carbono TP DDS2022</description>
+	<packaging>jar</packaging>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -60,6 +61,10 @@
 		    <artifactId>lombok</artifactId>
 		    <version>1.18.24</version>
 		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		  <groupId>org.postgresql</groupId>
+		  <artifactId>postgresql</artifactId>
 		</dependency>
 	</dependencies>
 	

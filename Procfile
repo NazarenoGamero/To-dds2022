@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* dds.grupo3.DdsGrupo3Application
+web: java -jar target/dds-grupo3-0.0.1-SNAPSHOT.jar
