@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMessage;
 @Service
 public class EmailServiceImpl implements EmailService {
 	@Override
-	public void enviarMensaje(String texto, String destinatario) {
+	public void enviarMensaje(String destinatario, String texto) {
 
 		Properties prop = new Properties();
 		prop.put("mail.smtp.auth", true);
