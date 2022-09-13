@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.organizacion.Sector;
 import dds.grupo3.clases.trayectos.Trayecto;
@@ -25,13 +26,13 @@ public class Miembro {
   @Id
   @Column(name = "id", nullable = false)
   private Long id;
-  @Transient
+  @Column(name="NOMBRE")
   private String nombre;
-  @Transient
+  @Column(name="APELLIDO")
   private String apellido;
-  @Transient
+  @Column(name="TIPO_DOC")
   private TipoDocEnum tipoDoc;
-  @Transient
+  @Column(name="DOCUMENTO")
   private Long nroDoc;
   @Transient
   private List<Trayecto> trayectos;
@@ -72,5 +73,12 @@ public class Miembro {
 
   public void postularme(Organizacion organizacion, Sector sector) {
     organizacion.nuevoPostulado(this, sector);
+  }
+  
+  public Miembro(MiembroDTO dto) {
+	  this.nombre = dto.getNombre();
+	    this.apellido = dto.getApellido();
+	    this.tipoDoc = TipoDocEnum.valueOf(dto.getTipoDoc());
+	    this.nroDoc = dto.getNroDoc();
   }
 }

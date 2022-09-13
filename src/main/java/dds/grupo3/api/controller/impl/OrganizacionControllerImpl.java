@@ -1,12 +1,12 @@
 package dds.grupo3.api.controller.impl;
 
-import dds.grupo3.api.dto.request.MiembroDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import dds.grupo3.api.controller.OrganizacionController;
+import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.service.OrganizacionService;
@@ -50,7 +50,13 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	}
 
 	@Override
-	public ResponseEntity<?> agregarMiembro(MiembroDTO miembro) {
-		return null;
+	public ResponseEntity<?> agregarMiembro(Long id, MiembroDTO miembro) {
+		try {
+			organizacionService.agregarMiembro(id,miembro);
+		} catch(Exception e) {
+			new ResponseEntity<>("No se pudo agregar el miembro", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<>("Se agrego el miembro correctamente", HttpStatus.OK);
 	}
 }

@@ -1,7 +1,9 @@
 package dds.grupo3.api.service.impl;
 
 import dds.grupo3.api.service.EmailService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmailServiceImpl implements EmailService {
 
 	@Override

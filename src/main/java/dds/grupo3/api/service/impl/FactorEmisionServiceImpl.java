@@ -1,14 +1,14 @@
 package dds.grupo3.api.service.impl;
 
-import dds.grupo3.api.dto.request.FactorEmisionDTO;
-import dds.grupo3.api.repository.RepoFactorEmision;
-import dds.grupo3.api.service.FactorEmisionService;
-import dds.grupo3.clases.medible.FactorEmision;
+import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import dds.grupo3.api.repository.RepoFactorEmision;
+import dds.grupo3.api.service.FactorEmisionService;
+import dds.grupo3.clases.medible.FactorEmision;
 
 @Service
 public class FactorEmisionServiceImpl implements FactorEmisionService {
@@ -20,11 +20,13 @@ public class FactorEmisionServiceImpl implements FactorEmisionService {
     public List<FactorEmision> buscarFactoresDeEmision() {
         return repo.findAll();
     }
-    public void modificarValor(Long id, FactorEmisionDTO fe){
-        Optional<FactorEmision> factor= repo.findById(id);
-        if(factor.isPresent()) {
-            factor.get().setValor(fe.getValor());
-        }
-        repo.save(factor.get());
-    }
+
+	@Override
+	public void editarFE(Long id, float fe) {
+		Optional<FactorEmision> elFactor = repo.findById(id);
+		if(elFactor.isPresent()){
+			elFactor.get().setValor(fe);
+			repo.save(elFactor.get());
+		}
+	}
 }
