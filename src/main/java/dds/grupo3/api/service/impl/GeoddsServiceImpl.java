@@ -6,51 +6,89 @@ import dds.grupo3.api.dto.request.MunicipioDTO;
 import dds.grupo3.api.dto.request.PaisDTO;
 import dds.grupo3.api.dto.request.ProvinciaDTO;
 import dds.grupo3.api.service.GeoddsService;
+import java.util.Arrays;
 import java.util.List;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.RestTemplate;
 
 public class GeoddsServiceImpl implements GeoddsService {
 
-  private String token= "2gSCEk8R7REUaVp5KuT6S2GxOo8dauKwuxuMJDQw8JA=";
+  private final String token= "2gSCEk8R7REUaVp5KuT6S2GxOo8dauKwuxuMJDQw8JA=";
+  private final String url = "https://ddstpa.com.ar/api/";
+  private HttpEntity<String> entity;
 
-  @Override
-  public List<PaisDTO> paises(String token, Integer id) {
-
-    return null;
+  public GeoddsServiceImpl() {
+    HttpHeaders headers = new HttpHeaders();
+    headers.set("Authorization", "Bearer "+token);
+    this.entity = new HttpEntity<>("body", headers);
   }
 
   @Override
-  public List<ProvinciaDTO> provincias(String token, Integer id) {
-    return null;
+  public List<PaisDTO> paises(Integer id) {
+    RestTemplate restTemplate = new RestTemplate();
+    PaisDTO[] paises= restTemplate.exchange(url+"paises?offset="+id.toString(), HttpMethod.GET, entity, PaisDTO[].class).getBody();
+    return Arrays.asList(paises);
   }
 
   @Override
-  public List<ProvinciaDTO> provincias(String token, int offset, int paisId) {
-    return null;
+  public List<ProvinciaDTO> provincias(Integer offset) {
+    RestTemplate restTemplate = new RestTemplate();
+    ProvinciaDTO[] provincias= restTemplate.exchange(url+"provincias?offset="+offset.toString(), HttpMethod.GET, entity, ProvinciaDTO[].class).getBody();
+    return Arrays.asList(provincias);
   }
 
   @Override
-  public List<MunicipioDTO> municipios(int offset) {
-    return null;
+  public List<ProvinciaDTO> provincias(Integer offset, Integer paisId) {
+    RestTemplate restTemplate = new RestTemplate();
+    ProvinciaDTO[] provincias= restTemplate
+        .exchange(url+"provincias?offset="+offset.toString()+"&paisId="+paisId.toString(), HttpMethod.GET, entity, ProvinciaDTO[].class).getBody();
+    return Arrays.asList(provincias);
   }
 
   @Override
-  public List<MunicipioDTO> municipios(int offset, int provinciaId) {
-    return null;
+  public List<MunicipioDTO> municipios(Integer offset) {
+    RestTemplate restTemplate = new RestTemplate();
+    MunicipioDTO[] municipios= restTemplate
+        .exchange(url+"municipios?offset="+offset.toString(), HttpMethod.GET, entity, MunicipioDTO[].class).getBody();
+    return Arrays.asList(municipios);
   }
 
   @Override
-  public List<LocalidadDTO> localidades(int offset) {
-    return null;
+  public List<MunicipioDTO> municipios(Integer offset, Integer provinciaId) {
+    RestTemplate restTemplate = new RestTemplate();
+    MunicipioDTO[] municipios= restTemplate
+        .exchange(url+"municipios?offset="+offset.toString()+"&provinciaId="+provinciaId.toString(), HttpMethod.GET, entity, MunicipioDTO[].class).getBody();
+    return Arrays.asList(municipios);
   }
 
   @Override
-  public List<LocalidadDTO> localidades(int offset, int provinciaId) {
-    return null;
+  public List<LocalidadDTO> localidades(Integer offset) {
+    RestTemplate restTemplate = new RestTemplate();
+    LocalidadDTO[] localidades= restTemplate
+        .exchange(url+"localidades?offset="+offset.toString(), HttpMethod.GET, entity, LocalidadDTO[].class).getBody();
+    return Arrays.asList(localidades);
   }
 
   @Override
-  public DistanciaDTO distancia(int localidadOrigenId, String calleOrigen, String alturaOrigen,
-                                int localidadDestinoId, String calleDestino, String alturaDestino) {
-    return null;
+  public List<LocalidadDTO> localidades(Integer offset, Integer municipioId) {
+    RestTemplate restTemplate = new RestTemplate();
+    LocalidadDTO[] localidades= restTemplate
+        .exchange(url+"localidades?offset="+offset.toString()+"&municipioId="+municipioId.toString(), HttpMethod.GET, entity, LocalidadDTO[].class).getBody();
+    return Arrays.asList(localidades);
   }
+
+  @Override
+  public DistanciaDTO distancia(Integer localidadOrigenId, String calleOrigen, String alturaOrigen,
+                                Integer localidadDestinoId, String calleDestino, String alturaDestino) {
+    RestTemplate restTemplate = new RestTemplate();
+    String queryParams= "?localidadOrigenId="+localidadDestinoId.toString()+"&calleOrigen="+calleOrigen+
+        "&alturaOrigen="+alturaOrigen+"&localidadDestinoId="+localidadDestinoId.toString()+
+        "&calleDestino="+calleDestino+"&alturaDestino="+alturaDestino;
+    DistanciaDTO distancia= restTemplate
+        .exchange(url+"distancia"+queryParams, HttpMethod.GET, entity, DistanciaDTO.class).getBody();
+    return distancia;
+  }
+
 }

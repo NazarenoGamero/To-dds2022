@@ -11,38 +11,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name="Geodds", url="https://ddstpa.com.ar/api/")
 public interface GeoddsService {
 
-  @GetMapping(value="paises")
-  public List<PaisDTO> paises (@RequestHeader String token, @RequestParam("offset") Integer id);
+  List<PaisDTO> paises (Integer id);
 
-  @GetMapping(value="provincias")
-  public List<ProvinciaDTO> provincias (@RequestHeader String token, @RequestParam("offset") Integer id);
+  List<ProvinciaDTO> provincias(Integer id);
 
-  @GetMapping("provincias")
-  public List<ProvinciaDTO> provincias(@RequestHeader String token, @RequestParam("offset") int offset, @RequestParam("paisId") int paisId);
+  List<ProvinciaDTO> provincias(Integer offset,Integer paisId);
 
-  @GetMapping("municipios")
-  public List<MunicipioDTO> municipios(@RequestParam("offset") int offset);
+  List<MunicipioDTO> municipios(Integer offset);
 
-  @GetMapping("municipios")
-  public List<MunicipioDTO> municipios(@RequestParam("offset") int offset,
-                                   @RequestParam("provinciaId") int provinciaId);
+  List<MunicipioDTO> municipios(Integer offset,
+                                       Integer provinciaId);
 
-  @GetMapping("localidades")
-  public List<LocalidadDTO> localidades(@RequestParam("offset") int offset);
+  List<LocalidadDTO> localidades(Integer offset);
 
-  @GetMapping("localidades")
-  public List<LocalidadDTO> localidades(@RequestParam("offset") int offset,
-                                    @RequestParam("municipioId") int provinciaId);
+  List<LocalidadDTO> localidades(Integer offset,
+                                        Integer municipioId);
 
-  @GetMapping("distancia")
-  public DistanciaDTO distancia(@RequestParam("localidadOrigenId") int localidadOrigenId,
-                                @RequestParam("calleOrigen") String calleOrigen,
-                                @RequestParam("alturaOrigen") String alturaOrigen,
-                                @RequestParam("localidadDestinoId") int localidadDestinoId,
-                                @RequestParam("calleDestino") String calleDestino,
-                                @RequestParam("alturaDestino") String alturaDestino);
+  DistanciaDTO distancia(Integer localidadOrigenId,
+                                String calleOrigen,
+                                String alturaOrigen,
+                                Integer localidadDestinoId,
+                                String calleDestino,
+                                String alturaDestino);
 
 }
