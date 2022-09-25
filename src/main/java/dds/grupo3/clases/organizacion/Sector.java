@@ -2,6 +2,7 @@ package dds.grupo3.clases.organizacion;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import dds.grupo3.clases.miembro.Miembro;
 import lombok.AllArgsConstructor;
@@ -27,10 +30,11 @@ public class Sector {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 	@ManyToOne
+	@JsonIgnore
   public Organizacion organizacion;
 	@Column(name="NOMBRE_SECTOR")
   private String nombre;
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
   private List<Miembro> miembros;
   
   public String calcularHuellaMiembros() {
@@ -51,6 +55,6 @@ public class Sector {
   }
 
   public void agregarMiembro(Miembro miembro) {
-    miembros.add(miembro);
+    this.miembros.add(miembro);
   }
 }

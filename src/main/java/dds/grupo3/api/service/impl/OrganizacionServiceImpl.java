@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
+import dds.grupo3.api.repository.RepoMiembro;
 import dds.grupo3.api.repository.RepoOrganizacion;
 import dds.grupo3.api.repository.RepoSector;
 import dds.grupo3.api.service.OrganizacionService;
@@ -22,6 +23,9 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	
 	@Autowired
 	RepoSector repoSector;
+	
+	@Autowired
+	RepoMiembro repoMiembro;
 	
 	@Override
 	public List<Organizacion> buscarOrganizaciones() {
@@ -60,7 +64,9 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 		if(org.isPresent()) {
 			Optional<Sector> sector = repoSector.findByNombreAndOrganizacionId(miembro.getSector(), org.get().getId());
 			Miembro nuevoMiembro = new Miembro(miembro);
+			repoMiembro.save(nuevoMiembro);
 			org.get().agregarMiembroSector(sector.get(), nuevoMiembro);
+			repoSector.save(sector.get());
 		}
 		
 	}

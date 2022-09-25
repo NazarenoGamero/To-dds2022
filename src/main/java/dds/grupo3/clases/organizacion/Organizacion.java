@@ -1,8 +1,5 @@
 package dds.grupo3.clases.organizacion;
 
-import dds.grupo3.clases.exception.MiembroYaPerteneceOrgException;
-import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
-import dds.grupo3.clases.exception.YaPerteneceOrgException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +18,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import dds.grupo3.api.dto.request.OrganizacionDTO;
+import dds.grupo3.clases.exception.MiembroYaPerteneceOrgException;
+import dds.grupo3.clases.exception.SectorNoPerteneceOrgException;
+import dds.grupo3.clases.exception.YaPerteneceOrgException;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.miembro.Miembro;
 import lombok.AllArgsConstructor;
@@ -170,5 +170,8 @@ public String huellaSectores() {
 	  razonSocial = (org.getRazonSocial());
 	  sectores = (org.getSectores());
 	  tipo=(org.getTipo());
+	  for(Sector sector : org.getSectores()) {
+		  sector.setOrganizacion(this);
+	  }
   }
 }
