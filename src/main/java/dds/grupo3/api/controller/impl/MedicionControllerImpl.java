@@ -1,31 +1,31 @@
 package dds.grupo3.api.controller.impl;
 
-import dds.grupo3.api.controller.MedicionController;
-import dds.grupo3.api.dto.request.MedicionDTO;
-import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
-import dds.grupo3.api.service.MedicionService;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import dds.grupo3.api.controller.MedicionController;
+import dds.grupo3.api.dto.request.MedicionDTO;
+import dds.grupo3.api.service.MedicionService;
+import dds.grupo3.clases.medible.Medible;
+
 @RestController
 public class MedicionControllerImpl implements MedicionController {
     @Autowired
     MedicionService medicionService;
+    
     @Override
     public ResponseEntity<?> obtenerListaDeMediciones() {
-      //List<MedicionDTO> response = new ListaOrganizacionesDTO();
-      //traigo de la DB
-      //Ojo con hacer mucha logica aca
-      //Aca solo llamas services
+    	List<Medible> response;
       try {
-       // response.setOrganizaciones(medicionService.buscarMediciones());
+    	 response = medicionService.buscarMediciones();
       } catch (Exception e){
         return new ResponseEntity<>("Hubo un error", HttpStatus.BAD_REQUEST);
       }
-      return null; //new ResponseEntity<>(response, HttpStatus.OK);
+      return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package dds.grupo3.clases.medible;
 
-import dds.grupo3.api.dto.request.MedicionDTO;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import dds.grupo3.api.dto.request.MedicionDTO;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,6 +46,9 @@ public class Medible {
 	
 	@Column(name="FECHA")
 	private Date fecha;
+	
+	@Column(name="BATCH_ID")
+	private long batch;
 
   //Periodicidad{
   // int 1 = Anual
