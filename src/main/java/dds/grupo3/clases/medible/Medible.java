@@ -61,6 +61,7 @@ public class Medible {
 		this.periodoDeImputacion=dto.getPeriodoDeImputacion();
 		this.miFactor= dto.getMiFactor();
 		this.fecha= dto.getFecha();
+		this.batch= dto.getBatch();
 	}
 
   public float obtenerHuella() {

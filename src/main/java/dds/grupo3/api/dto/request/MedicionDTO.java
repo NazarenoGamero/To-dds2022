@@ -28,4 +28,6 @@ public class MedicionDTO {
 
   private Date fecha;
 
+  private long batch;
+
 }
