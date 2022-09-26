@@ -6,10 +6,6 @@ import dds.grupo3.api.dto.request.MunicipioDTO;
 import dds.grupo3.api.dto.request.PaisDTO;
 import dds.grupo3.api.dto.request.ProvinciaDTO;
 import java.util.List;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
 
 public interface GeoddsService {
 

@@ -1,5 +1,6 @@
 package dds.grupo3.api.dto.request;
 
+import dds.grupo3.clases.medible.BatchMediciones;
 import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.medible.Periodicidad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
@@ -28,6 +29,6 @@ public class MedicionDTO {
 
   private Date fecha;
 
-  private long batch;
+  private BatchMediciones batch;
 
 }

@@ -1,5 +1,6 @@
 package dds.grupo3.api.repository;
 
+import dds.grupo3.api.dto.response.BatchDTO;
 import dds.grupo3.clases.medible.BatchMediciones;
 import dds.grupo3.clases.medible.Medible;
 import java.util.Optional;

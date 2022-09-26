@@ -1,12 +1,15 @@
 package dds.grupo3.clases.medible;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +27,6 @@ public class BatchMediciones {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   @OneToMany(cascade= CascadeType.ALL)
-  private List<Medible> mediciones;
+  @JoinColumn
+  private List<Medible> mediciones = new ArrayList<>();
 }

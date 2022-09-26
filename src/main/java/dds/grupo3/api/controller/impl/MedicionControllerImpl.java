@@ -28,16 +28,4 @@ public class MedicionControllerImpl implements MedicionController {
       return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @Override
-    public ResponseEntity<?> cargarMediciones(List<MedicionDTO> mediciones) {
-      medicionService.cargarMediciones(mediciones);
-      return new ResponseEntity<>("Se cargaron las mediciones correctamente", HttpStatus.OK);
-    }
-
-    @Override
-    public ResponseEntity<?> borrarMedicion(Long id) {
-      medicionService.borrarMedicion(id);
-      return new ResponseEntity<>("Se borro la organizacion correctamente", HttpStatus.OK);
-    }
-
 }

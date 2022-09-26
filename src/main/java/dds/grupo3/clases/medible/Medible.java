@@ -47,8 +47,8 @@ public class Medible {
 	@Column(name="FECHA")
 	private Date fecha;
 	
-	@Column(name="BATCH_ID")
-	private long batch;
+	@ManyToOne
+	private BatchMediciones batch;
 
   //Periodicidad{
   // int 1 = Anual
