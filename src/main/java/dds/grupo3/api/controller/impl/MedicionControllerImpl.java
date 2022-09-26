@@ -19,7 +19,7 @@ public class MedicionControllerImpl implements MedicionController {
     
     @Override
     public ResponseEntity<?> obtenerListaDeMediciones() {
-    	List<Medible> response;
+    	List<MedicionDTO> response;
       try {
     	 response = medicionService.buscarMediciones();
       } catch (Exception e){

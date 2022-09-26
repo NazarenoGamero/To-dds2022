@@ -2,6 +2,7 @@ package dds.grupo3.api.dto.request;
 
 import dds.grupo3.clases.medible.BatchMediciones;
 import dds.grupo3.clases.medible.FactorEmision;
+import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.medible.Periodicidad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 import java.util.Date;
@@ -31,4 +32,13 @@ public class MedicionDTO {
 
   private BatchMediciones batch;
 
+  public MedicionDTO(Medible medible){
+    this.id= medible.getId();
+    this.fecha= medible.getFecha();
+    this.miFactor= medible.getMiFactor();
+    this.periodicidad= medible.getPeriodicidad();
+    this.PeriodoDeImputacion= medible.getPeriodoDeImputacion();
+    this.tipoDeMedicion= medible.getTipoDeMedicion();
+    this.valor= medible.getValor();
+  }
 }
