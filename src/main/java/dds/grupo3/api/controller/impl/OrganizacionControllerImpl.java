@@ -3,7 +3,8 @@ package dds.grupo3.api.controller.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 import dds.grupo3.api.controller.OrganizacionController;
 import dds.grupo3.api.dto.request.MiembroDTO;
@@ -11,7 +12,7 @@ import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.service.OrganizacionService;
 
-@RestController
+@Controller
 public class OrganizacionControllerImpl implements OrganizacionController {
 	@Autowired
 	OrganizacionService organizacionService;
@@ -58,5 +59,11 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 		}
 		
 		return new ResponseEntity<>("Se agrego el miembro correctamente", HttpStatus.OK);
+	}
+	
+	public String prueba(Model model) {
+		model.addAttribute("algo", "asd");
+		return "prueba";
+		
 	}
 }

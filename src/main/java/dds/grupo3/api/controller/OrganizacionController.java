@@ -1,6 +1,7 @@
 package dds.grupo3.api.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,9 @@ import dds.grupo3.api.dto.request.OrganizacionDTO;
 @RequestMapping("/organizaciones")
 public interface OrganizacionController {
 
+	@GetMapping("/prueba")
+	public String prueba(Model model);
+	
 	@GetMapping("")
 	public ResponseEntity<?> obtenerListaOrganizaciones();
 	
