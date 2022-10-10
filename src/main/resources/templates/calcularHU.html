@@ -1,0 +1,31 @@
+<div>
+    <div class="tab-pane fade border" id="nav-2-import" role="tabpanel" aria-labelledby="nav-2-tab">   
+        <div>
+            
+        </div>
+        <div id="resize_wrapper">
+            <table id="table_ped" class="display" style="width:100%;font-size:75%">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Sector</th>
+                        <th>Empleado</th>
+                        <th>HU</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="HU: ${HU}">
+                        <td th:text="${HU.categoria}" />
+                        <td th:text="${HU.sector}" />
+                        <td th:text="${HU.empleado}" />
+                        <td th:text="${HU.valor}" />
+                    </tr>
+                </tbody>
+            </table>        
+        </div>
+    </div>
+    <button id="btn_calcularHU" type="button" class="btn col btn-secondary btn-custom mx-3">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        Calcular HU
+    </button>
+</div>

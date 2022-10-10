@@ -2,6 +2,7 @@ package dds.grupo3.api.controller;
 
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,8 @@ import dds.grupo3.clases.miembro.Miembro;
 @RequestMapping("/miembros")
 public interface MiembroController {
 
+	@GetMapping("/trayecto")
+	public String trayecto(Model trayecto);
 	@GetMapping("")
 	public ResponseEntity<?> obtenerListaMiembros();
 	

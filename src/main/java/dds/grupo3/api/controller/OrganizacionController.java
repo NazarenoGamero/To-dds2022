@@ -16,8 +16,8 @@ import dds.grupo3.api.dto.request.OrganizacionDTO;
 @RequestMapping("/organizaciones")
 public interface OrganizacionController {
 
-	@GetMapping("/prueba")
-	public String prueba(Model model);
+	@GetMapping("/calculoHU")
+	public String calculoHU(Model calculoHU);
 	
 	@GetMapping("")
 	public ResponseEntity<?> obtenerListaOrganizaciones();
