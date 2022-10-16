@@ -4,18 +4,18 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <!-- CSS -->
-    <link rel="stylesheet" href="{{static_url}}/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/icons/css/all.min.css">
-    <link rel="stylesheet" href="{{static_url}}/static/css/loader.css">
-    <link rel="stylesheet" href="{{static_url}}/static/css/datatables.min.css">
-    <link rel="stylesheet" href="{{static_url}}/static/css/datatables_scroll_resizer.css">
-    <link rel="stylesheet" href="{{static_url}}/static/css/tempusdominus-bootstrap-4.min.css">
-    <link rel="stylesheet" href="{{static_url}}/static/css/bootstrap4-toggle.min.css">
-    <link rel="stylesheet" href="{{static_url}}/static/css/daterangepicker.min.css">
-    <link rel="stylesheet" href="{{static_url}}/static/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="./css/datatables.min.css">
+    <link rel="stylesheet" href="./css/datatables_scroll_resizer.css">
+    <link rel="stylesheet" href="./css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="./css/bootstrap4-toggle.min.css">
+    <link rel="stylesheet" href="./css/daterangepicker.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-select.min.css">
 
-    <link rel="stylesheet" href="{{static_url}}/static/css/theme_dark.css">
-    <link rel="stylesheet" href="{{static_url}}/static/css/principal.css">
+    <link rel="stylesheet" href="./css/theme_dark.css">
+    <link rel="stylesheet" href="./css/principal.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
     <title>Impacto Ambiental</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Impacto Ambiental</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,13 +32,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="login.html" data-toggle="tab" role="tab" aria-controls="nav-0" aria-selected="true">Login</a>
+                        <a class="nav-link" aria-current="page" href="login.html" data-toggle="tab" role="tab" aria-controls="nav-0" aria-selected="true">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="calcularHU.html" data-toggle="tab" role="tab" aria-controls="nav-1" aria-selected="true">Calcular HU</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="trayecto.html" data-toggle="tab" role="tab" aria-controls="nav-2" aria-selected="true">Trayecto</a>
+                        <a class="nav-link active" href="trayecto.html" data-toggle="tab" role="tab" aria-controls="nav-2" aria-selected="true">Trayecto</a>
                     </li>
                 </ul>
             </div>
@@ -52,8 +52,8 @@
                 <option th:each="empleado : ${empleados}" th:value="${empleado}" th:text="${empleado.name}"></option>
             </select>
         </div>
-        <div id="resize_wrapper">
-            <table id="table_inmediatos" class="display" style="width:100%;font-size:70%">
+        <div>
+            <table id="table_puntos" class="table table-dark" style="width:100%;font-size:70%">
                 <thead>
                     <tr>
                         <th>Tipo Punto</th>
@@ -85,3 +85,4 @@
         </div>
     </div>
 </body>
+</html>

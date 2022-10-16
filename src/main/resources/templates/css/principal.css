@@ -27,16 +27,13 @@ table.dataTable thead th, table.dataTable thead td {
 .dataTables_length {
     float: right !important;
 }
-.dt_toolbar_ped_detalle {
+.dt_toolbar_table_puntos {
     float: right;
 }
-.dt_toolbar_prod_asig {
+.dt_toolbar_table_HU {
     float: right;
 }
-.dt_toolbar_prod {
-    float: right;
-}
-.dt_toolbar_ped {
-    float: right;
-}
+.form-inline > * {
+    margin:5px 3px;
+ }
 
