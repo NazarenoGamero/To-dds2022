@@ -46,37 +46,42 @@
     </nav>
     <div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Organizacion</label>
+            <label for="exampleFormControlSelect1">Empleado</label>
             <select class="form-control" id="dropDownList">
-                <option value="0">organizacion</option>
-                <option th:each="organizacion : ${organizacions}" th:value="${organizacion}" th:text="${organizacion.name}"></option>
+                <option value="0">empleado</option>
+                <option th:each="empleado : ${empleados}" th:value="${empleado}" th:text="${empleado.name}"></option>
             </select>
         </div>
-        <div>
-            <a href='calcularHUvalorHU.html'>
-                <button id="btn_calcularHU" type="button" class="btn col btn-secondary btn-custom mx-3">
-                    Calcular HU
-                </button>
-            </a>
+        <div id="resize_wrapper">
+            <table id="table_inmediatos" class="display" style="width:100%;font-size:70%">
+                <thead>
+                    <tr>
+                        <th>Tipo Punto</th>
+                        <th>Transporte</th>
+                        <th>Linea</th>
+                        <th>Parada</th>
+                        <th>Calle</th>
+                        <th>Altura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="punto : ${puntos}">
+                        <td th:text="${punto.tipo}"></td>
+                        <td th:text="${punto.transporte}"></td>
+                        <td th:text="${punto.linea}"></td>
+                        <td th:text="${punto.parada}"></td>
+                        <td th:text="${punto.calle}"></td>
+                        <td th:text="${punto.altura}"></td>
+                     </tr>
+                </tbody>
+            </table>
         </div>
         <div>
-            <form class="form-inline">
-                <a href='calcularHUdesgloseFecha.html'>
-                    <button id="btn_desgloseFecha" type="button" class="btn col btn-secondary btn-custom mx-3">
-                        por Fecha
-                    </button>
-                </a>
-                <a href='calcularHUdesgloseCategoria.html'>
-                    <button id="btn_desgloseCategoria" type="button" class="btn col btn-secondary btn-custom mx-3">
-                        por Categoria
-                    </button>
-                </a>
-                <a href='calcularHUdesgloseEmpleado.html'>
-                    <button id="btn_desgloseEmpleado" type="button" class="btn col btn-secondary btn-custom mx-3">
-                        por Empleado
-                    </button>
-                </a>
-            </form>
+            <a href="agregarpunto.html">
+                <button id="btn_agregarpunto" type="button" class="btn col btn-secondary btn-custom mx-3">
+                    Agregar Punto
+                </button>
+            </a>
         </div>
     </div>
 </body>

@@ -48,9 +48,12 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">Organizacion</label>
             <select class="form-control" id="dropDownList">
-                <option value="0">organizacion</option>
+                <option value="0">${organizacion.name}</option>
                 <option th:each="organizacion : ${organizacions}" th:value="${organizacion}" th:text="${organizacion.name}"></option>
             </select>
+        </div>
+        <div>
+            ${valorHU}
         </div>
         <div>
             <a href='calcularHUvalorHU.html'>

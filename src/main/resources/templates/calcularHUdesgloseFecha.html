@@ -48,9 +48,30 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">Organizacion</label>
             <select class="form-control" id="dropDownList">
-                <option value="0">organizacion</option>
+                <option value="0">${organizacion.name}</option>
                 <option th:each="organizacion : ${organizacions}" th:value="${organizacion}" th:text="${organizacion.name}"></option>
             </select>
+        </div>
+        <div>
+            ${valorHU}
+        </div>
+        <div id="resize_wrapper">
+            <table id="table_inmediatos" class="display" style="width:100%;font-size:70%">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Month</th>
+                        <th>HU</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="HU : ${HUs}">
+                        <td th:text="${HU.year}"></td>
+                        <td th:text="${HU.month}"></td>
+                        <td th:text="${HU.valor}"></td>
+                     </tr>
+                </tbody>
+            </table>
         </div>
         <div>
             <a href='calcularHUvalorHU.html'>

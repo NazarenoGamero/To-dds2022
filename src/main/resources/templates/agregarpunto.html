@@ -46,37 +46,54 @@
     </nav>
     <div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Organizacion</label>
-            <select class="form-control" id="dropDownList">
-                <option value="0">organizacion</option>
-                <option th:each="organizacion : ${organizacions}" th:value="${organizacion}" th:text="${organizacion.name}"></option>
+            <label for="exampleFormControlSelect1">Empleado</label>
+            ${empleado.name}
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Tipo Punto</label>
+            <select class="form-control" id="tipoPunto">
+                <option>Direccion</option>
+                <option>Parada</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Transporte</label>
+            <select class="form-control" id="transporte">
+                <c:forEach var="transporte" items="${tipoTransporte}">
+                    <option>${transporte}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Linea</label>
+            <select class="form-control" id="linea">
+                <c:forEach var="linea" items="${linea.nombre}">
+                    <option>${linea}</option>
+                </c:forEach>
+            </select>
+            </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Parada</label>
+            <select class="form-control" id="parada">
+                <c:forEach var="paradas" items="${linea.paradas}">
+                    <option>${paradas}</option>
+                </c:forEach>
             </select>
         </div>
         <div>
-            <a href='calcularHUvalorHU.html'>
-                <button id="btn_calcularHU" type="button" class="btn col btn-secondary btn-custom mx-3">
-                    Calcular HU
-                </button>
-            </a>
+            <label for="exampleFormControlSelect1">Calle</label>
+            <input type="text" class="form-control" placeholder="Calle">
         </div>
         <div>
-            <form class="form-inline">
-                <a href='calcularHUdesgloseFecha.html'>
-                    <button id="btn_desgloseFecha" type="button" class="btn col btn-secondary btn-custom mx-3">
-                        por Fecha
-                    </button>
-                </a>
-                <a href='calcularHUdesgloseCategoria.html'>
-                    <button id="btn_desgloseCategoria" type="button" class="btn col btn-secondary btn-custom mx-3">
-                        por Categoria
-                    </button>
-                </a>
-                <a href='calcularHUdesgloseEmpleado.html'>
-                    <button id="btn_desgloseEmpleado" type="button" class="btn col btn-secondary btn-custom mx-3">
-                        por Empleado
-                    </button>
-                </a>
-            </form>
+            <label for="exampleFormControlSelect1">Altura</label>
+            <input type="text" class="form-control" placeholder="Altura">
+        </div>
+        <div>
+            <a href="agregarpunto.html">
+                <button id="btn_agregar" type="button" class="btn col btn-secondary btn-custom mx-3">
+                    Agregar
+                </button>
+            </a>
         </div>
     </div>
 </body>
