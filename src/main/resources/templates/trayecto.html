@@ -46,7 +46,7 @@
     </nav>
     <div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Empleado</label>
+            <label>Empleado</label>
             <select class="form-control" id="dropDownList">
                 <option value="0">empleado</option>
                 <option th:each="empleado : ${empleados}" th:value="${empleado}" th:text="${empleado.name}"></option>
