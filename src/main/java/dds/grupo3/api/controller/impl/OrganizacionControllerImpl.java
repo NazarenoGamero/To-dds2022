@@ -1,8 +1,6 @@
 package dds.grupo3.api.controller.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -11,6 +9,7 @@ import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.service.OrganizacionService;
+import dds.grupo3.clases.organizacion.Organizacion;
 
 @Controller
 public class OrganizacionControllerImpl implements OrganizacionController {
@@ -19,7 +18,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 
 
 	@Override
-	public ResponseEntity<?> obtenerListaOrganizaciones() {
+	public String obtenerListaOrganizaciones() {
 		ListaOrganizacionesDTO response = new ListaOrganizacionesDTO();
 		//traigo de la DB
 		//Ojo con hacer mucha logica aca
@@ -27,43 +26,73 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 		try {
 			response.setOrganizaciones(organizacionService.buscarOrganizaciones());
 		} catch (Exception e){
-			return new ResponseEntity<>("Hubo un error", HttpStatus.BAD_REQUEST);
+			return "error";
 		}
-		return new ResponseEntity<>(response, HttpStatus.OK);
+		return "Ok";
 	}
 
 	@Override
-	public ResponseEntity<?> crearOrganizacion(OrganizacionDTO org) {
+	public String crearOrganizacion(OrganizacionDTO org) {
 		organizacionService.crearOrganizacion(org);
-		return new ResponseEntity<>("Se creo la organizacion correctamente", HttpStatus.OK);
+		return "ok";
 	}
 
 	@Override
-	public ResponseEntity<?> borrarOrganizacion(Long id) {
+	public String borrarOrganizacion(Long id) {
 		organizacionService.borrarOrg(id);
-		return new ResponseEntity<>("Se borro la organizacion correctamente", HttpStatus.OK);
+		return "ok";
 	}
 
 	@Override
-	public ResponseEntity<?> editarOrganizacion(Long id, OrganizacionDTO org) {
+	public String editarOrganizacion(Long id, OrganizacionDTO org) {
 		organizacionService.editarOrg(id,org);
-		return new ResponseEntity<>("Se modifico la organizacion exitosamente", HttpStatus.OK);
+		return "ok";
 	}
 
 	@Override
-	public ResponseEntity<?> agregarMiembro(Long id, MiembroDTO miembro) {
+	public String agregarMiembro(Long id, MiembroDTO miembro) {
 		try {
 			organizacionService.agregarMiembro(id,miembro);
 		} catch(Exception e) {
-			new ResponseEntity<>("No se pudo agregar el miembro", HttpStatus.INTERNAL_SERVER_ERROR);
+			return "error";
 		}
 		
-		return new ResponseEntity<>("Se agrego el miembro correctamente", HttpStatus.OK);
+		return "ok";
 	}
 	
+	//TODO seguir este ejemplo. El archivo template se llama "prueba" y por eso se completa ahi la informacion
 	public String prueba(Model model) {
 		model.addAttribute("algo", "asd");
 		return "prueba";
 		
+	}
+
+
+	/*
+	 * a partir de la pantalla donde el usuario eligió la organizacion. Obtengo la huella de esa organizacion
+	 */
+	@Override
+	public String calculoHU(Organizacion org,Model model) {
+		float total= organizacionService.calcularHuella(org);
+		model.addAttribute("valorHU", total);
+		return "calcularHUvalorHU";
+	}
+
+	@Override
+	public String huCategoria(Model model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String huSector(Model model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String huFecha(Model model) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

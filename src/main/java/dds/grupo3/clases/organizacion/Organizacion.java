@@ -52,6 +52,14 @@ public class Organizacion {
 //TODO: MUY IMPORTANTE ESTE CASCADE de otra forma al intentar guardar el sector habrá error porque se hace referencia
 	//a algo que no existe en la DB
 
+	public float calcularHU() {
+	    float total = 0;
+	    for (Medible unMedible : this.getMediciones()) {
+	      total = total + unMedible.obtenerHuella();
+	    }
+	    return total;
+	  }
+	
   /*------------------------------------------------
    * Calculo de huella
    * ----------------------------------------------

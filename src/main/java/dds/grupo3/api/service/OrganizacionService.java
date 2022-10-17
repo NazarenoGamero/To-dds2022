@@ -17,4 +17,6 @@ public interface OrganizacionService {
 	public void editarOrg(Long id, OrganizacionDTO org);
 	
 	public void agregarMiembro(Long id, MiembroDTO miembro);
+
+	public float calcularHuella(Organizacion org);
 }

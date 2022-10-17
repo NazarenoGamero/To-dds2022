@@ -70,6 +70,11 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 		}
 		
 	}
+
+	@Override
+	public float calcularHuella(Organizacion org) {
+		return org.calcularHU();
+	}
 	
 	
 }
