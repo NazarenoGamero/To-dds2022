@@ -4,6 +4,8 @@ import java.util.List;
 
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
+import dds.grupo3.api.dto.response.MedicionTemplateDTO;
+import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.organizacion.Organizacion;
 
 public interface OrganizacionService {
@@ -19,4 +21,6 @@ public interface OrganizacionService {
 	public void agregarMiembro(Long id, MiembroDTO miembro);
 
 	public float calcularHuella(Organizacion org);
+
+	public List<MedicionTemplateDTO> mediciones(Organizacion org);
 }

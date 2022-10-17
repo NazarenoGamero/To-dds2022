@@ -1,8 +1,11 @@
 package dds.grupo3.api.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import dds.grupo3.api.dto.response.MedicionTemplateDTO;
+import dds.grupo3.clases.medible.Medible;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,5 +79,17 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 		return org.calcularHU();
 	}
 	
-	
+	@Override
+	public List<MedicionTemplateDTO> mediciones(Organizacion org) {
+		List<Medible> medicionesOrg = org.getMediciones();
+		List<MedicionTemplateDTO> medicionesTemplateDTO = new ArrayList<MedicionTemplateDTO>();
+		for(Medible unMedible : medicionesOrg){
+			MedicionTemplateDTO unMedibleDTO = new MedicionTemplateDTO();
+			unMedibleDTO.setTipoDeActividad(unMedible.getTipoDeMedicion().getTipoDeactividad().getNombre());
+			unMedibleDTO.setTipoDeConsumo(unMedible.getTipoDeMedicion().getTipoDeConsumo().getNombre());
+			unMedibleDTO.setValor(unMedible.getValor());
+			medicionesTemplateDTO.add(unMedibleDTO);
+		}
+		return medicionesTemplateDTO;
+	}
 }

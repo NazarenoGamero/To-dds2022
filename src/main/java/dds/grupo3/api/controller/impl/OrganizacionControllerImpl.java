@@ -1,5 +1,8 @@
 package dds.grupo3.api.controller.impl;
 
+import dds.grupo3.api.dto.request.MedicionDTO;
+import dds.grupo3.api.dto.response.MedicionTemplateDTO;
+import dds.grupo3.clases.medible.Medible;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,8 @@ import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.service.OrganizacionService;
 import dds.grupo3.clases.organizacion.Organizacion;
+
+import java.util.List;
 
 @Controller
 public class OrganizacionControllerImpl implements OrganizacionController {
@@ -79,9 +84,10 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	}
 
 	@Override
-	public String huCategoria(Model model) {
-		// TODO Auto-generated method stub
-		return null;
+	public String huCategoria(Organizacion org,Model model) {
+		List<MedicionTemplateDTO> mediciones = organizacionService.mediciones(org);
+		model.addAttribute("HUs", mediciones);
+		return "calcularHUdesgloseCategoria";
 	}
 
 	@Override

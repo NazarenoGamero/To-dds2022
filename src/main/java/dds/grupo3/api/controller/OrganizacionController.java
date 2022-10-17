@@ -25,7 +25,7 @@ public interface OrganizacionController {
 	public String calculoHU(@ModelAttribute("organizacion")Organizacion org, Model model);
 	
 	@GetMapping("/calculoHU/categoria")
-	public String huCategoria(Model model);
+	public String huCategoria(@ModelAttribute("organizacion")Organizacion org, Model model);
 	
 	@GetMapping("/calculoHU/sector")
 	public String huSector(Model model);

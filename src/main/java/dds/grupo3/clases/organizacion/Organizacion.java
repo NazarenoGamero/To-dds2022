@@ -44,7 +44,7 @@ public class Organizacion {
 	@Embedded
 	private Clasificacion clasificacion;
 	@ManyToMany
-	private List<Medible> mediciones;
+	public List<Medible> mediciones;
 	@Transient
 	private List<Postulacion> postulados;
 	@OneToMany(cascade=CascadeType.ALL)
