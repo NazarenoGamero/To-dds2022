@@ -46,22 +46,20 @@
     </nav>
     <div>
         <div class="form-group">
-            <form class="form-inline">
+            <form class="form-inline" th:action="@{/organizaciones/calculoHU/valor}">
             <label>Organizacion</label>
-            <select class="form-control" id="dropDownList">
-                <option value="0">organizacion</option>
-                <option th:each="organizacion : ${organizacions}" th:value="${organizacion}" th:text="${organizacion.name}"></option>
+            <select class="form-control" id="dropDownList" th:name="org">
+                <option value="0">Elija una Organizacion</option>
+                <option th:each="organizacion : ${organizacions}" th:value="${organizacion.id}" th:text="${organizacion.razonSocial}"></option>
             </select>
-            <a href='calcularHUvalorHU.html'>
-                <button id="btn_calcularHU" type="button" class="btn col btn-secondary btn-custom mx-3">
+                <button id="btn_calcularHU" type="submit" class="btn col btn-secondary btn-custom mx-3">
                     Calcular HU
                 </button>
-            </a>
             </form>
         </div>
         <div>
             <label>Valor HU</label>
-            <p>${valorHU}</p>
+            <p th:text="${valorHU}"/>
         </div>
         <div>
             <form class="form-inline">

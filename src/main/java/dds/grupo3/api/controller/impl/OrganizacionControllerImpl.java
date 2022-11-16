@@ -12,7 +12,6 @@ import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.service.OrganizacionService;
-import dds.grupo3.clases.organizacion.Organizacion;
 
 import java.util.List;
 
@@ -71,33 +70,42 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 		return "prueba";
 		
 	}
-
+	
+	/*
+	 * Obtengo la pagina de calculoHU principal para elegir la organizacion
+	 */
+	public String calculoHU(Model model) {
+		//model.addAttribute("organizacions", organizacionService.buscarOrganizaciones().stream().map(org -> (org.getRazonSocial())).collect(Collectors.toList()));
+		model.addAttribute("organizacions", organizacionService.buscarOrganizaciones());
+		return "calcularHU";
+	}
 
 	/*
-	 * a partir de la pantalla donde el usuario eligió la organizacion. Obtengo la huella de esa organizacion
+	 * A partir de la pantalla donde el usuario eligió la organizacion. Obtengo la huella de esa organizacion
 	 */
 	@Override
-	public String calculoHU(Organizacion org,Model model) {
-		float total= organizacionService.calcularHuella(org);
+	public String huValor(Long orgId,Model model) {
+		float total= organizacionService.calcularHuella(orgId);
+		model.addAttribute("organizacions", organizacionService.buscarOrganizaciones());
 		model.addAttribute("valorHU", total);
-		return "calcularHUvalorHU";
+		return "calcularHUvalorHU";//TODO hacer que este metodo reciba informacion del modelo anterior
 	}
 
 	@Override
-	public String huCategoria(Organizacion org,Model model) {
+	public String huCategoria(Long orgId,Model model) {
 		List<MedicionTemplateDTO> mediciones = organizacionService.mediciones(org);
 		model.addAttribute("HUs", mediciones);
 		return "calcularHUdesgloseCategoria";
 	}
 
 	@Override
-	public String huSector(Model model) {
+	public String huSector(Long orgId, Model model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String huFecha(Model model) {
+	public String huFecha(Long orgId,Model model) {
 		// TODO Auto-generated method stub
 		return null;
 	}

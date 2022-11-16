@@ -8,6 +8,7 @@ import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.clases.medible.Medible;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
@@ -75,8 +76,8 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	}
 
 	@Override
-	public float calcularHuella(Organizacion org) {
-		return org.calcularHU();
+	public float calcularHuella(Long org) {
+		return repo.findById(org).get().calcularHU();
 	}
 	
 	@Override
@@ -91,5 +92,11 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 			medicionesTemplateDTO.add(unMedibleDTO);
 		}
 		return medicionesTemplateDTO;
+	}
+
+	@Override
+	public String huCategoria(Long orgId, Model model) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
