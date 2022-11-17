@@ -1,11 +1,8 @@
 package dds.grupo3.api.dto.request;
 
-import dds.grupo3.clases.medible.BatchMediciones;
-import dds.grupo3.clases.medible.FactorEmision;
-import dds.grupo3.clases.medible.Medible;
-import dds.grupo3.clases.medible.Periodicidad;
-import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 import java.util.Date;
+
+import dds.grupo3.clases.medible.Medible;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,29 +13,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MedicionDTO {
-  private long id;
 
-  private TipoDeMedicion tipoDeMedicion;
+  private TipoDeMedicionDTO tipoDeMedicion;
 
   private float valor;
 
-  private Periodicidad periodicidad;
+  private String periodicidad;
 
-  private String PeriodoDeImputacion;
-
-  private FactorEmision miFactor;
+  private String periodoDeImputacion;
 
   private Date fecha;
 
-  private BatchMediciones batch;
-
   public MedicionDTO(Medible medible){
-    this.id= medible.getId();
     this.fecha= medible.getFecha();
-    this.miFactor= medible.getMiFactor();
-    this.periodicidad= medible.getPeriodicidad();
-    this.PeriodoDeImputacion= medible.getPeriodoDeImputacion();
-    this.tipoDeMedicion= medible.getTipoDeMedicion();
+    this.periodicidad= medible.getPeriodicidad().toString();
+    this.periodoDeImputacion= medible.getPeriodoDeImputacion();
+    this.tipoDeMedicion= new TipoDeMedicionDTO(medible.getTipoDeMedicion());
     this.valor= medible.getValor();
   }
 }

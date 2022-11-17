@@ -10,6 +10,7 @@ import dds.grupo3.api.repository.RepoMediciones;
 import dds.grupo3.api.repository.RepoMiembro;
 import dds.grupo3.api.repository.RepoOrganizacion;
 import dds.grupo3.api.repository.RepoSector;
+import dds.grupo3.clases.medible.FactorEmision;
 
 @Component
 public class InitData implements CommandLineRunner {
@@ -30,6 +31,14 @@ public class InitData implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//TODO aca va todo lo que se quiere inicializar en la base
+		this.crearFactores();
 		
+	}
+	
+	private void crearFactores() {
+		repoFactores.save(new FactorEmision("Gas Natural",(float) 1.1));
+		repoFactores.save(new FactorEmision("Diesel/Gasoil",(float) 1.4));
+		repoFactores.save(new FactorEmision("Fuel Oil",(float) 1.5));
+		repoFactores.save(new FactorEmision("Electricidad",(float) 2.1));
 	}
 }

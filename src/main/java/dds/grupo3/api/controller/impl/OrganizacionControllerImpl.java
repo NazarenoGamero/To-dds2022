@@ -93,7 +93,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 
 	@Override
 	public String huCategoria(Long orgId,Model model) {
-		List<MedicionTemplateDTO> mediciones = organizacionService.mediciones(org);
+		List<MedicionTemplateDTO> mediciones = organizacionService.mediciones(orgId);
 		model.addAttribute("HUs", mediciones);
 		return "calcularHUdesgloseCategoria";
 	}

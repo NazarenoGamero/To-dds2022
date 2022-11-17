@@ -81,8 +81,9 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	}
 	
 	@Override
-	public List<MedicionTemplateDTO> mediciones(Organizacion org) {
-		List<Medible> medicionesOrg = org.getMediciones();
+	public List<MedicionTemplateDTO> mediciones(Long org) {
+		Optional<Organizacion> laOrg = repo.findById(org);
+		List<Medible> medicionesOrg = laOrg.get().getMediciones();
 		List<MedicionTemplateDTO> medicionesTemplateDTO = new ArrayList<MedicionTemplateDTO>();
 		for(Medible unMedible : medicionesOrg){
 			MedicionTemplateDTO unMedibleDTO = new MedicionTemplateDTO();

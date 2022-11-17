@@ -1,16 +1,16 @@
 package dds.grupo3.api.controller.impl;
 
-import dds.grupo3.api.controller.BatchController;
-import dds.grupo3.api.dto.request.MedicionDTO;
-import dds.grupo3.api.dto.response.BatchDTO;
-import dds.grupo3.api.service.BatchService;
-import dds.grupo3.clases.medible.BatchMediciones;
-import dds.grupo3.clases.medible.Medible;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
+import dds.grupo3.api.controller.BatchController;
+import dds.grupo3.api.dto.request.MedicionDTO;
+import dds.grupo3.api.dto.response.BatchDTO;
+import dds.grupo3.api.service.BatchService;
 
 @RestController
 public class BatchControllerImpl implements BatchController {
@@ -35,7 +35,8 @@ public class BatchControllerImpl implements BatchController {
       batchService.cargarBatch(mediciones);
       return new ResponseEntity<>("El Batch de mediciones se cargo correctamente",HttpStatus.CREATED);
     }
-    catch (RuntimeException e){
+    catch (Exception e){
+    e.printStackTrace();
       return new ResponseEntity<>("No se pudo cargar el Batch",HttpStatus.BAD_REQUEST);
     }
   }

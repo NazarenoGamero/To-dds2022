@@ -1,23 +1,36 @@
 package dds.grupo3.api.service.impl;
 
-import dds.grupo3.api.dto.request.MedicionDTO;
-import dds.grupo3.api.dto.response.BatchDTO;
-import dds.grupo3.api.repository.RepoBatch;
-import dds.grupo3.api.service.BatchService;
-import dds.grupo3.api.service.MedicionService;
-import dds.grupo3.clases.medible.BatchMediciones;
-import dds.grupo3.clases.medible.Medible;
-import java.lang.management.OperatingSystemMXBean;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import dds.grupo3.api.dto.request.MedicionDTO;
+import dds.grupo3.api.dto.request.TipoDeMedicionDTO;
+import dds.grupo3.api.dto.response.BatchDTO;
+import dds.grupo3.api.repository.RepoBatch;
+import dds.grupo3.api.repository.RepoFactorEmision;
+import dds.grupo3.api.service.BatchService;
+import dds.grupo3.clases.medible.BatchMediciones;
+import dds.grupo3.clases.medible.FactorEmision;
+import dds.grupo3.clases.medible.Medible;
+import dds.grupo3.clases.medible.Periodicidad;
+import dds.grupo3.clases.tipoDeMediciones.Alcance;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
+import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
+import dds.grupo3.clases.tipoDeMediciones.Unidad;
 
 @Service
 public class BatchServiceImpl implements BatchService {
   @Autowired
   RepoBatch repo;
 
+  @Autowired
+  RepoFactorEmision repoFactores;
+  
   @Override
   public void borrarBatch(Long id) {
     repo.deleteById(id);
@@ -34,12 +47,47 @@ public class BatchServiceImpl implements BatchService {
 
   @Override
   public void cargarBatch(List<MedicionDTO> mediciones) {
+	//Creo un batch de mediciones
     BatchMediciones batchMediciones= new BatchMediciones();
-    for(MedicionDTO m :mediciones){
-      Medible medible = new Medible(m);
-      medible.setBatch(batchMediciones);
-      batchMediciones.getMediciones().add(medible);
+    List<FactorEmision> factores= repoFactores.findAll();
+    //Creo un medible por cada medicionDTO y lo agrego a la lista del batch
+	for(MedicionDTO m :mediciones){
+		//Creo el nuevo medible
+    	Medible medible = new Medible();
+    	medible.setTipoDeMedicion(this.nuevoTipoDeMedicion(m.getTipoDeMedicion()));
+    	medible.setFactorEmision(factores);
+    	medible.setFecha(new Date());
+    	medible.setPeriodicidad(Periodicidad.valueOf(m.getPeriodicidad())); //Se lee el string y si coincide se guarda el enum
+    	medible.setPeriodoDeImputacion(m.getPeriodoDeImputacion());
+    	medible.setValor(m.getValor());
+    	medible.setBatch(batchMediciones);
+      //Agrego al batch de mediciones
+    	batchMediciones.getMediciones().add(medible);
     }
     repo.save(batchMediciones);
+  }
+  
+  //Metodos Auxiliares
+  
+//Metodo auxiliar para los DTO de medible
+  public TipoDeMedicion nuevoTipoDeMedicion(TipoDeMedicionDTO dto) {
+	  TipoDeMedicion tipoMed = new TipoDeMedicion();
+	  Alcance alc = new Alcance();
+	  alc.setNombre(dto.getAlcance());
+	  tipoMed.setAlcance(alc);
+	  
+	  TipoDeActividad act = new TipoDeActividad();
+	  act.setNombre(dto.getTipoDeActividad());
+	  tipoMed.setTipoDeactividad(act);
+	  
+	  TipoDeConsumo con = new TipoDeConsumo();
+	  con.setNombre(dto.getTipoDeConsumo());
+	  tipoMed.setTipoDeConsumo(con);
+	  
+	  Unidad uni = new Unidad();
+	  uni.setNombre(dto.getUnidad());
+	  tipoMed.setUnidad(uni);
+	  
+	  return tipoMed;
   }
 }

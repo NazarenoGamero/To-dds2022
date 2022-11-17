@@ -22,10 +22,10 @@ public interface OrganizacionService {
 	public void editarOrg(Long id, OrganizacionDTO org);
 	
 	public void agregarMiembro(Long id, MiembroDTO miembro);
-
-	public List<MedicionTemplateDTO> mediciones(Organizacion org);
 	
 	//Metodos para llamadas MVC
+	
+	public List<MedicionTemplateDTO> mediciones(Long org);
 	
 	public float calcularHuella(Long org);
 	

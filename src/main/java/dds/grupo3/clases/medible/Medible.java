@@ -3,6 +3,7 @@ package dds.grupo3.clases.medible;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import dds.grupo3.api.dto.request.MedicionDTO;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +30,7 @@ public class Medible {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private TipoDeMedicion tipoDeMedicion;
 	
 	@Column(name="VALOR")
@@ -41,10 +43,11 @@ public class Medible {
 	@Column(name="PERIODO")
 	private String periodoDeImputacion;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private FactorEmision miFactor;
 	
 	@Column(name="FECHA")
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	@ManyToOne
@@ -54,25 +57,16 @@ public class Medible {
   // int 1 = Anual
   // int 0 = mensual
 
-	public Medible(MedicionDTO dto){
-		this.tipoDeMedicion= dto.getTipoDeMedicion();
-		this.valor= dto.getValor();
-		this.periodicidad= dto.getPeriodicidad();
-		this.periodoDeImputacion=dto.getPeriodoDeImputacion();
-		this.miFactor= dto.getMiFactor();
-		this.fecha= dto.getFecha();
-		this.batch= dto.getBatch();
-	}
-
   public float obtenerHuella() {
     return this.valor * this.getMiFactor().getValor();
   }
 
   public void setFactorEmision(List<FactorEmision> factores) {
     for (FactorEmision unFactor : factores) {
-      if (unFactor.getNombre() == this.tipoDeMedicion.getTipoDeactividad().getNombre()) {
+      if (unFactor.getNombre().equals(this.tipoDeMedicion.getTipoDeConsumo().getNombre())) {
         this.miFactor = unFactor;
       }
     }
   }
+  
 }
