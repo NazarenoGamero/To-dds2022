@@ -1,19 +1,20 @@
 package dds.grupo3.api.controller.impl;
 
-import dds.grupo3.api.dto.request.MedicionDTO;
-import dds.grupo3.api.dto.response.MedicionTemplateDTO;
-import dds.grupo3.clases.medible.Medible;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import dds.grupo3.api.controller.OrganizacionController;
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
+import dds.grupo3.api.dto.response.AnioDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
+import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.api.service.OrganizacionService;
-
-import java.util.List;
 
 @Controller
 public class OrganizacionControllerImpl implements OrganizacionController {
@@ -22,7 +23,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 
 
 	@Override
-	public String obtenerListaOrganizaciones() {
+	public ResponseEntity<?> obtenerListaOrganizaciones() {
 		ListaOrganizacionesDTO response = new ListaOrganizacionesDTO();
 		//traigo de la DB
 		//Ojo con hacer mucha logica aca
@@ -30,38 +31,38 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 		try {
 			response.setOrganizaciones(organizacionService.buscarOrganizaciones());
 		} catch (Exception e){
-			return "error";
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return "Ok";
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@Override
-	public String crearOrganizacion(OrganizacionDTO org) {
+	public ResponseEntity<?> crearOrganizacion(OrganizacionDTO org) {
 		organizacionService.crearOrganizacion(org);
-		return "ok";
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@Override
-	public String borrarOrganizacion(Long id) {
+	public ResponseEntity<?> borrarOrganizacion(Long id) {
 		organizacionService.borrarOrg(id);
-		return "ok";
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@Override
-	public String editarOrganizacion(Long id, OrganizacionDTO org) {
+	public ResponseEntity<?> editarOrganizacion(Long id, OrganizacionDTO org) {
 		organizacionService.editarOrg(id,org);
-		return "ok";
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@Override
-	public String agregarMiembro(Long id, MiembroDTO miembro) {
+	public ResponseEntity<?> agregarMiembro(Long id, MiembroDTO miembro) {
 		try {
 			organizacionService.agregarMiembro(id,miembro);
 		} catch(Exception e) {
-			return "error";
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		
-		return "ok";
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	//TODO seguir este ejemplo. El archivo template se llama "prueba" y por eso se completa ahi la informacion
@@ -84,7 +85,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	 * A partir de la pantalla donde el usuario eligió la organizacion. Obtengo la huella de esa organizacion
 	 */
 	@Override
-	public String huValor(Long orgId,Model model) {
+	public String huValor(Long orgId,String action,Model model) {
 		float total= organizacionService.calcularHuella(orgId);
 		model.addAttribute("organizacions", organizacionService.buscarOrganizaciones());
 		model.addAttribute("valorHU", total);
@@ -92,21 +93,23 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	}
 
 	@Override
-	public String huCategoria(Long orgId,Model model) {
+	public String huCategoria(Long orgId,String action,Model model) {
+		String organizacion = organizacionService.obtenerOrg(orgId).getRazonSocial();
 		List<MedicionTemplateDTO> mediciones = organizacionService.mediciones(orgId);
+		model.addAttribute("organizacion", organizacion);
 		model.addAttribute("HUs", mediciones);
 		return "calcularHUdesgloseCategoria";
 	}
 
 	@Override
-	public String huSector(Long orgId, Model model) {
+	public String huSector(Long orgId,String action, Model model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String huFecha(Long orgId,Model model) {
-		// TODO Auto-generated method stub
+	public String huFecha(Long orgId,String action,Model model) {
+		List<AnioDTO> huCalendario = organizacionService.medicionesFecha(orgId);
 		return null;
 	}
 }

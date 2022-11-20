@@ -27,10 +27,10 @@ import lombok.Setter;
 @Table(name="BATCHMEDICIONES")
 public class BatchMediciones {
 	@JsonIgnore
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
-  @OneToMany(cascade= CascadeType.ALL)
-  @JoinColumn
-  private List<Medible> mediciones = new ArrayList<Medible>();
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	@OneToMany(cascade= CascadeType.ALL)
+	@JoinColumn
+	private List<Medible> mediciones = new ArrayList<Medible>();
 }

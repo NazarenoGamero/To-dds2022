@@ -1,5 +1,6 @@
 package dds.grupo3.api.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,35 +24,43 @@ public interface OrganizacionController {
 	@GetMapping("/calculoHU")
 	public String calculoHU(Model model);
 	
-	@GetMapping("/calculoHU/valor")
-	public String huValor(@RequestParam(value = "org", required = false) Long orgId, Model model);
+	@GetMapping(path="/calculoHU/valor", params="action=total")
+	public String huValor(@RequestParam(value = "org", required = true) Long orgId,
+			@RequestParam(value = "org", required = true) String action,
+			Model model);
 	
-	@GetMapping("/calculoHU/categoria")
-	public String huCategoria(@RequestParam(value = "org", required = false) Long orgId, Model model);
+	@GetMapping(path="/calculoHU/valor", params="action=categoria")
+	public String huCategoria(@RequestParam(value = "org", required = true) Long orgId,
+			@RequestParam(value = "org", required = true) String action,
+			Model model);
 	
-	@GetMapping("/calculoHU/sector")
-	public String huSector(@RequestParam(value = "org", required = false) Long orgId,Model model);
+	@GetMapping(path="/calculoHU/valor", params="action=empleado")
+	public String huSector(@RequestParam(value = "org", required = true) Long orgId,
+			@RequestParam(value = "org", required = true) String action,
+			Model model);
 	
-	@GetMapping("/calculoHU/fecha")
-	public String huFecha(@RequestParam(value = "org", required = false) Long orgId, Model model);
+	@GetMapping(path="/calculoHU/valor", params="action=fecha")
+	public String huFecha(@RequestParam(value = "org", required = true) Long orgId,
+			@RequestParam(value = "org", required = true) String action,
+			Model model);
 	
 	//--------------------------------------
 	//		ABM Organizaciones (REST)
 	//--------------------------------------
 	
 	@GetMapping("")
-	public String obtenerListaOrganizaciones();
+	public ResponseEntity<?> obtenerListaOrganizaciones();
 	
 	@PostMapping("")
-	public String crearOrganizacion(@RequestBody OrganizacionDTO org);
+	public ResponseEntity<?> crearOrganizacion(@RequestBody OrganizacionDTO org);
 	
 	
 	@DeleteMapping("/{id}")
-	public String borrarOrganizacion(@PathVariable("id")Long id);
+	public ResponseEntity<?> borrarOrganizacion(@PathVariable("id")Long id);
 	
 	@PutMapping("/{id}")
-	public String editarOrganizacion(@PathVariable("id")Long id, @RequestBody OrganizacionDTO org);
+	public ResponseEntity<?> editarOrganizacion(@PathVariable("id")Long id, @RequestBody OrganizacionDTO org);
 
 	@PostMapping("/{id}")
-	public String agregarMiembro(@PathVariable("id")Long id,@RequestBody MiembroDTO miembro);
+	public ResponseEntity<?> agregarMiembro(@PathVariable("id")Long id,@RequestBody MiembroDTO miembro);
 }

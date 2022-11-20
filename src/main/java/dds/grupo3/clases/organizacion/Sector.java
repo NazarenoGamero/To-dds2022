@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import dds.grupo3.clases.miembro.Miembro;
 import lombok.AllArgsConstructor;
@@ -30,7 +30,7 @@ public class Sector {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 	@ManyToOne
-	@JsonIgnore
+	@JsonBackReference
   public Organizacion organizacion;
 	@Column(name="NOMBRE_SECTOR")
   private String nombre;

@@ -7,10 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class MedicionTemplateDTO {
-  private String tipoDeActividad;
-  private String tipoDeConsumo;
-  private float valor;
+@NoArgsConstructor
+public class mesDTO {
+	private String nombreMes;
+	private Float medicionMensual;
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dds.grupo3.api.controller.BatchController;
 import dds.grupo3.api.dto.request.MedicionDTO;
+import dds.grupo3.api.dto.request.idOrgDTO;
 import dds.grupo3.api.dto.response.BatchDTO;
 import dds.grupo3.api.service.BatchService;
 
@@ -50,5 +51,16 @@ public class BatchControllerImpl implements BatchController {
     catch (RuntimeException e){
       return new ResponseEntity<>("El Batch no existe",HttpStatus.BAD_REQUEST);
     }
+  }
+  
+  @Override
+  public ResponseEntity<?> asignarBatch(Long id, idOrgDTO idOrg){
+	  try {
+		  batchService.asignarBatch(id,idOrg.getIdOrg());
+		  return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	  }catch (Exception e){
+		  e.printStackTrace();
+		  return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	  }
   }
 }

@@ -12,10 +12,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.clases.exception.MiembroYaPerteneceOrgException;
@@ -43,11 +45,14 @@ public class Organizacion {
 	private TipoOrg tipo;
 	@Embedded
 	private Clasificacion clasificacion;
-	@ManyToMany
+	@OneToMany
+	@JoinColumn
 	public List<Medible> mediciones;
 	@Transient
+	@JsonIgnore
 	private List<Postulacion> postulados;
 	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn
 	private List<Sector> sectores;
 //TODO: MUY IMPORTANTE ESTE CASCADE de otra forma al intentar guardar el sector habrá error porque se hace referencia
 	//a algo que no existe en la DB

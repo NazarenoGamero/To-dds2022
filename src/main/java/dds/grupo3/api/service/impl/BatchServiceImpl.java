@@ -12,11 +12,13 @@ import dds.grupo3.api.dto.request.TipoDeMedicionDTO;
 import dds.grupo3.api.dto.response.BatchDTO;
 import dds.grupo3.api.repository.RepoBatch;
 import dds.grupo3.api.repository.RepoFactorEmision;
+import dds.grupo3.api.repository.RepoOrganizacion;
 import dds.grupo3.api.service.BatchService;
 import dds.grupo3.clases.medible.BatchMediciones;
 import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.medible.Periodicidad;
+import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.tipoDeMediciones.Alcance;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
@@ -30,6 +32,9 @@ public class BatchServiceImpl implements BatchService {
 
   @Autowired
   RepoFactorEmision repoFactores;
+  
+  @Autowired
+  RepoOrganizacion repoOrg;
   
   @Override
   public void borrarBatch(Long id) {
@@ -89,5 +94,13 @@ public class BatchServiceImpl implements BatchService {
 	  tipoMed.setUnidad(uni);
 	  
 	  return tipoMed;
-  }
+	  }
+
+	@Override
+	public void asignarBatch(Long id, Long idOrg) {
+		Optional<Organizacion> org = repoOrg.findById(idOrg);
+		Optional<BatchMediciones> batch = repo.findById(id);
+		List<Medible> mediciones = batch.get().getMediciones();
+		org.get().getMediciones().addAll(mediciones);
+	}
 }

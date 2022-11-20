@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import dds.grupo3.api.dto.response.MedicionTemplateDTO;
-import dds.grupo3.clases.medible.Medible;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
+import dds.grupo3.api.dto.response.AnioDTO;
+import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.api.repository.RepoMiembro;
 import dds.grupo3.api.repository.RepoOrganizacion;
 import dds.grupo3.api.repository.RepoSector;
 import dds.grupo3.api.service.OrganizacionService;
+import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.miembro.Miembro;
 import dds.grupo3.clases.organizacion.Organizacion;
 import dds.grupo3.clases.organizacion.Sector;
@@ -30,6 +31,11 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	
 	@Autowired
 	RepoMiembro repoMiembro;
+	
+	@Override
+	public Organizacion obtenerOrg(Long id) {
+		return repo.findById(id).get();
+	}
 	
 	@Override
 	public List<Organizacion> buscarOrganizaciones() {
@@ -97,6 +103,12 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 
 	@Override
 	public String huCategoria(Long orgId, Model model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AnioDTO> medicionesFecha(Long idOrg) {
 		// TODO Auto-generated method stub
 		return null;
 	}

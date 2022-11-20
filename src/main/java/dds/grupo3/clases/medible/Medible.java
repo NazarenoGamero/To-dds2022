@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -51,6 +53,7 @@ public class Medible {
 	private Date fecha;
 	
 	@ManyToOne
+	@JsonBackReference
 	private BatchMediciones batch;
 
   //Periodicidad{

@@ -47,7 +47,7 @@
     <div>
         <div>
             <label>Organizacion</label>
-            <p>${organizacion.name}</p>
+            <p>${organizacion}</p>
         </div>
         <div>
             <table id="table_HU" class="table table-dark" style="width:100%;font-size:70%">
@@ -60,8 +60,8 @@
                 </thead>
                 <tbody>
                     <tr th:each="HU : ${HUs}">
-                        <td th:text="${HU.tipoDeactividad}"></td>
-                        <td th:text="${HU.tipodeconsumo}"></td>
+                        <td th:text="${HU.tipoDeActividad}"></td>
+                        <td th:text="${HU.tipoDeConsumo}"></td>
                         <td th:text="${HU.valor}"></td>
                      </tr>
                 </tbody>
