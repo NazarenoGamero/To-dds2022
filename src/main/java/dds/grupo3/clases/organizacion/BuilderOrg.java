@@ -1,14 +1,13 @@
 package dds.grupo3.clases.organizacion;
 
+import java.util.List;
+
 import dds.grupo3.clases.exception.NoSeEncontroClasifException;
 import dds.grupo3.clases.exception.NoSeEncontroTipoException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter

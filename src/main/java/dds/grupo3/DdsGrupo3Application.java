@@ -1,16 +1,13 @@
 package dds.grupo3;
 
-import dds.grupo3.api.dto.request.MunicipioDTO;
-import dds.grupo3.api.dto.request.PaisDTO;
-import dds.grupo3.api.dto.request.ProvinciaDTO;
-import dds.grupo3.api.service.impl.EmailServiceImpl;
-import dds.grupo3.api.service.impl.GeoddsServiceImpl;
-import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import dds.grupo3.api.service.impl.EmailServiceImpl;
 
 
 @SpringBootApplication

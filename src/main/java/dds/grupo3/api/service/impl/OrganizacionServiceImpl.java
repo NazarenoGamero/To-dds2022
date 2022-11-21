@@ -12,6 +12,7 @@ import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.AnioDTO;
 import dds.grupo3.api.dto.response.MedicionTemplateDTO;
+import dds.grupo3.api.repository.RepoMediciones;
 import dds.grupo3.api.repository.RepoMiembro;
 import dds.grupo3.api.repository.RepoOrganizacion;
 import dds.grupo3.api.repository.RepoSector;
@@ -31,6 +32,9 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	
 	@Autowired
 	RepoMiembro repoMiembro;
+	
+	@Autowired
+	RepoMediciones repoMed;
 	
 	@Override
 	public Organizacion obtenerOrg(Long id) {
@@ -109,7 +113,9 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 
 	@Override
 	public List<AnioDTO> medicionesFecha(Long idOrg) {
-		// TODO Auto-generated method stub
+		Organizacion org = repo.findById(idOrg).get();
+		List<Medible> mediciones = org.getMediciones();
+		
 		return null;
 	}
 }

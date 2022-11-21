@@ -44,6 +44,9 @@ public interface OrganizacionController {
 			@RequestParam(value = "org", required = true) String action,
 			Model model);
 	
+	@GetMapping("/error")
+	public String error();
+	
 	//--------------------------------------
 	//		ABM Organizaciones (REST)
 	//--------------------------------------

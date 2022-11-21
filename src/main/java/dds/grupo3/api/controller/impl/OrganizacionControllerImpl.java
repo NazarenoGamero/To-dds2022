@@ -15,6 +15,7 @@ import dds.grupo3.api.dto.response.AnioDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.api.service.OrganizacionService;
+import dds.grupo3.clases.organizacion.Organizacion;
 
 @Controller
 public class OrganizacionControllerImpl implements OrganizacionController {
@@ -94,7 +95,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 
 	@Override
 	public String huCategoria(Long orgId,String action,Model model) {
-		String organizacion = organizacionService.obtenerOrg(orgId).getRazonSocial();
+		Organizacion organizacion = organizacionService.obtenerOrg(orgId);
 		List<MedicionTemplateDTO> mediciones = organizacionService.mediciones(orgId);
 		model.addAttribute("organizacion", organizacion);
 		model.addAttribute("HUs", mediciones);
@@ -111,5 +112,10 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	public String huFecha(Long orgId,String action,Model model) {
 		List<AnioDTO> huCalendario = organizacionService.medicionesFecha(orgId);
 		return null;
+	}
+	
+	@Override
+	public String error() {
+		return "error";
 	}
 }

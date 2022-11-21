@@ -1,12 +1,11 @@
 package dds.grupo3.clases.trayectos;
 
-import dds.grupo3.clases.miembro.Miembro;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Getter
 @Setter

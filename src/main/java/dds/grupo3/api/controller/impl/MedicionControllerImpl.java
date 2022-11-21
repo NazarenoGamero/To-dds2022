@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import dds.grupo3.api.controller.MedicionController;
 import dds.grupo3.api.dto.request.MedicionDTO;
 import dds.grupo3.api.service.MedicionService;
-import dds.grupo3.clases.medible.Medible;
 
 @RestController
 public class MedicionControllerImpl implements MedicionController {
