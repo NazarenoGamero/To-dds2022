@@ -11,22 +11,24 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Impacto Ambiental</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" th:href="@{/calculoHU}">Impacto Ambiental</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/login" data-toggle="tab" role="tab"
+                        <a class="nav-link" aria-current="page" th:href="@{/login}" data-toggle="tab" role="tab"
                             aria-controls="nav-0" aria-selected="true">Login</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/organizaciones/calculoHU" data-toggle="tab" role="tab" aria-controls="nav-1"
+                        <a class="nav-link" th:href="@{/organizaciones/calculoHU}" data-toggle="tab" role="tab" aria-controls="nav-1"
                             aria-selected="true">Calcular HU</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/trayectos" data-toggle="tab" role="tab" aria-controls="nav-2"
+                        <a class="nav-link" th:href="@{/trayectos}" data-toggle="tab" role="tab" aria-controls="nav-2"
                             aria-selected="true">Trayecto</a>
                     </li>
                 </ul>
