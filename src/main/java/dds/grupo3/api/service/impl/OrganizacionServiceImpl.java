@@ -1,6 +1,8 @@
 package dds.grupo3.api.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +12,7 @@ import org.springframework.ui.Model;
 
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
-import dds.grupo3.api.dto.response.AnioDTO;
+import dds.grupo3.api.dto.response.HuFecha;
 import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.api.repository.RepoMediciones;
 import dds.grupo3.api.repository.RepoMiembro;
@@ -112,10 +114,18 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	}
 
 	@Override
-	public List<AnioDTO> medicionesFecha(Long idOrg) {
+	public List<HuFecha> medicionesFecha(Long idOrg) {
 		Organizacion org = repo.findById(idOrg).get();
 		List<Medible> mediciones = org.getMediciones();
-		
+//		mediciones.stream().filter(medicion -> (medicion.getPeriodicidad().equals(Periodicidad.ANUAL) ));
+		Collections.sort(mediciones);
+		Iterator<Medible> iterador = mediciones.iterator();
+		List<HuFecha> listaFechas = new ArrayList<HuFecha>();
+		while(iterador.hasNext()) {
+			Medible unMedible = iterador.next();
+			HuFecha unMes = new HuFecha(unMedible);
+			listaFechas.add(unMes);
+		}
 		return null;
 	}
 }

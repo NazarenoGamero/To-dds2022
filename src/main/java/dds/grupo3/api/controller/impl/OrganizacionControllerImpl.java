@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import dds.grupo3.api.controller.OrganizacionController;
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
-import dds.grupo3.api.dto.response.AnioDTO;
+import dds.grupo3.api.dto.response.HuFecha;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.api.service.OrganizacionService;
@@ -110,7 +110,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 
 	@Override
 	public String huFecha(Long orgId,String action,Model model) {
-		List<AnioDTO> huCalendario = organizacionService.medicionesFecha(orgId);
+		List<HuFecha> huCalendario = organizacionService.medicionesFecha(orgId);
 		return null;
 	}
 	

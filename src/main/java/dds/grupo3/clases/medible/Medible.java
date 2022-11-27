@@ -28,7 +28,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name="MEDIBLE")
-public class Medible {
+public class Medible implements Comparable<Medible> {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
@@ -71,5 +71,10 @@ public class Medible {
       }
     }
   }
+
+	@Override
+	public int compareTo(Medible b) {
+		return this.getFecha().compareTo(b.getFecha());
+	}
   
 }
