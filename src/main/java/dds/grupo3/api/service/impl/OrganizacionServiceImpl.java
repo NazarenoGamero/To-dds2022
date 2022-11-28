@@ -115,10 +115,14 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 
 	@Override
 	public List<HuFecha> medicionesFecha(Long idOrg) {
+		//Busco la organizacion y obtengo sus mediciones
 		Organizacion org = repo.findById(idOrg).get();
 		List<Medible> mediciones = org.getMediciones();
-//		mediciones.stream().filter(medicion -> (medicion.getPeriodicidad().equals(Periodicidad.ANUAL) ));
+		
+		//Medible tiene un metodo "compareTo" que ayuda a que se ordenen los elementos por fecha
 		Collections.sort(mediciones);
+		
+		//Creo una lista de HuFecha
 		Iterator<Medible> iterador = mediciones.iterator();
 		List<HuFecha> listaFechas = new ArrayList<HuFecha>();
 		while(iterador.hasNext()) {
@@ -126,6 +130,41 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 			HuFecha unMes = new HuFecha(unMedible);
 			listaFechas.add(unMes);
 		}
+		
+		//Elimino repetidos de la lista y sumo los valores de esos repetidos
+		listaFechas = this.transformarListaFechas(listaFechas);
 		return null;
+	}
+	
+	//Solo Dios y yo sabiamos que estaba haciendo cuando escribí esto
+	//Ahora solo Dios sabe
+	private List<HuFecha> transformarListaFechas(List<HuFecha> lista) {
+		//Como ya ordene la lista de medibles por fecha, esta nueva lista esta ordenada tambien
+		Iterator<HuFecha> iterador = lista.iterator();
+		HuFecha fecha1 = null;
+		HuFecha fecha2 = null;
+		List<HuFecha> listaSinRepetidos = new ArrayList<HuFecha>();
+		//Siempre que la lista sea mayor o igual que dos
+		if(lista.size()>=2) {
+			fecha1 = iterador.next(); //Obtengo el primer valor
+			do {
+				//Muevo el fecha2 al siguiente valor
+				fecha2 = iterador.next();
+				//Evaluo si son equivalentes (Con el metodo override equals que se hizo)
+				if(fecha1.equals(fecha2)) {
+					//Si son iguales sumo los valores y avanzo al siguiente objeto
+					fecha1.setValor(fecha1.getValor()+fecha2.getValor());
+				}else {
+					//Si no son iguales, guardo el primer elemento, y avanzo con el iterador
+					listaSinRepetidos.add(fecha1);
+					fecha1 = fecha2;
+				}
+			}while(iterador.hasNext());
+		}else {
+			//Si solo es un elemento
+			return lista;
+		}
+		//Retorno la lista sin repetidos con valores sumados
+		return listaSinRepetidos;
 	}
 }
