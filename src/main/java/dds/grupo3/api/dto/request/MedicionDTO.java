@@ -1,8 +1,7 @@
 package dds.grupo3.api.dto.request;
 
-import java.util.Date;
-
 import dds.grupo3.clases.medible.Medible;
+import dds.grupo3.util.Util;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,10 +21,10 @@ public class MedicionDTO {
 
   private String periodoDeImputacion;
 
-  private Date fecha;
+  private String fecha;
 
   public MedicionDTO(Medible medible){
-    this.fecha= medible.getFecha();
+    this.fecha= Util.dateToString(medible.getFecha());
     this.periodicidad= medible.getPeriodicidad().toString();
     this.periodoDeImputacion= medible.getPeriodoDeImputacion();
     this.tipoDeMedicion= new TipoDeMedicionDTO(medible.getTipoDeMedicion());

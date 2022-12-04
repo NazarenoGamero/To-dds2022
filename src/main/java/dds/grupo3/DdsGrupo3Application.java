@@ -17,6 +17,7 @@ public class DdsGrupo3Application {
 		ScheduledExecutorService executorService;
 		executorService = Executors.newSingleThreadScheduledExecutor();
 		executorService.scheduleAtFixedRate(DdsGrupo3Application::envioDeReportes, 0, 5, TimeUnit.DAYS);
+		System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(DdsGrupo3Application.class, args);
 
 	}

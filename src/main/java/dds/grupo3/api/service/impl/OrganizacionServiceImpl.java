@@ -133,7 +133,7 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 		
 		//Elimino repetidos de la lista y sumo los valores de esos repetidos
 		listaFechas = this.transformarListaFechas(listaFechas);
-		return null;
+		return listaFechas;
 	}
 	
 	//Solo Dios y yo sabiamos que estaba haciendo cuando escribí esto
@@ -160,6 +160,7 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 					fecha1 = fecha2;
 				}
 			}while(iterador.hasNext());
+			listaSinRepetidos.add(fecha1);
 		}else {
 			//Si solo es un elemento
 			return lista;

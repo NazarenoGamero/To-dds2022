@@ -1,6 +1,6 @@
 package dds.grupo3.api.service.impl;
 
-import java.util.Date;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +12,7 @@ import dds.grupo3.api.dto.request.TipoDeMedicionDTO;
 import dds.grupo3.api.dto.response.BatchDTO;
 import dds.grupo3.api.repository.RepoBatch;
 import dds.grupo3.api.repository.RepoFactorEmision;
+import dds.grupo3.api.repository.RepoMediciones;
 import dds.grupo3.api.repository.RepoOrganizacion;
 import dds.grupo3.api.service.BatchService;
 import dds.grupo3.clases.medible.BatchMediciones;
@@ -24,6 +25,7 @@ import dds.grupo3.clases.tipoDeMediciones.TipoDeActividad;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeConsumo;
 import dds.grupo3.clases.tipoDeMediciones.TipoDeMedicion;
 import dds.grupo3.clases.tipoDeMediciones.Unidad;
+import dds.grupo3.util.Util;
 
 @Service
 public class BatchServiceImpl implements BatchService {
@@ -35,6 +37,9 @@ public class BatchServiceImpl implements BatchService {
   
   @Autowired
   RepoOrganizacion repoOrg;
+  
+  @Autowired
+  RepoMediciones repoMedi;
   
   @Override
   public void borrarBatch(Long id) {
@@ -51,7 +56,7 @@ public class BatchServiceImpl implements BatchService {
   }
 
   @Override
-  public void cargarBatch(List<MedicionDTO> mediciones) {
+  public void cargarBatch(List<MedicionDTO> mediciones) throws ParseException {
 	//Creo un batch de mediciones
     BatchMediciones batchMediciones= new BatchMediciones();
     List<FactorEmision> factores= repoFactores.findAll();
@@ -61,7 +66,7 @@ public class BatchServiceImpl implements BatchService {
     	Medible medible = new Medible();
     	medible.setTipoDeMedicion(this.nuevoTipoDeMedicion(m.getTipoDeMedicion()));
     	medible.setFactorEmision(factores);
-    	medible.setFecha(new Date());
+    	medible.setFecha(Util.stringToDate(m.getFecha()));
     	medible.setPeriodicidad(Periodicidad.valueOf(m.getPeriodicidad())); //Se lee el string y si coincide se guarda el enum
     	medible.setPeriodoDeImputacion(m.getPeriodoDeImputacion());
     	medible.setValor(m.getValor());

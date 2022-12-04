@@ -1,6 +1,8 @@
 package dds.grupo3.api.dto.response;
 
 import java.time.Month;
+import java.util.Calendar;
+import java.util.Date;
 
 import dds.grupo3.clases.medible.Medible;
 import lombok.AllArgsConstructor;
@@ -19,8 +21,13 @@ public class HuFecha {
 	private float valor;
 	
 	public HuFecha(Medible unMedible) {
-		anio =  unMedible.getFecha().getYear();
-		mes = Month.of(unMedible.getFecha().getMonth()).name();
+		//Con calendar podemos tomar los datos del util.Date
+		Date date = unMedible.getFecha();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		
+		anio =  calendar.get(Calendar.YEAR);
+		mes = Month.of(calendar.get(Calendar.MONTH)).name();
 		//Para que traiga el factor de emision correspondiente de la DB hago un get
 		unMedible.getMiFactor();
 		valor = unMedible.obtenerHuella();

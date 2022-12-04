@@ -110,8 +110,11 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 
 	@Override
 	public String huFecha(Long orgId,String action,Model model) {
+		Organizacion organizacion = organizacionService.obtenerOrg(orgId);
 		List<HuFecha> huCalendario = organizacionService.medicionesFecha(orgId);
-		return null;
+		model.addAttribute("organizacion", organizacion);
+		model.addAttribute("HUs", huCalendario);
+		return "calcularHUdesgloseFecha";
 	}
 	
 	@Override

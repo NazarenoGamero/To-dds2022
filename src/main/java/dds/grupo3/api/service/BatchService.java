@@ -1,5 +1,6 @@
 package dds.grupo3.api.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import dds.grupo3.api.dto.request.MedicionDTO;
@@ -11,7 +12,7 @@ public interface BatchService {
   
   BatchDTO buscarMediciones(Long id);
   
-  void cargarBatch(List<MedicionDTO> mediciones);
+  void cargarBatch(List<MedicionDTO> mediciones) throws ParseException;
   
   void asignarBatch(Long id, Long idOrg);
 }
