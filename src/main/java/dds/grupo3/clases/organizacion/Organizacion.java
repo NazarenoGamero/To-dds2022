@@ -52,7 +52,7 @@ public class Organizacion {
 	@JsonIgnore
 	private List<Postulacion> postulados;
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn
+	@JoinColumn(name="organizacion_id")
 	private List<Sector> sectores;
 //TODO: MUY IMPORTANTE ESTE CASCADE de otra forma al intentar guardar el sector habrá error porque se hace referencia
 	//a algo que no existe en la DB

@@ -1,5 +1,12 @@
 package dds.grupo3.clases.trayectos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +16,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name="Punto")
 public class Punto {
-  private float latitud;
-  private float longitud;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
+	private long idPunto;
+	@Column(name="localidad_id")
+  private long localidadId;
+	@Column(name="altura")
+  private long altura;
+	@Column(name="calle")
+  private String calle;
 }

@@ -1,20 +1,25 @@
 package dds.grupo3.api.service.impl;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.RestTemplate;
+
 import dds.grupo3.api.dto.request.DistanciaDTO;
 import dds.grupo3.api.dto.request.LocalidadDTO;
 import dds.grupo3.api.dto.request.MunicipioDTO;
 import dds.grupo3.api.dto.request.PaisDTO;
 import dds.grupo3.api.dto.request.ProvinciaDTO;
 import dds.grupo3.api.service.GeoddsService;
-import java.util.Arrays;
-import java.util.List;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.web.client.RestTemplate;
 
+//La siguiente clase es una alternativa al uso de FeignClient que se tiene en el package "FeignClient"
+//Por tanto, ambas hacen lo mismo
 public class GeoddsServiceImpl implements GeoddsService {
-
+	
+	
   private final String token= "2gSCEk8R7REUaVp5KuT6S2GxOo8dauKwuxuMJDQw8JA=";
   private final String url = "https://ddstpa.com.ar/api/";
   private HttpEntity<String> entity;
