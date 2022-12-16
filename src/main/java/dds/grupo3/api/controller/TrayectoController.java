@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/trayectos")
 public interface TrayectoController {
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String principalTrayecto(Model model);
 	
 	@GetMapping("/miembro")

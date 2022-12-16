@@ -1,6 +1,7 @@
 package dds.grupo3.clases.miembro;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class Miembro {
   private TipoDocEnum tipoDoc;
   @Column(name="DOCUMENTO")
   private Long nroDoc;
-  @OneToMany
+  @OneToMany(cascade=CascadeType.ALL)
   @JoinColumn(name="miembro_id")
   private List<Trayecto> trayectos;
 

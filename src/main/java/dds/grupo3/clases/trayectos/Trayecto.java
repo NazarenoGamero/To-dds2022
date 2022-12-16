@@ -2,6 +2,7 @@ package dds.grupo3.clases.trayectos;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Trayecto {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="ID")
 	private long idTrayecto;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="trayecto_id")
 	@OrderColumn
   private List<Tramo> tramos;

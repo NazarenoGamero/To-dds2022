@@ -42,13 +42,13 @@
     </nav>
     <div>
         <div class="form-group">
-            <form class="form" th:action="@{/trayectos/puntos}">
+            <form class="form" th:action="@{/trayectos/miembro}">
                 <div class="row py-2">
                     <div class="col-1">
                         <label>Empleado</label>
                     </div>
                     <div class="col-md">
-                        <select class="form-control" id="dropDownList" th:name="id_empleado">
+                        <select class="form-control" id="dropDownList" th:name="id_miembro">
                             <option value="0">Seleccione un empleado</option>
                             <option th:each="empleado : ${empleados}" th:value="${empleado.id}"
                                 th:text="${empleado.nombre} + ' ' + ${empleado.apellido}">

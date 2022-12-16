@@ -33,13 +33,13 @@ public class Tramo {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
 	private long idTramo;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "transporte")
   private Transporte transporte;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "punto_inicio_id")
   private Punto puntoInicio;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "punto_fin_id")
   private Punto puntoDeLlegada;
 	@Column(name="distancia")
