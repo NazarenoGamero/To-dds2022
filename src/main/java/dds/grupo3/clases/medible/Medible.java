@@ -46,7 +46,7 @@ public class Medible implements Comparable<Medible> {
 	@Column(name="PERIODO")
 	private String periodoDeImputacion;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	private FactorEmision miFactor;
 	
 	@Column(name="FECHA")
