@@ -51,19 +51,19 @@ public interface OrganizacionController {
 	//		ABM Organizaciones (REST)
 	//--------------------------------------
 	
-	@GetMapping("")
+	@GetMapping("/api/")
 	public ResponseEntity<?> obtenerListaOrganizaciones();
 	
-	@PostMapping("")
+	@PostMapping("/api/")
 	public ResponseEntity<?> crearOrganizacion(@RequestBody OrganizacionDTO org);
 	
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/api/{id}")
 	public ResponseEntity<?> borrarOrganizacion(@PathVariable("id")Long id);
 	
-	@PutMapping("/{id}")
+	@PutMapping("/api/{id}")
 	public ResponseEntity<?> editarOrganizacion(@PathVariable("id")Long id, @RequestBody OrganizacionDTO org);
 
-	@PostMapping("/{id}")
+	@PostMapping("/api/{id}")
 	public ResponseEntity<?> agregarMiembro(@PathVariable("id")Long id,@RequestBody MiembroDTO miembro);
 }
