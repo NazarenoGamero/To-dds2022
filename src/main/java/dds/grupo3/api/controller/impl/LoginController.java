@@ -10,6 +10,6 @@ public class LoginController {
 		@GetMapping("/login")
 		public String iniciarSesion() {
 			return "login";
-		}
+		} 
 		
 }

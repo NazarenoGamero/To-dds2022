@@ -44,45 +44,46 @@
                 <label>Organizacion</label>
                 <input type="hidden" readonly class="form-control-plaintext" th:name="org" th:value="${organizacion.id}" th:text="${organizacion.razonSocial}"></input>
             </div>
-            <div class="row py-2">
-                <div class="col-md">
-                    <button type="submit" name="action" value="fecha" id="btn_desgloseFecha"
-                        class="btn col btn-secondary btn-custom mx-3">
-                        por Fecha
-                    </button>
-                </div>
-                <div class="col-md">
-                    <button type="submit" name="action" value="categoria" id="btn_desgloseCategoria"
-                        class="btn col btn-secondary btn-custom mx-3">
-                        por Categoria
-                    </button>
-                </div>
-                <div class="col-md">
-                    <button type="submit" name="action" value="empleado" id="btn_desgloseEmpleado"
-                        class="btn col btn-secondary btn-custom mx-3">
-                        por Empleado
-                    </button>
-                </div>
-            </div>
         </form>
-        <div>
-            <table id="table_HU" class="table table-dark" style="width:100%;font-size:70%">
-                <thead>
-                    <tr>
-                        <th>Year</th>
-                        <th>Month</th>
-                        <th>HU</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="HU : ${HUs}">
-                        <td th:text="${HU.anio}"></td>
-                        <td th:text="${HU.mes}"></td>
-                        <td th:text="${HU.valor}"></td>
-                     </tr>
-                </tbody>
-            </table>
-        </div>
+    </div>
+    <br>
+    <div>
+    	<form class="form-inline">
+        	<a href='calcularHUdesgloseFecha.html'>
+            	<button id="btn_desgloseFecha" type="button" class="btn col btn-secondary btn-custom mx-3">
+                	por Fecha
+                </button>
+            </a>
+            <a href='calcularHUdesgloseCategoria.html'>
+            	<button id="btn_desgloseCategoria" type="button" class="btn col btn-secondary btn-custom mx-3">
+                	por Categoria
+                </button>
+            </a>
+            <a href='calcularHUdesgloseEmpleado.html'>
+            	<button id="btn_desgloseEmpleado" type="button" class="btn col btn-secondary btn-custom mx-3">
+                	por Empleado
+                </button>
+            </a>
+        </form>
+    </div>
+    <br>  
+    <div>
+    	<table id="table_HU" class="table table-dark" style="width:100%;font-size:70%">
+        	<thead>
+            	<tr>
+                	<th>Year</th>
+                    <th>Month</th>
+                    <th>HU</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<tr th:each="HU : ${HUs}">
+                	<td th:text="${HU.anio}"></td>
+                    <td th:text="${HU.mes}"></td>
+                    <td th:text="${HU.valor}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

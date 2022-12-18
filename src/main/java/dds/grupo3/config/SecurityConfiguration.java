@@ -52,6 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.formLogin()
 				.loginPage("/login")
 				.permitAll()
+				.defaultSuccessUrl("/organizaciones/calculoHU", true)
 		.and()
 			.logout()
 				.invalidateHttpSession(true)
@@ -61,3 +62,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.permitAll();
 	}
 }
+	
