@@ -74,7 +74,7 @@ public class BatchServiceImpl implements BatchService {
       //Agrego al batch de mediciones
     	batchMediciones.getMediciones().add(medible);
     }
-    repo.save(batchMediciones);
+    repo.saveAndFlush(batchMediciones);
   }
   
   //Metodos Auxiliares
