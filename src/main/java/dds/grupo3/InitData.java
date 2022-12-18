@@ -55,8 +55,8 @@ public class InitData implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		//TODO aca va todo lo que se quiere inicializar en la base
 		this.crearFactores();
-		this.crearMiembroConTrayecto();
-		this.crearOrgConBatch();
+//		this.crearMiembroConTrayecto();
+//		this.crearOrgConBatch();
 	}
 	
 	private void crearFactores() {
