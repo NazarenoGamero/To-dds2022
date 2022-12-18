@@ -41,22 +41,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(
-				"/registro**",
-				"/js/**",
-				"/css/**",
-				"/img/**").permitAll()
-		.anyRequest().authenticated()
+		http.csrf().disable()
+		.authorizeRequests()
+			.antMatchers("/registro**","/js/**","/css/**","/img/**",
+					"/organizaciones/api/**","/batchMediciones",
+					"/agentesSectoriales/**","/factoresDeEmision/**","/mediciones/**",
+					"/miembros/**").permitAll()
+			.anyRequest().authenticated()
 		.and()
-		.formLogin()
-		.loginPage("/login")
-		.permitAll()
+			.formLogin()
+				.loginPage("/login")
+				.permitAll()
+				.defaultSuccessUrl("/organizaciones/calculoHU", true)
 		.and()
-		.logout()
-		.invalidateHttpSession(true)
-		.clearAuthentication(true)
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.logoutSuccessUrl("/login?logout")
-		.permitAll();
+			.logout()
+				.invalidateHttpSession(true)
+				.clearAuthentication(true)
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/login?logout")
+				.permitAll();
 	}
 }
+	
