@@ -78,11 +78,22 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	public void agregarMiembro(Long id, MiembroDTO miembro){
 		Optional<Organizacion> org = repo.findById(id);
 		if(org.isPresent()) {
-			Optional<Sector> sector = repoSector.findByNombreAndOrganizacionId(miembro.getSector(), org.get().getId());
+			Optional<Sector> sector = repoSector.findByNombreAndOrganizacionId(miembro.getSector().toUpperCase(), org.get().getId());
 			Miembro nuevoMiembro = new Miembro(miembro);
 			repoMiembro.save(nuevoMiembro);
-			org.get().agregarMiembroSector(sector.get(), nuevoMiembro);
-			repoSector.save(sector.get());
+			if(sector.isPresent()) {
+				
+				org.get().agregarMiembroSector(sector.get(), nuevoMiembro);
+				repoSector.save(sector.get());
+			}else {
+				Sector nuevoSector = new Sector();
+				nuevoSector.setOrganizacion(org.get());
+				org.get().getSectores().add(nuevoSector);
+				nuevoSector.setNombre(miembro.getSector().toUpperCase());
+				org.get().agregarMiembroSector(nuevoSector, nuevoMiembro);
+				repoSector.save(nuevoSector);
+			}
+			
 		}
 		
 	}

@@ -160,7 +160,8 @@ public String huellaSectores() {
 
   public void agregarMiembroSector(Sector sector, Miembro miembro)
       throws SectorNoPerteneceOrgException, MiembroYaPerteneceOrgException {
-    if (miembrosOrg().contains(miembro)) {//Si el miembro ya esta en la org
+    if (miembrosOrg().stream().anyMatch(unMiembro -> unMiembro.getNroDoc().equals(miembro.getNroDoc())
+    								&& unMiembro.getTipoDoc().equals(miembro.getTipoDoc()))) {//Si el miembro ya esta en la org
       throw new MiembroYaPerteneceOrgException();
     } else if (!sectores.contains(sector)) {//Si el sector no esta en la org
       throw new SectorNoPerteneceOrgException();

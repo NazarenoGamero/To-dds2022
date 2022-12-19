@@ -1,5 +1,6 @@
 package dds.grupo3.clases.organizacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,13 +18,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import dds.grupo3.clases.miembro.Miembro;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name="SECTOR")
 public class Sector {
@@ -56,5 +55,12 @@ public class Sector {
 
   public void agregarMiembro(Miembro miembro) {
     this.miembros.add(miembro);
+  }
+  
+  public Sector() {
+	  organizacion = null;
+	  id = null;
+	  nombre = null;
+	  miembros = new ArrayList<Miembro>();
   }
 }
