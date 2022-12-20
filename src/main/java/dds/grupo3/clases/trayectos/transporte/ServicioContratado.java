@@ -20,9 +20,4 @@ public class ServicioContratado extends Transporte {
 	//"Uber" por ejemplo
 	private String nombreServicio;
 
-	@Override
-	public float huPorDistancia(float distancia) {
-		return (distancia * this.getConsumo().getValor());
-	}
-
 }

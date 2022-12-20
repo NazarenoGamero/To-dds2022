@@ -32,8 +32,8 @@ public class Transporte {
 	private String nombreTransporte;
 	@OneToOne
 	private FactorEmision consumo;
-									//Este factor de emision por lo general sería "Diesel/Gasoil" o "Electricidad"
-  public float huPorDistancia(float distancia) {
-	  return (distancia * consumo.getValor());
-  }
+	
+	public float huPorDistancia(float distancia) {
+		return (distancia * this.getConsumo().getValor());
+	}
 }

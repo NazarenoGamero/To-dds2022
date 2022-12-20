@@ -24,14 +24,4 @@ public class TransportePublico extends Transporte {
 	@OneToOne
 	@JoinColumn(name = "linea_id")
   private Linea linea;
-  
-  
-  	//Se dice que es mejor para el medio ambiente moverse en transporte publico
-  	//Por esto se divide en dos el HU total de los transportes publicos
-	@Override
-	public float huPorDistancia(float distancia) {
-		return (distancia * this.getConsumo().getValor())/2;
-	}
-
-
 }
