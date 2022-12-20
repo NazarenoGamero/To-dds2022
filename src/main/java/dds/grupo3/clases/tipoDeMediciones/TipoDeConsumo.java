@@ -16,8 +16,6 @@ import lombok.Setter;
 public class TipoDeConsumo {
 	@Column(name="TIPO_CONSUMO")
   private String nombre;
-	@Column(name="VALOR_CONSUMO")
-  private int valor;
 }
 
 /*

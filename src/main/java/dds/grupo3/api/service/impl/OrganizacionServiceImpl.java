@@ -15,6 +15,7 @@ import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.HuFecha;
 import dds.grupo3.api.dto.response.HuSectorDTO;
 import dds.grupo3.api.dto.response.MedicionTemplateDTO;
+import dds.grupo3.api.repository.RepoFactorEmision;
 import dds.grupo3.api.repository.RepoMediciones;
 import dds.grupo3.api.repository.RepoMiembro;
 import dds.grupo3.api.repository.RepoOrganizacion;
@@ -38,6 +39,9 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	
 	@Autowired
 	RepoMediciones repoMed;
+	
+	@Autowired
+	RepoFactorEmision repoFactor;
 	
 	@Override
 	public Organizacion obtenerOrg(Long id) {
@@ -111,7 +115,7 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 			MedicionTemplateDTO unMedibleDTO = new MedicionTemplateDTO();
 			unMedibleDTO.setTipoDeActividad(unMedible.getTipoDeMedicion().getTipoDeactividad().getNombre());
 			unMedibleDTO.setTipoDeConsumo(unMedible.getTipoDeMedicion().getTipoDeConsumo().getNombre());
-			unMedibleDTO.setValor(unMedible.getValor());
+			unMedibleDTO.setValor(unMedible.getValor()*unMedible.getMiFactor().getValor());
 			medicionesTemplateDTO.add(unMedibleDTO);
 		}
 		return medicionesTemplateDTO;

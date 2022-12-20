@@ -47,7 +47,7 @@ public class Organizacion {
 	@Embedded
 	private Clasificacion clasificacion;
 	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn
+	@JoinColumn(name="organizacion_id")
 	public List<Medible> mediciones;
 	@Transient
 	@JsonIgnore

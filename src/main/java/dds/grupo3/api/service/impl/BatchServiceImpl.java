@@ -74,7 +74,7 @@ public class BatchServiceImpl implements BatchService {
       //Agrego al batch de mediciones
     	batchMediciones.getMediciones().add(medible);
     }
-    repo.saveAndFlush(batchMediciones);
+    repo.save(batchMediciones);
   }
   
   //Metodos Auxiliares
@@ -107,5 +107,6 @@ public class BatchServiceImpl implements BatchService {
 		Optional<BatchMediciones> batch = repo.findById(id);
 		List<Medible> mediciones = batch.get().getMediciones();
 		org.get().getMediciones().addAll(mediciones);
+		repoOrg.save(org.get());
 	}
 }
