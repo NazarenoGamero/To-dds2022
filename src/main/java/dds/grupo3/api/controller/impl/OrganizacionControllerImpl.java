@@ -12,6 +12,7 @@ import dds.grupo3.api.controller.OrganizacionController;
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.HuFecha;
+import dds.grupo3.api.dto.response.HuSectorDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.api.service.OrganizacionService;
@@ -105,8 +106,11 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 
 	@Override
 	public String huSector(Long orgId,String action, Model model) {
-		// TODO Auto-generated method stub
-		return null;
+		Organizacion organizacion = organizacionService.obtenerOrg(orgId);
+		List<HuSectorDTO> listaHuSector = organizacionService.huellaSector(orgId);
+		model.addAttribute("organizacion", organizacion);
+		model.addAttribute("HUs", listaHuSector);
+		return "calcularHUdesgloseEmpleado";
 	}
 
 	@Override

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import dds.grupo3.api.dto.request.MiembroDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.response.HuFecha;
+import dds.grupo3.api.dto.response.HuSectorDTO;
 import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.api.repository.RepoMediciones;
 import dds.grupo3.api.repository.RepoMiembro;
@@ -178,5 +179,21 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 		}
 		//Retorno la lista sin repetidos con valores sumados
 		return listaSinRepetidos;
+	}
+
+	@Override
+	public List<HuSectorDTO> huellaSector(Long idOrg) {
+		Organizacion org = repo.findById(idOrg).get();
+		List<HuSectorDTO> lista = new ArrayList<HuSectorDTO>();
+		for(Sector unSector : org.getSectores()) {
+			for(Miembro unMiembro : unSector.getMiembros()) {
+				HuSectorDTO unHuMiembro = new HuSectorDTO();
+				unHuMiembro.setNombreMiembro(unMiembro.obtenerNombre());
+				unHuMiembro.setSector(unSector.getNombre());
+				unHuMiembro.setValorHU(unMiembro.calcularHU());
+				lista.add(unHuMiembro);
+			}
+		}
+		return lista;
 	}
 }

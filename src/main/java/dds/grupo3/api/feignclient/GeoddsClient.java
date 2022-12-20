@@ -37,12 +37,13 @@ public interface GeoddsClient {
 		  								@RequestParam("municipioId") int provinciaId);
 
   @GetMapping("distancia")
-  public DistanciaDTO distancia(@RequestParam("offset") int offset,
-		  						@RequestParam("localidadOrigenId") int localidadOrigenId,
+  public DistanciaDTO distancia(@RequestHeader(value = "Authorization", required = true) String bearerToken,
+		  						@RequestParam("offset") int offset,
+		  						@RequestParam("localidadOrigenId") long localidadOrigenId,
                                 @RequestParam("calleOrigen") String calleOrigen,
-                                @RequestParam("alturaOrigen") String alturaOrigen,
-                                @RequestParam("localidadDestinoId") int localidadDestinoId,
+                                @RequestParam("alturaOrigen") long alturaOrigen,
+                                @RequestParam("localidadDestinoId") long localidadDestinoId,
                                 @RequestParam("calleDestino") String calleDestino,
-                                @RequestParam("alturaDestino") String alturaDestino);
+                                @RequestParam("alturaDestino") long alturaDestino);
 
 }

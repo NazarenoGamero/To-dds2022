@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DistanciaDTO {
-  public String valor;
-  public String unidad;
-
-
+public class ParadaDTO {
+	private String nombre;
+	private String localidad;
+	private String calle;
+	private Long altura;
 }

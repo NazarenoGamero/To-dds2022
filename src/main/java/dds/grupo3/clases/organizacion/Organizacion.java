@@ -63,72 +63,24 @@ public class Organizacion {
 	    for (Medible unMedible : this.getMediciones()) {
 	      total = total + unMedible.obtenerHuella();
 	    }
+	    total = total+ this.calcularHUSector();
 	    return total;
 	  }
 	
-  /*------------------------------------------------
-   * Calculo de huella
-   * ----------------------------------------------
-   */
-  //Huella Completa : 123123
-  //	Huella de Combustion Fija: 1123
-  // 
-  //
-  //
-  public String calcularHuellaDeCarbonoST() {
-    float total = 0;
-    String mensajeCompleto = "";
-    
-    //Obtengo el Total de todas las mediciones de la org
-    for (Medible unMedible : this.getMediciones()) {
-      total = total + unMedible.obtenerHuella();
-    }
-    
-    //Obtengo un map con los tipos de medicion y sus medibles
-    Map<String, List<Medible>> tiposYMedibles=obtenerTotalPorTipo();
-    
-    String detalleDeTipos = serializarString(tiposYMedibles);
-    
-    mensajeCompleto = "El total emitido por la organizacion es: "+String.valueOf(total) +"\n"+detalleDeTipos;
-    return mensajeCompleto;
-  }
-
-  private String serializarString(Map<String, List<Medible>> tiposYMedibles) {
-	  String detalleDeTipos = "";
-	  for(Map.Entry<String,List<Medible>> unMap : tiposYMedibles.entrySet()) {
-		  //Para cada lista de medibles. Mapeo para obtener el valor, los sumo y así obtengo el total del tipo
-	    	float totalDelTipo = (float) unMap.getValue().stream().mapToDouble(unMedible -> unMedible.obtenerHuella()).sum();
-	    	//El total de Combustion Fija es: 12.3
-	    	String detalleDeUnTipo = "El total de " + unMap.getKey() + " es: "+ String.valueOf(totalDelTipo);
-	    	detalleDeTipos = detalleDeTipos + detalleDeUnTipo + "\n";
-	  }
-	return detalleDeTipos;
-}
+	public float calcularHUSector() {
+		float subtotal = 0;
+		for(Sector unSector : this.getSectores()) {
+			for(Miembro unMiembro : unSector.getMiembros()) {
+				subtotal = subtotal + unMiembro.calcularHU();
+			}
+		}
+		return subtotal;
+	}
 
 private Map<String, List<Medible>> obtenerTotalPorTipo() {
 	 return this.getMediciones().stream().collect(Collectors.groupingBy(medicion -> medicion.getTipoDeMedicion().getTipoDeactividad().getNombre()));
 	
 }
-
-public String calcularHuellaDeCarbonoT() {
-    String mensajeOrganizacion = this.calcularHuellaDeCarbonoST();
-    
-    mensajeOrganizacion = mensajeOrganizacion + this.huellaSectores();
-    
-    return mensajeOrganizacion;
-  }
-
-public String huellaSectores() {
-	String mensajeSectoresOrganizacion="";
-	for(Sector unSector : this.getSectores()) {
-		mensajeSectoresOrganizacion = mensajeSectoresOrganizacion + unSector.calcularHuellaMiembros();
-	}
-	return mensajeSectoresOrganizacion;
-}
-  // añade un postulado a la lista
-  //TODO agregar calculo de medibles + trayectos (Composite porque dice naza)
-  //TODO agregar calculo para las periodicidades (Uno para Mensual y otro Anual)
-  // 		Duda, donde se filtraría esto, pensar...
 
   /*------------------------------------------------
    * Agregar sector y postulacion de miembros
@@ -141,20 +93,6 @@ public String huellaSectores() {
     } else {
       this.sectores.add(sector);
       sector.setOrganizacion(this);
-    }
-  }
-
-  // Postulaciones y agregar miembros
-
-  //Agregar postulacion a la lista de postulados
-  public void nuevoPostulado(Miembro miembro, Sector sector) {
-    this.postulados.add(new Postulacion(sector, miembro));
-  }
-
-  //lee una por una las postulaciones y elige si aceptarla o no
-  public void aceptarPostulacion() {
-    for (Postulacion postulado : this.postulados) {
-      this.agregarMiembroSector(postulado.getSector(), postulado.getMiembro());
     }
   }
 

@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DistanciaDTO {
-  public String valor;
-  public String unidad;
-
-
+public class TransporteDTO {
+	private String nombreTransporte;//A patin
+	private String factorEmision;//Nafta/Gasoil
+	private VehiculoDTO vehiculo;
+	private PublicoDTO publico;
 }

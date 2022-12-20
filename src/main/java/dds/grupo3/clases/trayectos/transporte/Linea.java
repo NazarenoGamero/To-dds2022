@@ -2,6 +2,7 @@ package dds.grupo3.clases.trayectos.transporte;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,6 @@ public class Linea {
 	private long idLinea;
 	@Column(name="NOMBRE")
     private String nombre;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
     private Set<Parada> paradas;
 }

@@ -1,6 +1,7 @@
 package dds.grupo3.clases.trayectos;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,10 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import dds.grupo3.clases.medible.FactorEmision;
+import dds.grupo3.clases.miembro.Miembro;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,10 +38,16 @@ public class Trayecto {
 	@JoinColumn(name="trayecto_id")
 	@OrderColumn
   private List<Tramo> tramos;
-
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JsonBackReference
+  private Set<Miembro> miembros;
 
   public float calcularHU() {
 	  return (float) tramos.stream().mapToDouble(t-> t.calculaHU()).sum();
-	  
   }
+  
+//Se divide en HU por cada miembro para no contar dos veces el HU
+  public float calculaHUPorMiembro(FactorEmision fe) {
+	    return (this.calcularHU()/this.miembros.size());
+	  }
 }

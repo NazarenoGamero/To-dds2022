@@ -9,9 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DistanciaDTO {
-  public String valor;
-  public String unidad;
-
-
+public class VehiculoDTO {
+	private String nombreServicio;//Uber
 }

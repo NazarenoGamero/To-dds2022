@@ -1,7 +1,6 @@
 package dds.grupo3;
 
 import java.text.ParseException;
-import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,8 +84,8 @@ public class InitData implements CommandLineRunner {
 		//Tramo que los une
 		Tramo unTramo = new Tramo();
 		unTramo.setDistancia(140L);
-		HashSet<Miembro> listaMiembros = new HashSet<Miembro>(); listaMiembros.add(unMiembro);
-		unTramo.setMiembros(listaMiembros);
+//		HashSet<Miembro> listaMiembros = new HashSet<Miembro>(); listaMiembros.add(unMiembro);
+//		unTramo.setMiembros(listaMiembros);
 		unTramo.setPuntoDeLlegada(fin);
 		unTramo.setPuntoInicio(inicio);
 		unTramo.setTransporte(aPatin);

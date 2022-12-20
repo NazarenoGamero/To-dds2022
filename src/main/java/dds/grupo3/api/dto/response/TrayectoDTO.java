@@ -1,4 +1,4 @@
-package dds.grupo3.api.dto.response.trayecto;
+package dds.grupo3.api.dto.response;
 
 import dds.grupo3.clases.trayectos.Trayecto;
 import lombok.AllArgsConstructor;

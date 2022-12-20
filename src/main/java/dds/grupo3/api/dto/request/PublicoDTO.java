@@ -9,9 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DistanciaDTO {
-  public String valor;
-  public String unidad;
-
-
+public class PublicoDTO {
+	private String linea;//Sarmiento
+	private long idParadaOrigen;//1
+	private long idParadaDestino;//2
 }

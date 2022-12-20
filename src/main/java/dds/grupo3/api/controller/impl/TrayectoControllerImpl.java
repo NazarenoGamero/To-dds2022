@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import dds.grupo3.api.controller.TrayectoController;
-import dds.grupo3.api.dto.response.trayecto.TrayectoDTO;
+import dds.grupo3.api.dto.request.LineaDTO;
+import dds.grupo3.api.dto.response.TrayectoDTO;
 import dds.grupo3.api.repository.RepoMiembro;
 import dds.grupo3.api.service.TrayectoService;
 import dds.grupo3.clases.miembro.Miembro;
@@ -49,6 +52,33 @@ public class TrayectoControllerImpl implements TrayectoController {
 	@Override
 	public String error() {
 		return "error";
+	}
+
+	@Override
+	public ResponseEntity<?> crearTrayecto(dds.grupo3.api.dto.request.TrayectoDTO trayecto) {
+		try {
+			trayectoService.crearTrayecto(trayecto);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<?> crearLinea(LineaDTO linea) {
+		try {
+			//Tiene sentido que la linea tenga al menos dos paradas
+			if(linea.getParada().size()<2) {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+			trayectoService.crearLinea(linea);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

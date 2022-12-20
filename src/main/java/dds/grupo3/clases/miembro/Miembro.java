@@ -12,8 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import dds.grupo3.api.dto.request.MiembroDTO;
-import dds.grupo3.clases.organizacion.Organizacion;
-import dds.grupo3.clases.organizacion.Sector;
 import dds.grupo3.clases.trayectos.Trayecto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -63,9 +61,9 @@ public class Miembro {
 	  float valorHuella = this.calcularHU();
 	   return "-"+nombre+" "+apellido+": "+valorHuella+"\n";
   }
-
-  public void postularme(Organizacion organizacion, Sector sector) {
-    organizacion.nuevoPostulado(this, sector);
+  
+  public String obtenerNombre() {
+	  return (this.getNombre() + " " + this.getApellido());
   }
   
   public Miembro(MiembroDTO dto) {

@@ -28,4 +28,10 @@ public class Punto {
   private long altura;
 	@Column(name="calle")
   private String calle;
+	
+	public Punto(String calle, long altura, long localidadId) {
+		this.calle = calle;
+		this.altura = altura;
+		this.localidadId = localidadId;
+	}
 }

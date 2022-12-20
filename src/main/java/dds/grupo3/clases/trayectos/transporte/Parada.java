@@ -1,5 +1,6 @@
 package dds.grupo3.clases.trayectos.transporte;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Parada{
 	private long idParada;
 	@Column(name="NOMBRE")
   private String nombreParada;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
   private Punto direccionParada;
   
 }
