@@ -17,7 +17,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import dds.grupo3.clases.medible.FactorEmision;
 import dds.grupo3.clases.miembro.Miembro;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,7 +37,7 @@ public class Trayecto {
 	@JoinColumn(name="trayecto_id")
 	@OrderColumn
   private List<Tramo> tramos;
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
 	@JsonBackReference
   private Set<Miembro> miembros;
 
@@ -47,7 +46,7 @@ public class Trayecto {
   }
   
 //Se divide en HU por cada miembro para no contar dos veces el HU
-  public float calculaHUPorMiembro(FactorEmision fe) {
+  public float calculaHUPorMiembro() {
 	    return (this.calcularHU()/this.miembros.size());
 	  }
 }

@@ -107,10 +107,16 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	@Override
 	public String huSector(Long orgId,String action, Model model) {
 		Organizacion organizacion = organizacionService.obtenerOrg(orgId);
-		List<HuSectorDTO> listaHuSector = organizacionService.huellaSector(orgId);
-		model.addAttribute("organizacion", organizacion);
-		model.addAttribute("HUs", listaHuSector);
-		return "calcularHUdesgloseEmpleado";
+		try {
+			List<HuSectorDTO> listaHuSector = organizacionService.huellaSector(orgId);
+			model.addAttribute("organizacion", organizacion);
+			model.addAttribute("HUs", listaHuSector);
+			return "calcularHUdesgloseEmpleado";
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		
 	}
 
 	@Override

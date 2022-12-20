@@ -1,14 +1,13 @@
 package dds.grupo3.clases.miembro;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import dds.grupo3.api.dto.request.MiembroDTO;
@@ -36,7 +35,7 @@ public class Miembro {
   private TipoDocEnum tipoDoc;
   @Column(name="DOCUMENTO")
   private Long nroDoc;
-  @OneToMany(cascade=CascadeType.ALL)
+  @ManyToMany
   @JoinColumn(name="miembro_id")
   private List<Trayecto> trayectos;
 
@@ -53,7 +52,7 @@ public class Miembro {
   }
 
   public float calcularHU() {
-    return (float) trayectos.stream().mapToDouble(t -> t.calcularHU()).sum();
+    return (float) trayectos.stream().mapToDouble(t -> t.calculaHUPorMiembro()).sum();
   }
   
   //TODO cambiar nombre por algo mas descriptivo

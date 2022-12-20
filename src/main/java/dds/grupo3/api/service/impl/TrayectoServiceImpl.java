@@ -130,6 +130,7 @@ public class TrayectoServiceImpl implements TrayectoService {
 			nuevoTramo.setDistancia(Long.valueOf(distancia.getValor()));
 			nuevoTrayecto.getTramos().add(nuevoTramo);
 		}
+		repoTrayecto.save(nuevoTrayecto);
 		//----------Carga de participantes del trayecto--------
 		for(Long documento : trayecto.getParticipantes()) {
 			Miembro unMiembro = repoMiembro.findByNroDoc(documento).get();
@@ -137,7 +138,7 @@ public class TrayectoServiceImpl implements TrayectoService {
 			nuevoTrayecto.getMiembros().add(unMiembro);
 			repoMiembro.save(unMiembro);
 		}
-		repoTrayecto.save(nuevoTrayecto);
+		
 	}
 
 
