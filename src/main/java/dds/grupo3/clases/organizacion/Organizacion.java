@@ -2,7 +2,6 @@ package dds.grupo3.clases.organizacion;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
@@ -77,10 +76,6 @@ public class Organizacion {
 		return subtotal;
 	}
 
-private Map<String, List<Medible>> obtenerTotalPorTipo() {
-	 return this.getMediciones().stream().collect(Collectors.groupingBy(medicion -> medicion.getTipoDeMedicion().getTipoDeactividad().getNombre()));
-	
-}
 
   /*------------------------------------------------
    * Agregar sector y postulacion de miembros

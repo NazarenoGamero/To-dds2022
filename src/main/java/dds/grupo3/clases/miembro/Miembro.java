@@ -55,12 +55,6 @@ public class Miembro {
     return (float) trayectos.stream().mapToDouble(t -> t.calculaHUPorMiembro()).sum();
   }
   
-  //TODO cambiar nombre por algo mas descriptivo
-  public String obtenerHU() {
-	  float valorHuella = this.calcularHU();
-	   return "-"+nombre+" "+apellido+": "+valorHuella+"\n";
-  }
-  
   public String obtenerNombre() {
 	  return (this.getNombre() + " " + this.getApellido());
   }

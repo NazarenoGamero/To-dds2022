@@ -84,7 +84,14 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 		Optional<Organizacion> org = repo.findById(id);
 		if(org.isPresent()) {
 			Optional<Sector> sector = repoSector.findByNombreAndOrganizacionId(miembro.getSector().toUpperCase(), org.get().getId());
-			Miembro nuevoMiembro = new Miembro(miembro);
+			Optional<Miembro> elMiembro = repoMiembro.findByNroDoc(miembro.getNroDoc());
+			Miembro nuevoMiembro;
+			if(elMiembro.isPresent()) {
+				 nuevoMiembro = elMiembro.get();
+			}else {
+				 nuevoMiembro = new Miembro(miembro);
+			}
+			
 			if(sector.isPresent()) {
 				
 				org.get().agregarMiembroSector(sector.get(), nuevoMiembro);

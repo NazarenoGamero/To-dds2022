@@ -90,7 +90,8 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	@Override
 	public String huValor(Long orgId,String action,Model model) {
 		float total= organizacionService.calcularHuella(orgId);
-		model.addAttribute("organizacions", organizacionService.buscarOrganizaciones());
+		Organizacion organizacion = organizacionService.obtenerOrg(orgId);
+		model.addAttribute("organizacion", organizacion);
 		model.addAttribute("valorHU", total);
 		return "calcularHUvalorHU";//TODO hacer que este metodo reciba informacion del modelo anterior
 	}
