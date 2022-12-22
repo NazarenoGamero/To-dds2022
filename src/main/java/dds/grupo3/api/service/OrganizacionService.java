@@ -25,7 +25,7 @@ public interface OrganizacionService {
 	
 	public void editarOrg(Long id, OrganizacionDTO org);
 	
-	public void agregarMiembro(Long id, MiembroDTO miembro);
+	public void agregarMiembro(Long id, MiembroDTO miembro) throws Exception;
 	
 	//Metodos para llamadas MVC
 	

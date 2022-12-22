@@ -16,6 +16,8 @@ import dds.grupo3.api.dto.response.HuSectorDTO;
 import dds.grupo3.api.dto.response.ListaOrganizacionesDTO;
 import dds.grupo3.api.dto.response.MedicionTemplateDTO;
 import dds.grupo3.api.service.OrganizacionService;
+import dds.grupo3.clases.exception.MiembroYaPerteneceOrgException;
+import dds.grupo3.clases.exception.OrganizacionInexistenteException;
 import dds.grupo3.clases.organizacion.Organizacion;
 
 @Controller
@@ -60,6 +62,10 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 	public ResponseEntity<?> agregarMiembro(Long id, MiembroDTO miembro) {
 		try {
 			organizacionService.agregarMiembro(id,miembro);
+		}catch(OrganizacionInexistenteException e) {
+			return new ResponseEntity<>("La organizacion indicada no existe", HttpStatus.BAD_REQUEST);
+		}catch(MiembroYaPerteneceOrgException e) {
+			return new ResponseEntity<>("El miembro ya pertenece a esta organizacion", HttpStatus.BAD_REQUEST);
 		} catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -21,6 +21,7 @@ import dds.grupo3.api.repository.RepoMiembro;
 import dds.grupo3.api.repository.RepoOrganizacion;
 import dds.grupo3.api.repository.RepoSector;
 import dds.grupo3.api.service.OrganizacionService;
+import dds.grupo3.clases.exception.OrganizacionInexistenteException;
 import dds.grupo3.clases.medible.Medible;
 import dds.grupo3.clases.miembro.Miembro;
 import dds.grupo3.clases.organizacion.Organizacion;
@@ -80,7 +81,7 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	}
 
 	@Override
-	public void agregarMiembro(Long id, MiembroDTO miembro){
+	public void agregarMiembro(Long id, MiembroDTO miembro) throws Exception{
 		Optional<Organizacion> org = repo.findById(id);
 		if(org.isPresent()) {
 			Optional<Sector> sector = repoSector.findByNombreAndOrganizacionId(miembro.getSector().toUpperCase(), org.get().getId());
@@ -104,6 +105,8 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 				org.get().agregarMiembroSector(nuevoSector, nuevoMiembro);
 				repoSector.save(nuevoSector);
 			}
+		}else {
+			throw new OrganizacionInexistenteException();
 		}
 		
 	}
