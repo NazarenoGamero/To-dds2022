@@ -56,7 +56,7 @@ public class BatchServiceImpl implements BatchService {
   }
 
   @Override
-  public void cargarBatch(List<MedicionDTO> mediciones) throws ParseException {
+  public long cargarBatch(List<MedicionDTO> mediciones) throws ParseException {
 	//Creo un batch de mediciones
     BatchMediciones batchMediciones= new BatchMediciones();
     List<FactorEmision> factores= repoFactores.findAll();
@@ -75,6 +75,7 @@ public class BatchServiceImpl implements BatchService {
     	batchMediciones.getMediciones().add(medible);
     }
     repo.save(batchMediciones);
+    return batchMediciones.getId();
   }
   
   //Metodos Auxiliares

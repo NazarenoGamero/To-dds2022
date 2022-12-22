@@ -42,8 +42,8 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 
 	@Override
 	public ResponseEntity<?> crearOrganizacion(OrganizacionDTO org) {
-		organizacionService.crearOrganizacion(org);
-		return new ResponseEntity<>(HttpStatus.OK);
+		long id = organizacionService.crearOrganizacion(org);
+		return new ResponseEntity<>("Organizacion creada con ID: " + id,HttpStatus.OK);
 	}
 
 	@Override

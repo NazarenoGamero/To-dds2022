@@ -33,8 +33,8 @@ public class BatchControllerImpl implements BatchController {
   @Override
   public ResponseEntity<?> cargarBatch(List<MedicionDTO> mediciones) {
     try{
-      batchService.cargarBatch(mediciones);
-      return new ResponseEntity<>("El Batch de mediciones se cargo correctamente",HttpStatus.CREATED);
+      long id = batchService.cargarBatch(mediciones);
+      return new ResponseEntity<>("El Batch de mediciones se cargo correctamente con ID: "+ id,HttpStatus.OK);
     }
     catch (Exception e){
     e.printStackTrace();

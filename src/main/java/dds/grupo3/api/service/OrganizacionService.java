@@ -19,7 +19,7 @@ public interface OrganizacionService {
 	
 	List<Organizacion> buscarOrganizaciones();
 	
-	public void crearOrganizacion(OrganizacionDTO org);
+	public long crearOrganizacion(OrganizacionDTO org);
 	
 	public void borrarOrg(Long id);
 	

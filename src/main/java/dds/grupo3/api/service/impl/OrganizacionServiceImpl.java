@@ -55,9 +55,10 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	}
 
 	@Override
-	public void crearOrganizacion(OrganizacionDTO org) {
+	public long crearOrganizacion(OrganizacionDTO org) {
 		Organizacion nuevaOrg = new Organizacion(org);
 		repo.save(nuevaOrg);
+		return nuevaOrg.getId();
 	}
 
 	@Override

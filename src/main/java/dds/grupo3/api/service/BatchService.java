@@ -12,7 +12,7 @@ public interface BatchService {
   
   BatchDTO buscarMediciones(Long id);
   
-  void cargarBatch(List<MedicionDTO> mediciones) throws ParseException;
+  public long cargarBatch(List<MedicionDTO> mediciones) throws ParseException;
   
   void asignarBatch(Long id, Long idOrg);
 }
